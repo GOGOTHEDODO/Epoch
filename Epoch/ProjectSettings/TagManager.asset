@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: water
+    uniqueID: 3251855509
+    locked: 0
+  - name: ground
+    uniqueID: 1343186595
+    locked: 0
+  - name: vegetation
+    uniqueID: 178764991
+    locked: 0
