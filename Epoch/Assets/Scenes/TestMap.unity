@@ -10368,7 +10368,7 @@ GameObject:
   - component: {fileID: 1631612378}
   - component: {fileID: 1631612380}
   m_Layer: 0
-  m_Name: fakeweapon
+  m_Name: realWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10382,13 +10382,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631612377}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.002, y: 0.157, z: 0}
-  m_LocalScale: {x: 0.14285712, y: 0.14285712, z: 0.14285712}
+  m_LocalRotation: {x: -0, y: -0, z: 0.39662364, w: 0.9179814}
+  m_LocalPosition: {x: -0.0049999948, y: 0.277, z: 0}
+  m_LocalScale: {x: 0.35949144, y: 0.34482086, z: 0.44727328}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 341170556}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 46.735}
 --- !u!212 &1631612380
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10430,7 +10430,7 @@ SpriteRenderer:
   m_SortingLayerID: 178764991
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2e2e4ce1ecdf066429e45bbbfa1e0c05, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c2b67f4367981b4b9fb1b708ad1bae6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
