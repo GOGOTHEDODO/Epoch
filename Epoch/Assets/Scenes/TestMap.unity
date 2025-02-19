@@ -10368,7 +10368,8 @@ GameObject:
   - component: {fileID: 1631612378}
   - component: {fileID: 1631612380}
   m_Layer: 0
-  m_Name: fakeweapon
+  m_Name: realWeapon
+
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10430,7 +10431,7 @@ SpriteRenderer:
   m_SortingLayerID: 178764991
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2e2e4ce1ecdf066429e45bbbfa1e0c05, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c2b67f4367981b4b9fb1b708ad1bae6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
