@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -93,6 +93,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -100,9 +113,9 @@ TextureImporter:
       name: lanterns_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 13
+        x: 16
+        y: 16
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -121,10 +134,10 @@ TextureImporter:
       name: lanterns_1
       rect:
         serializedVersion: 2
-        x: 18
-        y: 0
-        width: 12
-        height: 32
+        x: 32
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,10 +155,10 @@ TextureImporter:
       name: lanterns_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 64
+        y: 16
         width: 16
-        height: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,9 +176,9 @@ TextureImporter:
       name: lanterns_3
       rect:
         serializedVersion: 2
-        x: 49
-        y: 0
-        width: 13
+        x: 80
+        y: 16
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -184,10 +197,10 @@ TextureImporter:
       name: lanterns_4
       rect:
         serializedVersion: 2
-        x: 66
-        y: 0
-        width: 12
-        height: 32
+        x: 112
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +218,10 @@ TextureImporter:
       name: lanterns_5
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
+        x: 128
+        y: 16
         width: 16
-        height: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,9 +239,9 @@ TextureImporter:
       name: lanterns_6
       rect:
         serializedVersion: 2
-        x: 97
-        y: 0
-        width: 13
+        x: 160
+        y: 16
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -247,10 +260,10 @@ TextureImporter:
       name: lanterns_7
       rect:
         serializedVersion: 2
-        x: 114
-        y: 0
-        width: 12
-        height: 32
+        x: 176
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,10 +281,10 @@ TextureImporter:
       name: lanterns_8
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
+        x: 208
+        y: 16
         width: 16
-        height: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,9 +302,9 @@ TextureImporter:
       name: lanterns_9
       rect:
         serializedVersion: 2
-        x: 145
-        y: 0
-        width: 13
+        x: 224
+        y: 16
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -310,10 +323,10 @@ TextureImporter:
       name: lanterns_10
       rect:
         serializedVersion: 2
-        x: 162
+        x: 0
         y: 0
-        width: 12
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,10 +344,10 @@ TextureImporter:
       name: lanterns_11
       rect:
         serializedVersion: 2
-        x: 176
+        x: 16
         y: 0
         width: 16
-        height: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,9 +365,9 @@ TextureImporter:
       name: lanterns_12
       rect:
         serializedVersion: 2
-        x: 193
+        x: 32
         y: 0
-        width: 13
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -373,10 +386,10 @@ TextureImporter:
       name: lanterns_13
       rect:
         serializedVersion: 2
-        x: 210
+        x: 48
         y: 0
-        width: 12
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,10 +407,10 @@ TextureImporter:
       name: lanterns_14
       rect:
         serializedVersion: 2
-        x: 224
+        x: 64
         y: 0
         width: 16
-        height: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -407,6 +420,216 @@ TextureImporter:
       bones: []
       spriteID: 8392eb8255c880841bc0df83543a3e97
       internalID: -833435267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lanterns_15
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e330b1a783b6d17448a3361049033441
+      internalID: -1493081202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lanterns_16
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f8008950889e5b46a7d7d575adc42ce
+      internalID: 761000443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lanterns_17
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3af4ad4c7e9b4764b96b848168c4bbf0
+      internalID: 1998560505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lanterns_18
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a633682421ea7774180603622c09a16b
+      internalID: 322142527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lanterns_19
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7f31860ec559a245a90c7b6c72587db
+      internalID: 1890969712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lanterns_20
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc3c0f14d7ff08438a333c574f3eb02
+      internalID: -532767762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lanterns_21
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad6b36a3964165640a039d6b327fb72e
+      internalID: -1789559504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lanterns_22
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 865412bfb9960744681c9f52ca0ef877
+      internalID: -735535663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lanterns_23
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfb44ba22fbfcfc43ad4eba81682d2f0
+      internalID: -288807648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lanterns_24
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 991fee40c7a2b114e86f6e07ec31709a
+      internalID: 1576325537
       vertices: []
       indices: 
       edges: []
@@ -429,7 +652,17 @@ TextureImporter:
       lanterns_12: -743407884
       lanterns_13: -176804211
       lanterns_14: -833435267
+      lanterns_15: -1493081202
+      lanterns_16: 761000443
+      lanterns_17: 1998560505
+      lanterns_18: 322142527
+      lanterns_19: 1890969712
       lanterns_2: -202764146
+      lanterns_20: -532767762
+      lanterns_21: -1789559504
+      lanterns_22: -735535663
+      lanterns_23: -288807648
+      lanterns_24: 1576325537
       lanterns_3: 1808274912
       lanterns_4: -847545068
       lanterns_5: 1209292449
