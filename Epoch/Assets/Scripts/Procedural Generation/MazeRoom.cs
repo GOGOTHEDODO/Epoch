@@ -10,13 +10,10 @@ public class MazeRoom : MonoBehaviour
         RIGHT,
         BOTTOM,
         LEFT,
-<<<<<<< Updated upstream
-=======
         TOPLEFT,
         TOPRIGHT,
         BOTTOMLEFT,
         BOTTOMRIGHT,
->>>>>>> Stashed changes
         NONE,
     }
 
@@ -24,14 +21,11 @@ public class MazeRoom : MonoBehaviour
     [SerializeField] GameObject rightWall;
     [SerializeField] GameObject bottomWall;
     [SerializeField] GameObject leftWall;
-<<<<<<< Updated upstream
-=======
     [SerializeField] GameObject topLeftCorner;
     [SerializeField] GameObject topRightCorner;
     [SerializeField] GameObject bottomLeftCorner;
     [SerializeField] GameObject bottomRightCorner;
     [SerializeField] GameObject brazier;
->>>>>>> Stashed changes
 
     Dictionary<Directions, GameObject> walls = new Dictionary<Directions, GameObject>();
 
@@ -50,22 +44,17 @@ public class MazeRoom : MonoBehaviour
         walls[dir].SetActive(flag);
     }
 
-<<<<<<< Updated upstream
-=======
     public void SetBrazierActive(bool flag)
     {
         brazier.SetActive(flag);
     }
 
->>>>>>> Stashed changes
     public void SetDirFlag(Directions dir, bool flag)
     {
         dirflags[dir] = flag;
         SetActive(dir, flag);
     }
 
-<<<<<<< Updated upstream
-=======
     public void SetAllWallsInactive()
     {
         walls[Directions.TOP].SetActive(false);
@@ -78,7 +67,6 @@ public class MazeRoom : MonoBehaviour
         walls[Directions.BOTTOMRIGHT].SetActive(false);
     }
 
->>>>>>> Stashed changes
     // Start is called before the first frame update
     void Awake()
     {
@@ -86,8 +74,6 @@ public class MazeRoom : MonoBehaviour
         walls[Directions.RIGHT] = rightWall;
         walls[Directions.BOTTOM] = bottomWall;
         walls[Directions.LEFT] = leftWall;
-<<<<<<< Updated upstream
-=======
         walls[Directions.TOPLEFT] = topLeftCorner;
         walls[Directions.TOPRIGHT] = topRightCorner;
         walls[Directions.BOTTOMLEFT] = bottomLeftCorner;
@@ -96,7 +82,6 @@ public class MazeRoom : MonoBehaviour
     void Start()
     {
        // brazier.SetActive(false);
->>>>>>> Stashed changes
     }
 
 }
