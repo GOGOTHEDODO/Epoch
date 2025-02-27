@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - UpgradeOrb
   layers:
   - Default
   - TransparentFX
@@ -38,15 +39,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: water
+    uniqueID: 2677171073
+    locked: 0
+  - name: Ground
+    uniqueID: 4115780869
+    locked: 0
+  - name: Top Walls
+    uniqueID: 2225739027
+    locked: 0
+  - name: Decerations
+    uniqueID: 3780113515
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: water
-    uniqueID: 3251855509
-    locked: 0
-  - name: ground
-    uniqueID: 1343186595
-    locked: 0
-  - name: vegetation
-    uniqueID: 178764991
     locked: 0

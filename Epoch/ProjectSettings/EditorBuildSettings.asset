@@ -9,6 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 17ecdc063365bb34d951896070d3e97a
   - enabled: 1
+    path: Assets/Scenes/ChineseMap1.unity
+    guid: 7c31da07396d837418aa5c87a79ff66b
+  - enabled: 1
+    path: Assets/Scenes/ChineseMap2.unity
+    guid: bc229e8a9a354c44f82a2a2ef3b67186
+  - enabled: 1
+    path: Assets/Scenes/ChineseMap3.unity
+    guid: 9fe264f6675871a41a703953c6020a64
+  - enabled: 1
     path: Assets/Scenes/TestMap.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/TEST_Chinese.unity
+    guid: adf5187a5203fd94e94bc3ee31affde9
   m_configObjects: {}
