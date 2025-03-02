@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f62a34c910414b74889c43cf5cc4477e
+guid: 004d4fc2b457e9a4692022120a5ef2df
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,141 +110,151 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: brazier-large_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -2, y: -12}
-        - {x: -9, y: -12}
-        - {x: -13, y: -12}
-        - {x: -13, y: -22}
-        - {x: 13, y: -22}
-        - {x: 13, y: -12}
-        - {x: 6, y: -12}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 31dc0dd97c0bd8c428787b507b44ba24
-      internalID: 1195516285
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: brazier-large_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -2, y: -12}
-        - {x: -9, y: -12}
-        - {x: -13, y: -12}
-        - {x: -13, y: -22}
-        - {x: 13, y: -22}
-        - {x: 13, y: -12}
-        - {x: 6, y: -12}
-      tessellationDetail: 0
-      bones: []
-      spriteID: f9b7f79c09319b5448546c23a5f2d342
-      internalID: 1930341917
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: brazier-large_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -2, y: -12}
-        - {x: -9, y: -12}
-        - {x: -13, y: -12}
-        - {x: -13, y: -22}
-        - {x: 13, y: -22}
-        - {x: 13, y: -12}
-        - {x: 6, y: -12}
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae9858c8fd1650d4ca144df6ad5a49d2
-      internalID: 1471805163
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: brazier-large_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -2, y: -12}
-        - {x: -9, y: -12}
-        - {x: -13, y: -12}
-        - {x: -13, y: -22}
-        - {x: 13, y: -22}
-        - {x: 13, y: -12}
-        - {x: 6, y: -12}
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1be528c24585bf4caa7438cfc72547e
-      internalID: -457581774
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: brazier-large_0
+      name: brazier-small_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 48
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -2, y: -12}
-        - {x: -9, y: -12}
-        - {x: -13, y: -12}
-        - {x: -13, y: -22}
-        - {x: 13, y: -22}
-        - {x: 13, y: -12}
-        - {x: 6, y: -12}
+      - - {x: 0, y: -3}
+        - {x: -6, y: -3}
+        - {x: -7, y: -6}
+        - {x: -7, y: -12}
+        - {x: -5, y: -15}
+        - {x: 6, y: -15}
+        - {x: 7, y: -12}
+        - {x: 7, y: -6}
+        - {x: 6, y: -3}
       tessellationDetail: 0
       bones: []
-      spriteID: e566f552c86a64946ba1e6368ac620ca
-      internalID: 1197166278
+      spriteID: 3f1ab4d6972f9ae498babfa3a7f101aa
+      internalID: -737290967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brazier-small_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 0, y: -3}
+        - {x: -6, y: -3}
+        - {x: -7, y: -6}
+        - {x: -7, y: -12}
+        - {x: -5, y: -15}
+        - {x: 6, y: -15}
+        - {x: 7, y: -12}
+        - {x: 7, y: -6}
+        - {x: 6, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5666cc6e57ef3048b9d3aaf20f4be26
+      internalID: 1821414053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brazier-small_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 0, y: -3}
+        - {x: -6, y: -3}
+        - {x: -7, y: -6}
+        - {x: -7, y: -12}
+        - {x: -5, y: -15}
+        - {x: 6, y: -15}
+        - {x: 7, y: -12}
+        - {x: 7, y: -6}
+        - {x: 6, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c82dbbcb351512489b143089bc26541
+      internalID: -1916759212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brazier-small_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 0, y: -3}
+        - {x: -6, y: -3}
+        - {x: -7, y: -6}
+        - {x: -7, y: -12}
+        - {x: -5, y: -15}
+        - {x: 6, y: -15}
+        - {x: 7, y: -12}
+        - {x: 7, y: -6}
+        - {x: 6, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64a25ac7dcbee2a45a96792b011dc003
+      internalID: 1667237648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brazier-small_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 0, y: -3}
+        - {x: -6, y: -3}
+        - {x: -7, y: -6}
+        - {x: -7, y: -12}
+        - {x: -5, y: -15}
+        - {x: 6, y: -15}
+        - {x: 7, y: -12}
+        - {x: 7, y: -6}
+        - {x: 6, y: -3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84cea9c14d0f0e947a684e71d55acad0
+      internalID: -1815414116
       vertices: []
       indices: 
       edges: []
@@ -260,11 +270,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      brazier-large_0: 1197166278
-      brazier-large_1: 1195516285
-      brazier-large_2: 1930341917
-      brazier-large_3: 1471805163
-      brazier-large_4: -457581774
+      brazier-small_0: -737290967
+      brazier-small_1: 1821414053
+      brazier-small_2: -1916759212
+      brazier-small_3: 1667237648
+      brazier-small_4: -1815414116
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
