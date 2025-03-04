@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class LightAttackControl : MonoBehaviour
@@ -9,35 +8,11 @@ public class LightAttackControl : MonoBehaviour
     private bool isAttacking = false;
     private Vector2 attackDirection;
     public double LightCooldown = 0.5;
-    public float damage = 10f;
 
     void Start()
     {
         attackRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag("Enemy"))
-        {
-            //EnemyHealth enemyHealth = other.GetComponent<EnemyHeath>();
-            // if(enemyHealth != null)
-            // {
-            //     enemyHealth.TakeDamage(damage);
-            // }
-        }
-    }
-
-    public void IncreaseDamage(float percentage)
-    {
-        damage += damage * (percentage / 100);
-        Debug.Log("New Sword Damage: " + damage);
-    }
-
-    public void DecreaseCoolDown(float percentage)
-    {
-        LightCooldown = LightCooldown * (1 - (percentage / 100));
     }
 
     void Update()

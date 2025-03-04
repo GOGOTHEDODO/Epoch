@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions.Comparers;
 
 public class PlayerMovement : MonoBehaviour
 {
 
     public float moveSpeed;
     public Rigidbody2D rb;
-    
 
     private Vector2 moveDirection;
     private Animator animator;
@@ -46,14 +44,5 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("yDir", moveDirection.y);
         
 
-    }
-
-    public void IncreaseMovementSpeed(float percentage) {
-        moveSpeed += moveSpeed * (percentage / 100);
-    }
-
-    public float getMoveSpeed()
-    {
-        return moveSpeed;
     }
 }
