@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Epoch/Assets/Scripts/SpriteAlphaFlicker.cs.meta
 guid: 17b848b836b0fe143a8f6026f0eede34
+========
+guid: 22b582ca90793804a9b1f4057ea40235
+>>>>>>>> main:Epoch/Assets/Scripts/ShadowCaster2DCreator.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
