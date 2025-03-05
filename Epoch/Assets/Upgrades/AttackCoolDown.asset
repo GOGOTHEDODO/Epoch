@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeName: CoolDown
   description: Decreases Cooldown of weapon
   type: 2
-  value: 25
+  value: 10

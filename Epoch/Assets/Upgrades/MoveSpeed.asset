@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeName: Movespeed
   description: Increases Movement of Player
   type: 0
-  value: 15
+  value: 20

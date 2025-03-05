@@ -14,8 +14,9 @@ public class UpgradeUI : MonoBehaviour
     public Transform buttonContainer;
     public List<UpgradeData> availableUpgrades;
 
-    public float speedIncreasePercentage = 10f; // % increase
-    public float damageIncreasePercentage = 15f;
+    //public float speedIncreasePercentage = 10f; // % increase
+    //public float damageIncreasePercentage = 15f;
+    //public float attackCoolDownPercentage = 15f;
 
     
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class UpgradeUI : MonoBehaviour
     {
      
     }
+
 
     public void ShowUpgrade()
     {
@@ -58,7 +60,17 @@ public class UpgradeUI : MonoBehaviour
             buttonText.text = $"{upgrade.upgradeName} (+{upgrade.value}%)";
 
             Button button = buttonObj.GetComponent<Button>();
-            button.onClick.AddListener(() => ApplyUpgrade(upgrade));
+            if(button !=null)
+            {
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(() =>
+            {
+                Debug.Log($"Clicked on {upgrade.upgradeName}!");
+                ApplyUpgrade(upgrade);
+            });
+                
+            }
+            
         }
     }
 

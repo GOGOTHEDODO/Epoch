@@ -19,13 +19,20 @@ public class LightAttackControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log($"Attack hit: {other.gameObject.name}");
         if(other.CompareTag("Enemy"))
         {
-            //EnemyHealth enemyHealth = other.GetComponent<EnemyHeath>();
-            // if(enemyHealth != null)
-            // {
-            //     enemyHealth.TakeDamage(damage);
-            // }
+            Debug.Log($"Dealing {damage} to {other.gameObject.name}");
+            EnemyRecieveDamage enemy = other.GetComponent<EnemyRecieveDamage>();
+            if(enemy != null)
+            {
+                enemy.DealDamage(damage);
+            }
+            else 
+            {
+                Debug.LogError("EnemyRecieveDamage script is missing on the enemy");
+            }
+            
         }
     }
 
@@ -67,11 +74,17 @@ public class LightAttackControl : MonoBehaviour
         // Lock the facing direction before starting the animation
         isAttacking = true;
 
+        GetComponent<Collider2D>().enabled = true;
+
         // Trigger the attack animation
         animator.SetTrigger("Attack");
 
         // Cooldown for attack, this can be changed with a buff if we want, so im including it as a variable, its also probably slow right now but it doesn't matter yet
-        yield return new WaitForSeconds((float)LightCooldown);
+        yield return new WaitForSeconds((float)LightCooldown / 2);
+
+        GetComponent<Collider2D>().enabled = false;
+
+        yield return new WaitForSeconds((float)LightCooldown / 2);
 
         isAttacking = false;
     }

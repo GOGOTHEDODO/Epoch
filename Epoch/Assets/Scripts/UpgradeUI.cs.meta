@@ -3,7 +3,13 @@ guid: e98eea2fcc79c33468b75e31da30c9fa
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerMovement: {instanceID: 0}
+  - LightAttackControl: {instanceID: 0}
+  - upgradePanel: {instanceID: 0}
+  - upgradeChoices: {instanceID: 0}
+  - upgradeButtonPrefab: {instanceID: 0}
+  - buttonContainer: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
