@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Destroy(gameObject);
         Debug.Log("Player has died!");
+        GameManager.instance.RestartGame();
         // Add logic for player death (e.g., restart level, show death screen)
     }
 }
