@@ -14,6 +14,8 @@ public class UpgradeUI : MonoBehaviour
     public Transform buttonContainer;
     public List<UpgradeData> availableUpgrades;
 
+    private UpgradeOrb upgradeOrb;
+
     //public float speedIncreasePercentage = 10f; // % increase
     //public float damageIncreasePercentage = 15f;
     //public float attackCoolDownPercentage = 15f;
@@ -31,6 +33,11 @@ public class UpgradeUI : MonoBehaviour
         upgradePanel.SetActive(true);
         upgradeChoices.SetActive(true);
         GenerateUpgradeButtons();
+    }
+
+    public void SetUpgradeOrb(UpgradeOrb orb)
+    {
+        upgradeOrb = orb;
     }
 
     private void GenerateUpgradeButtons()
@@ -76,9 +83,20 @@ public class UpgradeUI : MonoBehaviour
 
     public void ApplyUpgrade(UpgradeData upgrade)
     {
-       upgrade.ApplyUpgrade(playerMovement, LightAttackControl);
-       upgradePanel.SetActive(false);
-       upgradeChoices.SetActive(false);
+        if(GameManager.instance != null)
+        {
+            GameManager.instance.ApplyUpgrade(upgrade);
+        }
+    //    upgrade.ApplyUpgrade(playerMovement, LightAttackControl);
+    //    upgradePanel.SetActive(false);
+    //    upgradeChoices.SetActive(false);
+
+    //    if (upgradeOrb != null)
+    //     {
+    //         upgradeOrb.UpgradeChosen();
+    //     }
+
+        gameObject.SetActive(false);
     }
 
    

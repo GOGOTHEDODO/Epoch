@@ -21,18 +21,24 @@ public class UpgradeData : ScriptableObject
 
     public void ApplyUpgrade(PlayerMovement playerMovement, LightAttackControl lightAttack)
     {
-        switch(type)
+
+        if(GameManager.instance != null)
         {
-            case UpgradeType.MoveSpeed:
-                playerMovement.IncreaseMovementSpeed(value);
-                break;
-            case UpgradeType.AttackDamage:
-                lightAttack.IncreaseDamage(value);
-                break;
-            case UpgradeType.AttackCoolDown:
-                lightAttack.DecreaseCoolDown(value);
-                break;
+            GameManager.instance.ApplyUpgrade(this);
         }
+        
+        // switch(type)
+        // {
+        //     case UpgradeType.MoveSpeed:
+        //         playerMovement.IncreaseMovementSpeed(value);
+        //         break;
+        //     case UpgradeType.AttackDamage:
+        //         lightAttack.IncreaseDamage(value);
+        //         break;
+        //     case UpgradeType.AttackCoolDown:
+        //         lightAttack.DecreaseCoolDown(value);
+        //         break;
+        // }
     }
     // Start is called before the first frame update
     void Start()

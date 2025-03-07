@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
    public GameObject settingsPanel;
    //Start Game moves to the scene with the ID of 1 in the build menu under the files tab. 
    public void StartGame() {
-    SceneManager.LoadScene(Random.Range(1, sceneIDs.Length));
+    SceneManager.LoadScene(sceneIDs[Random.Range(0, sceneIDs.Length)]);
    }
    //opens the settings panel.
    public void OpenSettings() {

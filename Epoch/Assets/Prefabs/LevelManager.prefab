@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a79b12c7afacb4d87dc0efd1be0361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIDs: 0100000002000000030000000400000005000000
+  sceneIDs: 06000000020000000300000005000000
+  upgradeOrbPrefab: {fileID: 294682451361968996, guid: 1bb75e6eebb0a144d87ef743981e884c, type: 3}

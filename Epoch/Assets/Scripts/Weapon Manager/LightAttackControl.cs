@@ -15,6 +15,9 @@ public class LightAttackControl : MonoBehaviour
     {
         attackRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
+        damage = GameManager.instance.playerDamage;
+        LightCooldown = GameManager.instance.attackCooldown;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)

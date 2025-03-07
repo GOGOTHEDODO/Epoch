@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public int[] sceneIDs;
+    public GameObject upgradeOrbPrefab; // Assign in Inspector
+    private GameObject spawnedOrb;
+    private bool upgradeSelected = false;
+    private Transform player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -20,15 +24,41 @@ public class LevelManager : MonoBehaviour
     void CheckForEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if(enemies.Length == 0)
+        if(enemies.Length == 0 && spawnedOrb == null)
         {
             Debug.Log("All enemies have been defeated! Moving to next level...");
-            StartCoroutine(LoadNextLevel());
+            SpawnUpgradeOrb();
         }
+    }
+
+    void SpawnUpgradeOrb()
+    {
+        if (upgradeOrbPrefab != null && player != null)
+        {
+            Vector3 spawnPosition = player.position + new Vector3(2f, 0, 0); // Spawns near player
+            spawnedOrb = Instantiate(upgradeOrbPrefab, spawnPosition, Quaternion.identity);
+
+            // Link the Upgrade Orb to this Level Manager
+            UpgradeOrb upgradeScript = spawnedOrb.GetComponent<UpgradeOrb>();
+            if (upgradeScript != null)
+            {
+                upgradeScript.SetLevelManager(this);
+            }
+        }
+    }
+
+    public void OnUpgradeSelected()
+    {
+        upgradeSelected = true;
+        if (spawnedOrb != null)
+        {
+            Destroy(spawnedOrb); // Remove Upgrade Orb after selection
+        }
+        StartCoroutine(LoadNextLevel()); // Now we can proceed
     }
     IEnumerator LoadNextLevel()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.1f);
 
         if(sceneIDs.Length > 0)
         {

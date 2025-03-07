@@ -908,7 +908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342f418d848124247a1cc1f24210938a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIDs: 010000000200000003000000040000000500000006000000
+  sceneIDs: 0100000002000000030000000500000006000000
   settingsPanel: {fileID: 1935812947}
 --- !u!1 &962578273
 GameObject:
@@ -1894,6 +1894,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadf2e41ddeadf848be0f227ef8f21be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpeed: 5
+  playerDamage: 10
+  attackCooldown: 0.5
 --- !u!4 &2060294047
 Transform:
   m_ObjectHideFlags: 0
