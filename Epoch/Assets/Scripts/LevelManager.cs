@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
     {
         if (upgradeOrbPrefab != null && player != null)
         {
-            Vector3 spawnPosition = player.position + new Vector3(2f, 0, 0); // Spawns near player
+            Vector3 spawnPosition = player.position + new Vector3(1f, 0, 0); // Spawns near player
             spawnedOrb = Instantiate(upgradeOrbPrefab, spawnPosition, Quaternion.identity);
 
             // Link the Upgrade Orb to this Level Manager
@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour
     }
     IEnumerator LoadNextLevel()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
 
         if(sceneIDs.Length > 0)
         {

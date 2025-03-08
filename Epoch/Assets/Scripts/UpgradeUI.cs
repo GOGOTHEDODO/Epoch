@@ -30,6 +30,11 @@ public class UpgradeUI : MonoBehaviour
 
     public void ShowUpgrade()
     {
+        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+        if(playerMovement != null)
+        {
+            playerMovement.enableMovement(false);
+        }
         upgradePanel.SetActive(true);
         upgradeChoices.SetActive(true);
         GenerateUpgradeButtons();
@@ -87,13 +92,17 @@ public class UpgradeUI : MonoBehaviour
         {
             GameManager.instance.ApplyUpgrade(upgrade);
         }
-    //    upgrade.ApplyUpgrade(playerMovement, LightAttackControl);
-    //    upgradePanel.SetActive(false);
-    //    upgradeChoices.SetActive(false);
 
-       if (upgradeOrb != null)
+        if (upgradeOrb != null)
         {
             upgradeOrb.UpgradeChosen();
+        }
+
+        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+
+        if (playerMovement != null)
+        {
+            playerMovement.enableMovement(true);
         }
 
         gameObject.SetActive(false);

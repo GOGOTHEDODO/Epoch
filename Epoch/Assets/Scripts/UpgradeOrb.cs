@@ -25,6 +25,11 @@ public class UpgradeOrb : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Upgrade Orb activated!");
+            PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
+            if(playerMovement != null)
+            {
+                playerMovement.enableMovement(false);
+            }
             ShowUpgradeMenu();
         }
     }

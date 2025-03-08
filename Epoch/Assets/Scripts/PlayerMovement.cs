@@ -8,10 +8,10 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed;
     public Rigidbody2D rb;
-    
-
     private Vector2 moveDirection;
     private Animator animator;
+
+    public bool canMove = true;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!canMove) return;
+
         ProcessInputs();
     }
 
@@ -56,5 +58,16 @@ public class PlayerMovement : MonoBehaviour
     public float getMoveSpeed()
     {
         return moveSpeed;
+    }
+
+    public void enableMovement(bool enable)
+    {
+        canMove = enable;
+    Debug.Log("Called enablemovement");
+        if(!enable)
+        { 
+            rb.velocity = Vector2.zero;   
+            rb.constraints = RigidbodyConstraints2D.FreezePosition; 
+        }
     }
 }
