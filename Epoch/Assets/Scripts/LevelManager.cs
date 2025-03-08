@@ -49,6 +49,14 @@ public class LevelManager : MonoBehaviour
 
     public void OnUpgradeSelected()
     {
+        if (GameManager.instance != null)
+        {
+            PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+            if(playerHealth !=null)
+            {
+                GameManager.instance.SavePlayerHealth(playerHealth.GetCurrentHealth());
+            }
+        }
         upgradeSelected = true;
         if (spawnedOrb != null)
         {

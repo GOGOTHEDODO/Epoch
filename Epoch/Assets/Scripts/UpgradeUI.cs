@@ -91,10 +91,10 @@ public class UpgradeUI : MonoBehaviour
     //    upgradePanel.SetActive(false);
     //    upgradeChoices.SetActive(false);
 
-    //    if (upgradeOrb != null)
-    //     {
-    //         upgradeOrb.UpgradeChosen();
-    //     }
+       if (upgradeOrb != null)
+        {
+            upgradeOrb.UpgradeChosen();
+        }
 
         gameObject.SetActive(false);
     }

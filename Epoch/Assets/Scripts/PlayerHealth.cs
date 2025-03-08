@@ -10,7 +10,11 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        health = maxHealth;
+        if (GameManager.instance!= null)
+        {
+            health = GameManager.instance.currentHealth;
+        }
+        
     }
 
     public void TakeDamage(float damage)
@@ -22,6 +26,11 @@ public class PlayerHealth : MonoBehaviour
         {
             CheckDeath();
         }
+    }
+
+    public float GetCurrentHealth()
+    {
+        return health;
     }
 
     private void CheckDeath()

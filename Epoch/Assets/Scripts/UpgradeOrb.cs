@@ -46,5 +46,6 @@ public class UpgradeOrb : MonoBehaviour
         {
             levelManager.OnUpgradeSelected();
         }
+        Destroy(gameObject);
     }
 }

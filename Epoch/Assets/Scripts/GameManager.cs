@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,9 @@ public class GameManager : MonoBehaviour
     public float playerSpeed = 5f;
     public float playerDamage = 10f;
     public float attackCooldown = 0.5f;
+
+    public float maxHealth = 100f;
+    public float currentHealth = 100f;
 
     private void Awake()
     {
@@ -31,6 +35,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void SavePlayerHealth(float currentHealth)
+    {
+        this.currentHealth = currentHealth;
+    }
+
      // Method to apply upgrades globally
     public void ApplyUpgrade(UpgradeData upgrade)
     {
@@ -47,6 +56,6 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        Debug.Log($"Applied {upgrade.upgradeName} - New Stats -> Speed: {playerSpeed}, Damage: {playerDamage}, Cooldown: {attackCooldown}");
+        Debug.Log($"Applied {upgrade.upgradeName} - New Stats -> Speed: {playerSpeed}, Damage: {playerDamage}, Cooldown: {attackCooldown}, CurrentHealth: {currentHealth}");
     }
 }
