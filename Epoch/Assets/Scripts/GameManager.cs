@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
+//using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour
 
     public float maxHealth = 100f;
     public float currentHealth = 100f;
+
+    private float basePlayerSpeed = 5f;
+    private float basePlayerDamage = 10f;
+    private float baseAttackCoolDown = 0.5f;
+    private float baseMaxHealth = 100f;
+    private float baseCurrentHealth = 100f;
 
     private void Awake()
     {
@@ -32,6 +38,12 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Debug.Log("Restarting Game...");
+        playerDamage = basePlayerDamage;
+        playerSpeed =  basePlayerSpeed;
+        attackCooldown = baseAttackCoolDown;
+        maxHealth = baseMaxHealth;
+        currentHealth = baseCurrentHealth;
+
         SceneManager.LoadScene(0);
     }
 

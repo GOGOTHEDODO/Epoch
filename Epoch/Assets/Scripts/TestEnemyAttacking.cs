@@ -41,7 +41,7 @@ public class TestEnemyAttacking : MonoBehaviour
         }
         if (playerHealth != null)
         {
-            playerHealth.TakeDamage(attackDamage);
+            playerHealth.TakeDamage(attackDamage, gameObject);
             Debug.Log("Enemy attacked the player!");
         }
     }

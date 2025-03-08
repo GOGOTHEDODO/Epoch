@@ -20,6 +20,14 @@ public class LightAttackControl : MonoBehaviour
 
     }
 
+    // Hitbox function
+    public Transform circleOrigin;
+    public float radius;
+
+
+    // use deal damage if it hits enemy
+    
+    /*
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log($"Attack hit: {other.gameObject.name}");
@@ -38,6 +46,8 @@ public class LightAttackControl : MonoBehaviour
             
         }
     }
+    */
+    
 
     public void IncreaseDamage(float percentage)
     {
@@ -91,4 +101,39 @@ public class LightAttackControl : MonoBehaviour
 
         isAttacking = false;
     }
+
+    // draw functions
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Vector3 position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
+        Gizmos.DrawWireSphere(position, radius);
+    }
+
+    public void DetectColliders()
+    {
+        foreach(Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position, radius))
+        {
+            Debug.Log(collider.name);
+
+            if (collider.CompareTag("Enemy"))
+            {
+
+                Debug.Log($"Dealing {damage} to {collider.gameObject.name}");
+                EnemyRecieveDamage enemy = collider.GetComponent<EnemyRecieveDamage>();
+                if (enemy != null)
+                {
+                    enemy.DealDamage(damage);
+                }
+                else
+                {
+                    Debug.LogError("EnemyRecieveDamage script is missing on the enemy");
+                }
+
+            }
+
+
+        }
+    }
+
 }
