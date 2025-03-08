@@ -17,8 +17,10 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, GameObject sender)
     {
+        if (sender.layer == gameObject.layer) return;
+  
         health -= damage;
         Debug.Log($"Player took {damage} damage! Current HP: {health}");
 
