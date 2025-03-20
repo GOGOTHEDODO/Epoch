@@ -8,11 +8,17 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth;
     public float health;
 
+    private Renderer rend;
+    private Color originalColor;
+    public float flashDuration = 0.1f;
+
     void Start()
     {
         if (GameManager.instance!= null)
         {
             health = GameManager.instance.currentHealth;
+            rend = GetComponent<Renderer>();
+            originalColor = rend.material.color;
         }
         
     }
@@ -22,6 +28,8 @@ public class PlayerHealth : MonoBehaviour
         if (sender.layer == gameObject.layer) return;
   
         health -= damage;
+        TintRed();
+
         Debug.Log($"Player took {damage} damage! Current HP: {health}");
 
         if (health <= 0)
@@ -33,6 +41,20 @@ public class PlayerHealth : MonoBehaviour
     public float GetCurrentHealth()
     {
         return health;
+    }
+
+    private void TintRed()
+    {
+        rend.material.color = Color.red;
+
+        StartCoroutine(ResetColor());
+    }
+
+    private IEnumerator ResetColor()
+    {
+        yield return new WaitForSeconds(flashDuration);
+
+        rend.material.color = originalColor;
     }
 
     private void CheckDeath()

@@ -132,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 6547788104798370051}
+  canMove: 1
 --- !u!95 &8104776867649543283
 Animator:
   serializedVersion: 5
@@ -224,7 +225,7 @@ MonoBehaviour:
   - {x: 0.07500002, y: -0.12500024, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 49206
+  m_InstanceId: 39448
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.07500002, y: 0.12500012, z: 0}
@@ -242,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
+  flashDuration: 0.1
 --- !u!1 &2078240587407704597
 GameObject:
   m_ObjectHideFlags: 0

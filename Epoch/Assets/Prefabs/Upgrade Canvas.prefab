@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 509130657282185487}
   - component: {fileID: 3706489960478148195}
   - component: {fileID: 3501150829172976029}
+  - component: {fileID: 8065855568023563933}
   m_Layer: 5
   m_Name: UpgradeChoices
   m_TagString: Untagged
@@ -35,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -109}
-  m_SizeDelta: {x: -473.6833, y: -287.206}
+  m_AnchoredPosition: {x: 221, y: 16}
+  m_SizeDelta: {x: -465.5701, y: -489.30597}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &509130657282185487
 CanvasRenderer:
@@ -94,14 +95,28 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &8065855568023563933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531092891352952553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &2266537202390128790
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +201,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2266537202390128790}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
@@ -237,10 +252,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6800121299139575645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 400.00003, y: -236.01695}
-  m_SizeDelta: {x: 351.1266, y: 133.7453}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 173.36081, y: -212.87627}
+  m_SizeDelta: {x: 270.6941, y: 267.4763}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7762080031398940497
 CanvasRenderer:
@@ -270,7 +285,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Choose an Upgrade: '
+  m_text: Select an Upgrade
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -333,7 +348,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 78.81792}
+  m_margin: {x: 0, y: 0, z: 90.12312, w: 158.28125}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -465,3 +480,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a020d6cd18ffe4f4986b9cb33703e346, type: 2}
   - {fileID: 11400000, guid: d0bc6bb2a51e4a948b41d4fae9f6bb34, type: 2}
   - {fileID: 11400000, guid: 6931efdc30ff0f1448ff8c2ea1b75d3f, type: 2}
+  - {fileID: 11400000, guid: 8c8146687b02b5544bac39a05bcf4128, type: 2}

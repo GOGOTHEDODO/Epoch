@@ -15,4 +15,6 @@ MonoBehaviour:
   upgradeName: Damage
   description: Increases Damage of Player
   type: 1
-  value: 25
+  currentValue: 20
+  baseValue: 20
+  rarity: 1
