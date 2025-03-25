@@ -1,26 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-//using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    // Start is called before the first frame update
-     // Persistent player stats
+    // Persistent player stats (upgradeable)
     public float playerSpeed = 5f;
     public float playerDamage = 10f;
     public float attackCooldown = 0.5f;
+    public float currentLuck = 0f;
 
     public float maxHealth = 100f;
     public float currentHealth = 100f;
 
+    //base stats when player is killed
     private float basePlayerSpeed = 5f;
     private float basePlayerDamage = 10f;
     private float baseAttackCoolDown = 0.5f;
     private float baseMaxHealth = 100f;
     private float baseCurrentHealth = 100f;
+    private float baseLuck = 0f;
+
+    private List<UpgradeData> allUpgrades = new List<UpgradeData>();
 
     private void Awake()
     {
@@ -35,6 +38,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        ResetUpgrades();
+    }
+
     public void RestartGame()
     {
         Debug.Log("Restarting Game...");
@@ -43,6 +51,8 @@ public class GameManager : MonoBehaviour
         attackCooldown = baseAttackCoolDown;
         maxHealth = baseMaxHealth;
         currentHealth = baseCurrentHealth;
+        currentLuck = baseLuck;
+        ResetUpgrades();
 
         SceneManager.LoadScene(0);
     }
@@ -55,19 +65,34 @@ public class GameManager : MonoBehaviour
      // Method to apply upgrades globally
     public void ApplyUpgrade(UpgradeData upgrade)
     {
+        //Apply the Chosen upgrade which is known through UpgradeData and update the corresponding stat.
+        //At the start of each level the stats here are put onto the player 
         switch (upgrade.type)
         {
             case UpgradeData.UpgradeType.MoveSpeed:
-                playerSpeed += playerSpeed * (upgrade.value / 100);
+                playerSpeed += basePlayerSpeed * (upgrade.currentValue / 100);
                 break;
             case UpgradeData.UpgradeType.AttackDamage:
-                playerDamage += playerDamage * (upgrade.value / 100);
+                playerDamage += basePlayerDamage * (upgrade.currentValue / 100);
                 break;
             case UpgradeData.UpgradeType.AttackCoolDown:
-                attackCooldown *= (1 - upgrade.value / 100); // Reduce cooldown
+                attackCooldown *= (1 - upgrade.currentValue / 100); // Reduce cooldown
+                break;
+            case UpgradeData.UpgradeType.Luck:
+                currentLuck +=upgrade.currentValue;
                 break;
         }
 
-        Debug.Log($"Applied {upgrade.upgradeName} - New Stats -> Speed: {playerSpeed}, Damage: {playerDamage}, Cooldown: {attackCooldown}, CurrentHealth: {currentHealth}");
+        Debug.Log($"Applied {upgrade.upgradeName} - New Stats -> Speed: {playerSpeed}, Damage: {playerDamage}, Cooldown: {attackCooldown}, CurrentHealth: {currentHealth}, CurrentLuck: {currentLuck}");
+        upgrade.ResetToBaseValue();
+    }
+
+    public void ResetUpgrades()
+    {
+        foreach(UpgradeData upgrade in allUpgrades)
+        {
+            Debug.Log($"Resetting {upgrade.upgradeName}");
+            upgrade.currentValue = 0;
+        }
     }
 }
