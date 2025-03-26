@@ -2,21 +2,21 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class LightAttackControl : MonoBehaviour
+public class HeavyAttackControl : MonoBehaviour
 {
     public SpriteRenderer attackRenderer;
     private Animator animator;
     private bool isAttacking = false;
     private Vector2 attackDirection;
-    public double LightCooldown = 0.5;
-    public float damage = 10f;
+    public double HeavyCooldown = 1;
+    public float damage = 15f;
 
     void Start()
     {
         attackRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
         damage = GameManager.instance.playerDamage;
-        LightCooldown = GameManager.instance.attackCooldown;
+        HeavyCooldown = GameManager.instance.attackCooldown;
     }
 
     // Hitbox function
@@ -31,7 +31,7 @@ public class LightAttackControl : MonoBehaviour
 
     public void DecreaseCoolDown(float percentage)
     {
-        LightCooldown = LightCooldown * (1 - (percentage / 100));
+        HeavyCooldown = HeavyCooldown * (1 - (percentage / 100));
     }
 
     void Update()
@@ -67,11 +67,11 @@ public class LightAttackControl : MonoBehaviour
         animator.SetTrigger("Attack");
 
         // Cooldown for attack
-        yield return new WaitForSeconds((float)LightCooldown / 2);
+        yield return new WaitForSeconds((float)HeavyCooldown / 2);
 
         GetComponent<Collider2D>().enabled = false;
 
-        yield return new WaitForSeconds((float)LightCooldown / 2);
+        yield return new WaitForSeconds((float)HeavyCooldown / 2);
 
         isAttacking = false;
     }
@@ -84,42 +84,27 @@ public class LightAttackControl : MonoBehaviour
         Gizmos.DrawWireCube(position, boxSize); // Use WireCube for a rectangle hitbox
     }
 
-    public void DetectColliders()
+    public void DetectHeavyColliders()
     {
-        Collider2D closestEnemy = null;
-        float closestDistance = Mathf.Infinity;  // Start with an infinitely large distance
-
-        // Detect colliders within the rectangular hitbox
+        // Detect colliders within the rectangular hitbox (Box Collider area)
         foreach (Collider2D collider in Physics2D.OverlapBoxAll(boxOrigin.position, boxSize, 0f)) // 0 rotation
         {
-            // Check if the collider is an enemy
+            Debug.Log(collider.name);
+
             if (collider.CompareTag("Enemy"))
             {
-                // Calculate the distance to the player
-                float distanceToPlayer = Vector2.Distance(transform.position, collider.transform.position);
-
-                // If this enemy is closer than the previously found enemy, update the closest enemy
-                if (distanceToPlayer < closestDistance)
+                Debug.Log($"Dealing {damage} to {collider.gameObject.name}");
+                EnemyRecieveDamage enemy = collider.GetComponent<EnemyRecieveDamage>();
+                if (enemy != null)
                 {
-                    closestDistance = distanceToPlayer;
-                    closestEnemy = collider;
+                    enemy.DealDamage(damage);
+                }
+                else
+                {
+                    Debug.LogError("EnemyRecieveDamage script is missing on the enemy");
                 }
             }
         }
-
-        // If a closest enemy is found, deal damage
-        if (closestEnemy != null)
-        {
-            Debug.Log($"Dealing {damage} to {closestEnemy.gameObject.name}");
-            EnemyRecieveDamage enemy = closestEnemy.GetComponent<EnemyRecieveDamage>();
-            if (enemy != null)
-            {
-                enemy.DealDamage(damage);
-            }
-            else
-            {
-                Debug.LogError("EnemyRecieveDamage script is missing on the enemy");
-            }
-        }
     }
+
 }

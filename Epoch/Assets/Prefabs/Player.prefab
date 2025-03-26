@@ -225,7 +225,7 @@ MonoBehaviour:
   - {x: 0.07500002, y: -0.12500024, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 45430
+  m_InstanceId: 56016
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.07500002, y: 0.12500012, z: 0}
@@ -367,7 +367,7 @@ MonoBehaviour:
   OnAttackPerformed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2139335182777626670}
+      - m_Target: {fileID: 1583572201962863352}
         m_TargetAssemblyTypeName: LightAttackControl, Assembly-CSharp
         m_MethodName: DetectColliders
         m_Mode: 1
@@ -378,7 +378,10 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
+  OnHeavyAttackPerformed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3724867093821739932
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,8 +391,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5902858455221402370}
-  - component: {fileID: 2139335182777626670}
   - component: {fileID: 8834868165007821119}
+  - component: {fileID: 1583572201962863352}
   m_Layer: 3
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -413,23 +416,6 @@ Transform:
   - {fileID: 7302449634985049142}
   m_Father: {fileID: 9146104983501062073}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2139335182777626670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3724867093821739932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f55c01a2c66d4524e9008dc567915bf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRenderer: {fileID: 0}
-  LightCooldown: 0.5
-  damage: 10
-  circleOrigin: {fileID: 6294799982879652832}
-  radius: 1
 --- !u!61 &8834868165007821119
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -475,6 +461,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1583572201962863352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3724867093821739932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55c01a2c66d4524e9008dc567915bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRenderer: {fileID: 0}
+  LightCooldown: 0.5
+  damage: 10
+  boxOrigin: {fileID: 7302449634985049142}
+  boxSize: {x: 3, y: 1}
 --- !u!1 &6339138530952603761
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6294799982879652832}
   m_Layer: 3
-  m_Name: CircleOrigin
+  m_Name: BoxOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
