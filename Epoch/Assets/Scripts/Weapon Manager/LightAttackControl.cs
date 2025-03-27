@@ -20,8 +20,8 @@ public class LightAttackControl : MonoBehaviour
     }
 
     // Hitbox function
-    public Transform boxOrigin; // Position of the hitbox (the center of the rectangle)
-    public Vector2 boxSize = new Vector2(2f, 1f); // Width and Height of the rectangle hitbox
+    public Transform boxOrigin;
+    public Vector2 boxSize = new Vector2(2f, 1f);
 
     public void IncreaseDamage(float percentage)
     {
@@ -36,6 +36,7 @@ public class LightAttackControl : MonoBehaviour
 
     void Update()
     {
+
         // On left click, make sure we aren't attacking then start the attack
         if (Input.GetMouseButtonDown(0) && !isAttacking)
         {
@@ -54,6 +55,7 @@ public class LightAttackControl : MonoBehaviour
 
             StartCoroutine(Attack());
         }
+
     }
 
     IEnumerator Attack()
@@ -81,24 +83,26 @@ public class LightAttackControl : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Vector3 position = boxOrigin == null ? Vector3.zero : boxOrigin.position;
-        Gizmos.DrawWireCube(position, boxSize); // Use WireCube for a rectangle hitbox
+        Gizmos.DrawWireCube(position, boxSize);
     }
+
+
 
     public void DetectColliders()
     {
         Collider2D closestEnemy = null;
-        float closestDistance = Mathf.Infinity;  // Start with an infinitely large distance
+        float closestDistance = Mathf.Infinity;
 
-        // Detect colliders within the rectangular hitbox
-        foreach (Collider2D collider in Physics2D.OverlapBoxAll(boxOrigin.position, boxSize, 0f)) // 0 rotation
+        // Get the angle in degrees from attackDirection
+        float attackAngle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
+
+        // Rotate the hitbox using OverlapBoxAll with rotation
+        foreach (Collider2D collider in Physics2D.OverlapBoxAll(boxOrigin.position, boxSize, attackAngle)) // Apply rotation angle
         {
-            // Check if the collider is an enemy
             if (collider.CompareTag("Enemy"))
             {
-                // Calculate the distance to the player
                 float distanceToPlayer = Vector2.Distance(transform.position, collider.transform.position);
 
-                // If this enemy is closer than the previously found enemy, update the closest enemy
                 if (distanceToPlayer < closestDistance)
                 {
                     closestDistance = distanceToPlayer;
@@ -107,7 +111,6 @@ public class LightAttackControl : MonoBehaviour
             }
         }
 
-        // If a closest enemy is found, deal damage
         if (closestEnemy != null)
         {
             Debug.Log($"Dealing {damage} to {closestEnemy.gameObject.name}");

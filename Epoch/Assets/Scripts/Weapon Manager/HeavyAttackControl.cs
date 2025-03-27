@@ -37,7 +37,7 @@ public class HeavyAttackControl : MonoBehaviour
     void Update()
     {
         // On left click, make sure we aren't attacking then start the attack
-        if (Input.GetMouseButtonDown(0) && !isAttacking)
+        if (Input.GetMouseButtonDown(1) && !isAttacking)
         {
             // Get mouse position when the player clicks the mouse
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
