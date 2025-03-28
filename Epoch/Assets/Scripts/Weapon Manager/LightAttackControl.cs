@@ -10,6 +10,7 @@ public class LightAttackControl : MonoBehaviour
     private Vector2 attackDirection;
     public double LightCooldown = 0.5;
     public float damage = 10f;
+    public float knockbackForce = 0.5f;
 
     void Start()
     {
@@ -38,7 +39,7 @@ public class LightAttackControl : MonoBehaviour
     {
 
         // On left click, make sure we aren't attacking then start the attack
-        if (Input.GetMouseButtonDown(0) && !isAttacking)
+        if (Input.GetMouseButtonDown(0) && !isAttacking && !CooldownManager.isOtherAttacking)
         {
             // Get mouse position when the player clicks the mouse
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -60,6 +61,7 @@ public class LightAttackControl : MonoBehaviour
 
     IEnumerator Attack()
     {
+        CooldownManager.isOtherAttacking = true;
         // Lock the facing direction before starting the animation
         isAttacking = true;
 
@@ -76,6 +78,7 @@ public class LightAttackControl : MonoBehaviour
         yield return new WaitForSeconds((float)LightCooldown / 2);
 
         isAttacking = false;
+        CooldownManager.isOtherAttacking = false;
     }
 
     // draw functions
@@ -117,7 +120,8 @@ public class LightAttackControl : MonoBehaviour
             EnemyRecieveDamage enemy = closestEnemy.GetComponent<EnemyRecieveDamage>();
             if (enemy != null)
             {
-                enemy.DealDamage(damage);
+                Vector2 knockbackDirection = (closestEnemy.transform.position - transform.position).normalized;
+                enemy.DealDamage(damage, knockbackDirection, knockbackForce);
             }
             else
             {
