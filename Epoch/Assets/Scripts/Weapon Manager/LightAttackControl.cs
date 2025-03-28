@@ -97,7 +97,7 @@ public class LightAttackControl : MonoBehaviour
         float attackAngle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
 
         // Rotate the hitbox using OverlapBoxAll with rotation
-        foreach (Collider2D collider in Physics2D.OverlapBoxAll(boxOrigin.position, boxSize, attackAngle)) // Apply rotation angle
+        foreach (Collider2D collider in Physics2D.OverlapBoxAll(boxOrigin.position, boxSize, attackAngle))
         {
             if (collider.CompareTag("Enemy"))
             {

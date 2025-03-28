@@ -15,8 +15,8 @@ public class HeavyAttackControl : MonoBehaviour
     {
         attackRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
-        damage = GameManager.instance.playerDamage;
-        HeavyCooldown = GameManager.instance.attackCooldown;
+        damage = GameManager.instance.playerDamage * 1.25f; // Heavy attack damage should scale off of normal damage, if normal attack does 10, do 12.5, if it does 15, do 22.5, it's a heavy hitter
+        HeavyCooldown = GameManager.instance.attackCooldown * 2; // Heavy attack cooldown should scale off of the other cooldown, always being 2x as long
     }
 
     // Hitbox function
@@ -64,7 +64,7 @@ public class HeavyAttackControl : MonoBehaviour
         GetComponent<Collider2D>().enabled = true;
 
         // Trigger the attack animation
-        animator.SetTrigger("Attack");
+        animator.SetTrigger("HeavyAttack");
 
         // Cooldown for attack
         yield return new WaitForSeconds((float)HeavyCooldown / 2);
@@ -86,11 +86,12 @@ public class HeavyAttackControl : MonoBehaviour
 
     public void DetectHeavyColliders()
     {
-        // Detect colliders within the rectangular hitbox (Box Collider area)
-        foreach (Collider2D collider in Physics2D.OverlapBoxAll(boxOrigin.position, boxSize, 0f)) // 0 rotation
-        {
-            Debug.Log(collider.name);
+        // Get the angle in degrees from attackDirection
+        float attackAngle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
 
+        // Rotate the hitbox using OverlapBoxAll with rotation
+        foreach (Collider2D collider in Physics2D.OverlapBoxAll(boxOrigin.position, boxSize, attackAngle))
+        {
             if (collider.CompareTag("Enemy"))
             {
                 Debug.Log($"Dealing {damage} to {collider.gameObject.name}");
@@ -105,6 +106,8 @@ public class HeavyAttackControl : MonoBehaviour
                 }
             }
         }
+
+
     }
 
 }
