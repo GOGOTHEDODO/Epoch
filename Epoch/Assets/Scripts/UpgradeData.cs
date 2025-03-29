@@ -27,7 +27,8 @@ public class UpgradeData : ScriptableObject
         MoveSpeed,
         AttackDamage,
         AttackCoolDown,
-        Luck
+        Luck,
+        Knockback
     }
 
     public void ResetToBaseValue()

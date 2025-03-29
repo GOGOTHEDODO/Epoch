@@ -62,6 +62,9 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(spawnedOrb); // Remove Upgrade Orb after selection
         }
+
+        // This prevents the cooldown being frozen
+        CooldownManager.isOtherAttacking = false;
         StartCoroutine(LoadNextLevel()); // Now we can proceed
     }
     IEnumerator LoadNextLevel()

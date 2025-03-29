@@ -1898,6 +1898,7 @@ MonoBehaviour:
   playerDamage: 10
   attackCooldown: 0.5
   currentLuck: 0
+  knockback: 0.03
   maxHealth: 100
   currentHealth: 100
 --- !u!4 &2060294047

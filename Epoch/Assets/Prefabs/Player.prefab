@@ -132,6 +132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 6547788104798370051}
+  moveDirection: {x: 0, y: 0}
+  animator: {fileID: 0}
   canMove: 1
 --- !u!95 &8104776867649543283
 Animator:
@@ -225,7 +227,7 @@ MonoBehaviour:
   - {x: 0.07500002, y: -0.12500024, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 43872
+  m_InstanceId: 41774
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.07500002, y: 0.12500012, z: 0}
@@ -378,10 +380,22 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
   OnHeavyAttackPerformed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1351531777623823900}
+        m_TargetAssemblyTypeName: HeavyAttackControl, Assembly-CSharp
+        m_MethodName: DetectHeavyColliders
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3724867093821739932
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +407,7 @@ GameObject:
   - component: {fileID: 5902858455221402370}
   - component: {fileID: 8834868165007821119}
   - component: {fileID: 1583572201962863352}
+  - component: {fileID: 1351531777623823900}
   m_Layer: 3
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -476,8 +491,29 @@ MonoBehaviour:
   attackRenderer: {fileID: 0}
   LightCooldown: 0.5
   damage: 10
+  knockbackForce: 0
+  stun: 0
   boxOrigin: {fileID: 7302449634985049142}
   boxSize: {x: 3, y: 1}
+--- !u!114 &1351531777623823900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3724867093821739932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f9c388decae3d7469e9b6d4e2f34f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRenderer: {fileID: 0}
+  HeavyCooldown: 1
+  damage: 15
+  knockbackForce: 0
+  stun: 0
+  boxOrigin: {fileID: 7302449634985049142}
+  boxSize: {x: 3, y: 2}
 --- !u!1 &6339138530952603761
 GameObject:
   m_ObjectHideFlags: 0

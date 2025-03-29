@@ -8,20 +8,26 @@ public class HeavyAttackControl : MonoBehaviour
     private Animator animator;
     private bool isAttacking = false;
     private Vector2 attackDirection;
-    public double HeavyCooldown = 1;
+    public double HeavyCooldown;
     public float damage = 15f;
+    public float knockbackForce;
+    public float stun;
 
     void Start()
     {
         attackRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
-        damage = GameManager.instance.playerDamage;
-        HeavyCooldown = GameManager.instance.attackCooldown;
+        damage = GameManager.instance.playerDamage * 1.5f; // Heavy attack damage should scale off of normal damage
+        HeavyCooldown = GameManager.instance.attackCooldown * 1.5; // Heavy attack cooldown should scale off of the other cooldown
+        stun = 0.03f;
+
+        // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE, ITS A LITTLE JANK REGARDLESS
+        knockbackForce = 3f;
     }
 
     // Hitbox function
     public Transform boxOrigin; // Position of the hitbox (the center of the rectangle)
-    public Vector2 boxSize = new Vector2(2f, 1f); // Width and Height of the rectangle hitbox
+    public Vector2 boxSize = new Vector2(2f, 1f); // Width and height of our hitbox
 
     public void IncreaseDamage(float percentage)
     {
@@ -37,7 +43,7 @@ public class HeavyAttackControl : MonoBehaviour
     void Update()
     {
         // On left click, make sure we aren't attacking then start the attack
-        if (Input.GetMouseButtonDown(1) && !isAttacking)
+        if (Input.GetMouseButtonDown(1) && !isAttacking && !CooldownManager.isOtherAttacking)
         {
             // Get mouse position when the player clicks the mouse
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -58,13 +64,16 @@ public class HeavyAttackControl : MonoBehaviour
 
     IEnumerator Attack()
     {
+        // Prevents spamming light attack then heavy attack, heavy attacking needs to be intentional
+        CooldownManager.isOtherAttacking = true;
+
         // Lock the facing direction before starting the animation
         isAttacking = true;
 
         GetComponent<Collider2D>().enabled = true;
 
         // Trigger the attack animation
-        animator.SetTrigger("Attack");
+        animator.SetTrigger("HeavyAttack");
 
         // Cooldown for attack
         yield return new WaitForSeconds((float)HeavyCooldown / 2);
@@ -74,9 +83,10 @@ public class HeavyAttackControl : MonoBehaviour
         yield return new WaitForSeconds((float)HeavyCooldown / 2);
 
         isAttacking = false;
+        CooldownManager.isOtherAttacking = false;
     }
 
-    // draw functions
+    // Draw functions
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -86,18 +96,20 @@ public class HeavyAttackControl : MonoBehaviour
 
     public void DetectHeavyColliders()
     {
-        // Detect colliders within the rectangular hitbox (Box Collider area)
-        foreach (Collider2D collider in Physics2D.OverlapBoxAll(boxOrigin.position, boxSize, 0f)) // 0 rotation
-        {
-            Debug.Log(collider.name);
+        // Get the angle in degrees from attackDirection
+        float attackAngle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
 
+        // Rotate the hitbox like a pendulum instead of like the circle used to be rotated
+        foreach (Collider2D collider in Physics2D.OverlapBoxAll(boxOrigin.position, boxSize, attackAngle))
+        {
             if (collider.CompareTag("Enemy"))
             {
                 Debug.Log($"Dealing {damage} to {collider.gameObject.name}");
                 EnemyRecieveDamage enemy = collider.GetComponent<EnemyRecieveDamage>();
                 if (enemy != null)
                 {
-                    enemy.DealDamage(damage);
+                    Vector2 knockbackDirection = (enemy.transform.position - transform.position).normalized;
+                    enemy.DealDamage(damage, knockbackDirection, knockbackForce, stun);
                 }
                 else
                 {
@@ -105,6 +117,8 @@ public class HeavyAttackControl : MonoBehaviour
                 }
             }
         }
+
+
     }
 
 }
