@@ -132,6 +132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 6547788104798370051}
+  moveDirection: {x: 0, y: 0}
+  animator: {fileID: 0}
   canMove: 1
 --- !u!95 &8104776867649543283
 Animator:
@@ -225,7 +227,7 @@ MonoBehaviour:
   - {x: 0.07500002, y: -0.12500024, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 45114
+  m_InstanceId: 40806
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.07500002, y: 0.12500012, z: 0}
@@ -490,6 +492,7 @@ MonoBehaviour:
   LightCooldown: 0.5
   damage: 10
   knockbackForce: 0
+  stun: 0
   boxOrigin: {fileID: 7302449634985049142}
   boxSize: {x: 3, y: 1}
 --- !u!114 &1351531777623823900
@@ -508,6 +511,7 @@ MonoBehaviour:
   HeavyCooldown: 1
   damage: 15
   knockbackForce: 0
+  stun: 0
   boxOrigin: {fileID: 7302449634985049142}
   boxSize: {x: 3.25, y: 2}
 --- !u!1 &6339138530952603761
