@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public float playerDamage = 10f;
     public float attackCooldown = 0.5f;
     public float currentLuck = 0f;
+    public float knockback = 0.03f;
 
     public float maxHealth = 100f;
     public float currentHealth = 100f;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     private float baseMaxHealth = 100f;
     private float baseCurrentHealth = 100f;
     private float baseLuck = 0f;
+    private float baseKnockback = 0.3f;
 
     private List<UpgradeData> allUpgrades = new List<UpgradeData>();
 
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
         maxHealth = baseMaxHealth;
         currentHealth = baseCurrentHealth;
         currentLuck = baseLuck;
+        knockback = baseKnockback;
         CooldownManager.isOtherAttacking = false;
         ResetUpgrades();
 
@@ -81,6 +84,9 @@ public class GameManager : MonoBehaviour
                 break;
             case UpgradeData.UpgradeType.Luck:
                 currentLuck +=upgrade.currentValue;
+                break;
+            case UpgradeData.UpgradeType.Knockback:
+                knockback += upgrade.currentValue;
                 break;
         }
 

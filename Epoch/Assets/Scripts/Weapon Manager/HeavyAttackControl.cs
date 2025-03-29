@@ -27,7 +27,7 @@ public class HeavyAttackControl : MonoBehaviour
 
     // Hitbox function
     public Transform boxOrigin; // Position of the hitbox (the center of the rectangle)
-    public Vector2 boxSize = new Vector2(2f, 1f); // Width and Height of the rectangle hitbox
+    public Vector2 boxSize = new Vector2(2f, 1f); // Width and height of our hitbox
 
     public void IncreaseDamage(float percentage)
     {
@@ -86,7 +86,7 @@ public class HeavyAttackControl : MonoBehaviour
         CooldownManager.isOtherAttacking = false;
     }
 
-    // draw functions
+    // Draw functions
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -99,7 +99,7 @@ public class HeavyAttackControl : MonoBehaviour
         // Get the angle in degrees from attackDirection
         float attackAngle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
 
-        // Rotate the hitbox using OverlapBoxAll with rotation
+        // Rotate the hitbox like a pendulum instead of like the circle used to be rotated
         foreach (Collider2D collider in Physics2D.OverlapBoxAll(boxOrigin.position, boxSize, attackAngle))
         {
             if (collider.CompareTag("Enemy"))

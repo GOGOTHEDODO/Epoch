@@ -19,7 +19,7 @@ public class LightAttackControl : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         damage = GameManager.instance.playerDamage;
         LightCooldown = GameManager.instance.attackCooldown;
-        stun = 0.03f;
+        stun = GameManager.instance.knockback;
 
         // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE, ITS A LITTLE JANK REGARDLESS
         knockbackForce = 2f;
@@ -103,13 +103,14 @@ public class LightAttackControl : MonoBehaviour
         // Get the angle in degrees from attackDirection
         float attackAngle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
 
-        // Rotate the hitbox using OverlapBoxAll with rotation
+        // Rotate the hitbox like a pendulum instead of like the circle from before
         foreach (Collider2D collider in Physics2D.OverlapBoxAll(boxOrigin.position, boxSize, attackAngle))
         {
             if (collider.CompareTag("Enemy"))
             {
                 float distanceToPlayer = Vector2.Distance(transform.position, collider.transform.position);
 
+                // Check for the closest distance to player and only deal damage to that enemy
                 if (distanceToPlayer < closestDistance)
                 {
                     closestDistance = distanceToPlayer;
@@ -118,6 +119,7 @@ public class LightAttackControl : MonoBehaviour
             }
         }
 
+        // Deal damage to closest enemy
         if (closestEnemy != null)
         {
             Debug.Log($"Dealing {damage} to {closestEnemy.gameObject.name}");
