@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     private Color originalColor;
     public float flashDuration = 0.1f;
 
+    private Animator animator;
+
     void Start()
     {
         if (GameManager.instance!= null)
@@ -19,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
             health = GameManager.instance.currentHealth;
             rend = GetComponent<Renderer>();
             originalColor = rend.material.color;
+            animator = GetComponent<Animator>();
         }
         
     }
@@ -59,10 +62,26 @@ public class PlayerHealth : MonoBehaviour
 
     private void CheckDeath()
     {
+        if(animator != null)
+        {
+            animator.SetTrigger("Dies");
+        }
+
+        StartCoroutine(DeathSequence());
+
+
+
+        // Add logic for player death (e.g., restart level, show death screen)
+    }
+
+    private IEnumerator DeathSequence()
+    {
+        yield return new WaitForSeconds(1f);
+
         Destroy(gameObject);
         Debug.Log("Player has died!");
         GameManager.instance.RestartGame();
-        // Add logic for player death (e.g., restart level, show death screen)
     }
+
 }
 
