@@ -8,9 +8,10 @@ public class LightAttackControl : MonoBehaviour
     private Animator animator;
     private bool isAttacking = false;
     private Vector2 attackDirection;
-    public double LightCooldown = 0.5;
+    public double LightCooldown;
     public float damage = 10f;
-    public float knockbackForce = 0.5f;
+    public float knockbackForce;
+    public float stun;
 
     void Start()
     {
@@ -18,6 +19,10 @@ public class LightAttackControl : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         damage = GameManager.instance.playerDamage;
         LightCooldown = GameManager.instance.attackCooldown;
+        stun = 0.03f;
+
+        // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE, ITS A LITTLE JANK REGARDLESS
+        knockbackForce = 2f;
     }
 
     // Hitbox function
@@ -37,7 +42,6 @@ public class LightAttackControl : MonoBehaviour
 
     void Update()
     {
-
         // On left click, make sure we aren't attacking then start the attack
         if (Input.GetMouseButtonDown(0) && !isAttacking && !CooldownManager.isOtherAttacking)
         {
@@ -121,7 +125,7 @@ public class LightAttackControl : MonoBehaviour
             if (enemy != null)
             {
                 Vector2 knockbackDirection = (closestEnemy.transform.position - transform.position).normalized;
-                enemy.DealDamage(damage, knockbackDirection, knockbackForce);
+                enemy.DealDamage(damage, knockbackDirection, knockbackForce, stun);
             }
             else
             {

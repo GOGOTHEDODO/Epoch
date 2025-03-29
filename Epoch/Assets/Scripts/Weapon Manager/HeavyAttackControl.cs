@@ -8,9 +8,10 @@ public class HeavyAttackControl : MonoBehaviour
     private Animator animator;
     private bool isAttacking = false;
     private Vector2 attackDirection;
-    public double HeavyCooldown = 1;
+    public double HeavyCooldown;
     public float damage = 15f;
-    public float knockbackForce = 0.75f;
+    public float knockbackForce;
+    public float stun;
 
     void Start()
     {
@@ -18,6 +19,10 @@ public class HeavyAttackControl : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         damage = GameManager.instance.playerDamage * 1.5f; // Heavy attack damage should scale off of normal damage
         HeavyCooldown = GameManager.instance.attackCooldown * 1.5; // Heavy attack cooldown should scale off of the other cooldown
+        stun = 0.03f;
+
+        // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE, ITS A LITTLE JANK REGARDLESS
+        knockbackForce = 3f;
     }
 
     // Hitbox function
@@ -104,7 +109,7 @@ public class HeavyAttackControl : MonoBehaviour
                 if (enemy != null)
                 {
                     Vector2 knockbackDirection = (enemy.transform.position - transform.position).normalized;
-                    enemy.DealDamage(damage, knockbackDirection, knockbackForce);
+                    enemy.DealDamage(damage, knockbackDirection, knockbackForce, stun);
                 }
                 else
                 {

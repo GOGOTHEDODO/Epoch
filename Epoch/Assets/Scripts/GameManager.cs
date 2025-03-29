@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         maxHealth = baseMaxHealth;
         currentHealth = baseCurrentHealth;
         currentLuck = baseLuck;
+        CooldownManager.isOtherAttacking = false;
         ResetUpgrades();
 
         SceneManager.LoadScene(0);

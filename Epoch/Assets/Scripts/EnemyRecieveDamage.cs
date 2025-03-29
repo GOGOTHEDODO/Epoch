@@ -30,16 +30,16 @@ public class EnemyRecieveDamage : MonoBehaviour
         aiPath = GetComponent<AIPath>();
     }
 
-    public void DealDamage(float damage, Vector2 knockbackDirection, float knockbackForce)
+    public void DealDamage(float damage, Vector2 knockbackDirection, float knockbackForce, float hitstun)
     {
         health -= damage;
-        ApplyKnockback(knockbackDirection, knockbackForce);
+        ApplyKnockback(knockbackDirection, knockbackForce, hitstun);
 
         TintRed();
         checkDeath();
     }
 
-    void ApplyKnockback(Vector2 direction, float force)
+    void ApplyKnockback(Vector2 direction, float force, float hitstun)
     {
         if(rb!= null)
         {
@@ -52,7 +52,7 @@ public class EnemyRecieveDamage : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.AddForce(direction * force, ForceMode2D.Impulse);
 
-            StartCoroutine(ReenableAIPath(0.3f));
+            StartCoroutine(ReenableAIPath(hitstun));
         }
     }
 
