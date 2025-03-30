@@ -365,7 +365,7 @@ ScriptedImporter:
   spriteSheetImportData:
   - name: Unarmed_Idle_side_left_0
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -385,7 +385,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Unarmed_Idle_side_left_1
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -405,7 +405,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Unarmed_Idle_side_left_2
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -425,7 +425,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Unarmed_Idle_side_left_3
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -445,7 +445,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Unarmed_Idle_side_left_4
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -465,7 +465,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Unarmed_Idle_side_left_5
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -485,7 +485,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Unarmed_Idle_side_left_6
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -505,7 +505,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Unarmed_Idle_side_left_7
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -525,7 +525,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Unarmed_Idle_side_left_8
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -545,7 +545,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Unarmed_Idle_side_left_9
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -565,7 +565,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Unarmed_Idle_side_left_10
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -585,7 +585,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: Unarmed_Idle_side_left_11
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:

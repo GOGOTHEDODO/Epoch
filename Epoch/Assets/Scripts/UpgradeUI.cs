@@ -13,26 +13,44 @@ public class UpgradeUI : MonoBehaviour
     public GameObject upgradeButtonPrefab;
     public Transform buttonContainer;
     public List<UpgradeData> availableUpgrades;
-
-    public float speedIncreasePercentage = 10f; // % increase
-    public float damageIncreasePercentage = 15f;
+    private UpgradeOrb upgradeOrb;
+    private VerticalLayoutGroup layoutGroup;
+    private Color commonColor = Color.gray;
+    private Color rareColor = new Color(0.3f, 0.5f, 1f);//Blue
+    private Color epicColor = new Color(0.6f, 0.2f, 0.8f);//Purple
 
     
     // Start is called before the first frame update
     void Start()
     {
-     
+        layoutGroup = buttonContainer.GetComponent<VerticalLayoutGroup>();
     }
+
 
     public void ShowUpgrade()
     {
+        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+        if(playerMovement != null)
+        {
+            playerMovement.enableMovement(false);
+        }
         upgradePanel.SetActive(true);
         upgradeChoices.SetActive(true);
         GenerateUpgradeButtons();
     }
 
+    public void SetUpgradeOrb(UpgradeOrb orb)
+    {
+        upgradeOrb = orb;
+    }
+
     private void GenerateUpgradeButtons()
     {
+        Debug.Log("Available Upgrades in Pool:");
+        foreach (var upgrade in availableUpgrades)
+        {
+            Debug.Log($"Upgrade: {upgrade.upgradeName}, Type: {upgrade.type}");
+        }
         Debug.Log("Gnerating Buttons");
         foreach(Transform child in buttonContainer)
         {
@@ -43,8 +61,10 @@ public class UpgradeUI : MonoBehaviour
         {
             Debug.Log("No Upgrades");
         }
+        float luck = GameManager.instance.currentLuck;
+        
 
-        List<UpgradeData> selectedUpgrades = new List<UpgradeData>();
+        HashSet<UpgradeData> selectedUpgrades = new HashSet<UpgradeData>();
         while(selectedUpgrades.Count < 3 && availableUpgrades.Count > 0)
         {
             int randomIndex = Random.Range(0, availableUpgrades.Count);
@@ -55,18 +75,71 @@ public class UpgradeUI : MonoBehaviour
         {
             GameObject buttonObj = Instantiate(upgradeButtonPrefab, buttonContainer);
             TMP_Text buttonText = buttonObj.GetComponentInChildren<TMP_Text>();
-            buttonText.text = $"{upgrade.upgradeName} (+{upgrade.value}%)";
+            
 
             Button button = buttonObj.GetComponent<Button>();
-            button.onClick.AddListener(() => ApplyUpgrade(upgrade));
+            if(button !=null)
+            {
+                //get the rarity color and attach it to the buttons.
+                upgrade.rarity = DetermineRarity(luck);
+                upgrade.ApplyRarityModifier();
+                Color rarityColor = GetRarityColor(upgrade.rarity);
+
+                button.GetComponent<Image>().color = rarityColor; 
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(() =>
+            {
+                Debug.Log($"Clicked on {upgrade.upgradeName}!");
+                ApplyUpgrade(upgrade);
+            });  
+            } 
+            buttonText.text = $"{upgrade.upgradeName} (+{upgrade.currentValue}%)";           
         }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(buttonContainer.GetComponent<RectTransform>());
+
     }
 
     public void ApplyUpgrade(UpgradeData upgrade)
     {
-       upgrade.ApplyUpgrade(playerMovement, LightAttackControl);
-       upgradePanel.SetActive(false);
-       upgradeChoices.SetActive(false);
+        if(GameManager.instance != null)
+        {
+            GameManager.instance.ApplyUpgrade(upgrade);
+        }
+
+        if (upgradeOrb != null)
+        {
+            upgradeOrb.UpgradeChosen();
+        }
+
+        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+
+        if (playerMovement != null)
+        {
+            playerMovement.enableMovement(true);
+        }
+
+        gameObject.SetActive(false);
+    }
+
+    private Rarity DetermineRarity(float luck)
+    {
+        //determine what level of upgrade that the current upgrade will be and update that buttons rarity for upgradeData 
+        //so we can change the amount of bonus that it gives.
+        float roll = Random.Range(0f, 100f) + luck;
+        if(roll >= 90) return Rarity.Epic; 
+        if(roll >= 50) return Rarity.Rare;
+        return Rarity.Common;
+    }
+
+    private Color GetRarityColor(Rarity rarity)
+    {
+        switch(rarity)
+        {
+            case Rarity.Rare: return rareColor;
+            case Rarity.Epic: return epicColor;
+            default: return commonColor;
+
+        }
     }
 
    

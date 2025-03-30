@@ -1,30 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgradeOrb : MonoBehaviour
 {
+    private LevelManager levelManager;
+    private Rigidbody2D rb;
 
-    public UpgradeUI upgradeUI;
-    // Start is called before the first frame update
     void Start()
     {
-        
-        upgradeUI = FindObjectOfType<UpgradeUI>();
+        rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;  // Stop any movement
+            rb.bodyType = RigidbodyType2D.Kinematic; // Ensure it doesn't move
+        }
+    }
+
+    public void SetLevelManager(LevelManager manager)
+    {
+        levelManager = manager;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            upgradeUI.ShowUpgrade();
-            Destroy(gameObject);
+            Debug.Log("Upgrade Orb activated!");
+            PlayerMovement playerMovement = other.GetComponent<PlayerMovement>();
+            if(playerMovement != null)
+            {
+                playerMovement.enableMovement(false);
+            }
+            ShowUpgradeMenu();
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void ShowUpgradeMenu()
     {
-        
+        UpgradeUI upgradeUI = FindObjectOfType<UpgradeUI>();
+        if (upgradeUI != null)
+        {
+            upgradeUI.ShowUpgrade();
+            upgradeUI.SetUpgradeOrb(this);
+        }
+    }
+
+    public void UpgradeChosen()
+    {
+        Debug.Log("Upgrade selected! Informing LevelManager...");
+        if (levelManager != null)
+        {
+            levelManager.OnUpgradeSelected();
+        }
+        Destroy(gameObject);
     }
 }

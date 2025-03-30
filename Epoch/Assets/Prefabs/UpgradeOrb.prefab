@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 969422613812291393}
   - component: {fileID: 1605454366481013250}
   - component: {fileID: 3192866675104597172}
-  - component: {fileID: 5252588651716938986}
+  - component: {fileID: 7656629038916494763}
   m_Layer: 0
   m_Name: UpgradeOrb
   m_TagString: UpgradeOrb
@@ -121,7 +121,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5252588651716938986
+--- !u!114 &7656629038916494763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

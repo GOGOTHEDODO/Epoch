@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public int[] sceneIDs;
 
    //creates a parameter for a game object in unity so it knows what panel to activate.
    public GameObject settingsPanel;
    //Start Game moves to the scene with the ID of 1 in the build menu under the files tab. 
    public void StartGame() {
-    SceneManager.LoadScene(1);
+    SceneManager.LoadScene(sceneIDs[Random.Range(0, sceneIDs.Length)]);
    }
    //opens the settings panel.
    public void OpenSettings() {
