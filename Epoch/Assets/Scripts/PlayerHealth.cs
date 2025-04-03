@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    
+
     public float maxHealth;
     public float health;
 
@@ -16,22 +17,31 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        if (GameManager.instance!= null)
+        if (GameManager.instance != null)
         {
             health = GameManager.instance.currentHealth;
             rend = GetComponent<Renderer>();
             originalColor = rend.material.color;
             animator = GetComponent<Animator>();
         }
-        
+        if (HealthUI.instance != null)
+        {
+            HealthUI.instance.UpdateHealthBar();
+        }
+
     }
 
     public void TakeDamage(float damage, GameObject sender)
     {
         if (sender.layer == gameObject.layer) return;
-  
+
         health -= damage;
         TintRed();
+
+        if (HealthUI.instance != null)
+        {
+            HealthUI.instance.UpdateHealthBar();
+        }
 
         Debug.Log($"Player took {damage} damage! Current HP: {health}");
 
@@ -62,7 +72,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void CheckDeath()
     {
-        if(animator != null)
+        if (animator != null)
         {
             animator.SetTrigger("Dies");
         }

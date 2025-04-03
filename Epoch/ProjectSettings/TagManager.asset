@@ -40,7 +40,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Water
+  - name: water
     uniqueID: 2677171073
     locked: 0
   - name: Ground
@@ -49,9 +49,15 @@ TagManager:
   - name: Top Walls
     uniqueID: 2225739027
     locked: 0
-  - name: Decorations
+  - name: Decerations
     uniqueID: 3780113515
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: HealthBarForeground
+    uniqueID: 4103284381
+    locked: 0
+  - name: HealthBarBackground
+    uniqueID: 3698325343
     locked: 0
