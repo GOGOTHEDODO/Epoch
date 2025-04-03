@@ -190,8 +190,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 5
+  m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -296,7 +296,7 @@ MonoBehaviour:
   - {x: 0.07500002, y: -0.12500024, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -317538
+  m_InstanceId: 54352
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.07500002, y: 0.12500012, z: 0}
@@ -387,7 +387,7 @@ MonoBehaviour:
   radius: 3
   height: 2
   canMove: 1
-  maxSpeed: 2
+  maxSpeed: 4.9
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    
+
     public float maxHealth;
     public float health;
 
@@ -12,23 +13,41 @@ public class PlayerHealth : MonoBehaviour
     private Color originalColor;
     public float flashDuration = 0.1f;
 
+    private Animator animator;
+
     void Start()
     {
-        if (GameManager.instance!= null)
+        if (GameManager.instance != null)
         {
             health = GameManager.instance.currentHealth;
             rend = GetComponent<Renderer>();
             originalColor = rend.material.color;
+            animator = GetComponent<Animator>();
         }
-        
+        if (HealthUI.instance != null)
+        {
+            HealthUI.instance.UpdateHealthBar();
+        }
+
     }
 
     public void TakeDamage(float damage, GameObject sender)
     {
         if (sender.layer == gameObject.layer) return;
-  
+
+        PlayerMovement player = GetComponent<PlayerMovement>();
+
+        if(player.isInvincible){
+            return;
+        }
+
         health -= damage;
         TintRed();
+
+        if (HealthUI.instance != null)
+        {
+            HealthUI.instance.UpdateHealthBar();
+        }
 
         Debug.Log($"Player took {damage} damage! Current HP: {health}");
 
@@ -59,10 +78,26 @@ public class PlayerHealth : MonoBehaviour
 
     private void CheckDeath()
     {
+        if (animator != null)
+        {
+            animator.SetTrigger("Dies");
+        }
+
+        StartCoroutine(DeathSequence());
+
+
+
+        // Add logic for player death (e.g., restart level, show death screen)
+    }
+
+    private IEnumerator DeathSequence()
+    {
+        yield return new WaitForSeconds(1f);
+
         Destroy(gameObject);
         Debug.Log("Player has died!");
         GameManager.instance.RestartGame();
-        // Add logic for player death (e.g., restart level, show death screen)
     }
+
 }
 

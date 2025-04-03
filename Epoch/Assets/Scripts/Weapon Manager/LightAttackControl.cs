@@ -8,8 +8,10 @@ public class LightAttackControl : MonoBehaviour
     private Animator animator;
     private bool isAttacking = false;
     private Vector2 attackDirection;
-    public double LightCooldown = 0.5;
+    public double LightCooldown;
     public float damage = 10f;
+    public float knockbackForce;
+    public float stun;
 
     void Start()
     {
@@ -17,37 +19,15 @@ public class LightAttackControl : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         damage = GameManager.instance.playerDamage;
         LightCooldown = GameManager.instance.attackCooldown;
+        stun = GameManager.instance.knockback;
 
+        // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE, ITS A LITTLE JANK REGARDLESS
+        knockbackForce = 2f;
     }
 
     // Hitbox function
-    public Transform circleOrigin;
-    public float radius;
-
-
-    // use deal damage if it hits enemy
-    
-    /*
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log($"Attack hit: {other.gameObject.name}");
-        if(other.CompareTag("Enemy"))
-        {
-            Debug.Log($"Dealing {damage} to {other.gameObject.name}");
-            EnemyRecieveDamage enemy = other.GetComponent<EnemyRecieveDamage>();
-            if(enemy != null)
-            {
-                enemy.DealDamage(damage);
-            }
-            else 
-            {
-                Debug.LogError("EnemyRecieveDamage script is missing on the enemy");
-            }
-            
-        }
-    }
-    */
-    
+    public Transform boxOrigin;
+    public Vector2 boxSize = new Vector2(2f, 1f);
 
     public void IncreaseDamage(float percentage)
     {
@@ -63,7 +43,7 @@ public class LightAttackControl : MonoBehaviour
     void Update()
     {
         // On left click, make sure we aren't attacking then start the attack
-        if (Input.GetMouseButtonDown(0) && !isAttacking)
+        if (Input.GetMouseButtonDown(0) && !isAttacking && !CooldownManager.isOtherAttacking)
         {
             // Get mouse position when the player clicks the mouse
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -80,10 +60,12 @@ public class LightAttackControl : MonoBehaviour
 
             StartCoroutine(Attack());
         }
+
     }
 
     IEnumerator Attack()
     {
+        CooldownManager.isOtherAttacking = true;
         // Lock the facing direction before starting the animation
         isAttacking = true;
 
@@ -92,7 +74,7 @@ public class LightAttackControl : MonoBehaviour
         // Trigger the attack animation
         animator.SetTrigger("Attack");
 
-        // Cooldown for attack, this can be changed with a buff if we want, so im including it as a variable, its also probably slow right now but it doesn't matter yet
+        // Cooldown for attack
         yield return new WaitForSeconds((float)LightCooldown / 2);
 
         GetComponent<Collider2D>().enabled = false;
@@ -100,40 +82,57 @@ public class LightAttackControl : MonoBehaviour
         yield return new WaitForSeconds((float)LightCooldown / 2);
 
         isAttacking = false;
+        CooldownManager.isOtherAttacking = false;
     }
 
     // draw functions
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Vector3 position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
-        Gizmos.DrawWireSphere(position, radius);
+        Vector3 position = boxOrigin == null ? Vector3.zero : boxOrigin.position;
+        Gizmos.DrawWireCube(position, boxSize);
     }
+
+
 
     public void DetectColliders()
     {
-        foreach(Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position, radius))
-        {
-            Debug.Log(collider.name);
+        Collider2D closestEnemy = null;
+        float closestDistance = Mathf.Infinity;
 
+        // Get the angle in degrees from attackDirection
+        float attackAngle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
+
+        // Rotate the hitbox like a pendulum instead of like the circle from before
+        foreach (Collider2D collider in Physics2D.OverlapBoxAll(boxOrigin.position, boxSize, attackAngle))
+        {
             if (collider.CompareTag("Enemy"))
             {
+                float distanceToPlayer = Vector2.Distance(transform.position, collider.transform.position);
 
-                Debug.Log($"Dealing {damage} to {collider.gameObject.name}");
-                EnemyRecieveDamage enemy = collider.GetComponent<EnemyRecieveDamage>();
-                if (enemy != null)
+                // Check for the closest distance to player and only deal damage to that enemy
+                if (distanceToPlayer < closestDistance)
                 {
-                    enemy.DealDamage(damage);
+                    closestDistance = distanceToPlayer;
+                    closestEnemy = collider;
                 }
-                else
-                {
-                    Debug.LogError("EnemyRecieveDamage script is missing on the enemy");
-                }
-
             }
+        }
 
-
+        // Deal damage to closest enemy
+        if (closestEnemy != null)
+        {
+            Debug.Log($"Dealing {damage} to {closestEnemy.gameObject.name}");
+            EnemyRecieveDamage enemy = closestEnemy.GetComponent<EnemyRecieveDamage>();
+            if (enemy != null)
+            {
+                Vector2 knockbackDirection = (closestEnemy.transform.position - transform.position).normalized;
+                enemy.DealDamage(damage, knockbackDirection, knockbackForce, stun);
+            }
+            else
+            {
+                Debug.LogError("EnemyRecieveDamage script is missing on the enemy");
+            }
         }
     }
-
 }

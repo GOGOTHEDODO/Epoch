@@ -5,12 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    public int currentLevelCount = 0;
+    public int maxLevelBeforeBoss = 0;
+    public int bossSceneIndex = 5;
     public static GameManager instance;
     // Persistent player stats (upgradeable)
     public float playerSpeed = 5f;
     public float playerDamage = 10f;
     public float attackCooldown = 0.5f;
     public float currentLuck = 0f;
+    public float knockback = 0.03f;
 
     public float maxHealth = 100f;
     public float currentHealth = 100f;
@@ -22,6 +27,7 @@ public class GameManager : MonoBehaviour
     private float baseMaxHealth = 100f;
     private float baseCurrentHealth = 100f;
     private float baseLuck = 0f;
+    private float baseKnockback = 0.3f;
 
     private List<UpgradeData> allUpgrades = new List<UpgradeData>();
 
@@ -40,11 +46,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        maxLevelBeforeBoss = Random.Range(6,9);
         ResetUpgrades();
     }
 
     public void RestartGame()
     {
+        currentLevelCount = 0;
+        maxLevelBeforeBoss = Random.Range(6,9);
         Debug.Log("Restarting Game...");
         playerDamage = basePlayerDamage;
         playerSpeed =  basePlayerSpeed;
@@ -52,6 +61,8 @@ public class GameManager : MonoBehaviour
         maxHealth = baseMaxHealth;
         currentHealth = baseCurrentHealth;
         currentLuck = baseLuck;
+        knockback = baseKnockback;
+        CooldownManager.isOtherAttacking = false;
         ResetUpgrades();
 
         SceneManager.LoadScene(0);
@@ -80,6 +91,9 @@ public class GameManager : MonoBehaviour
                 break;
             case UpgradeData.UpgradeType.Luck:
                 currentLuck +=upgrade.currentValue;
+                break;
+            case UpgradeData.UpgradeType.Knockback:
+                knockback += upgrade.currentValue;
                 break;
         }
 

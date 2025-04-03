@@ -77,9 +77,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2069228269
-  m_SortingLayer: -2
-  m_SortingOrder: 1
+  m_SortingLayerID: -514853781
+  m_SortingLayer: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 4193069958233978833, guid: 8c2234f02ba892740a89e74a7beb2144, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!50 &6547788104798370051
 Rigidbody2D:
   serializedVersion: 4
@@ -132,7 +132,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 6547788104798370051}
+  moveDirection: {x: 0, y: 0}
+  animator: {fileID: 0}
   canMove: 1
+  isInvincible: 0
+  dashSpeed: 20
+  dashDuration: 0.2
+  dashCooldown: 5
+  dashQuantity: 1
+  currentDashes: 0
+  dashRechargeTime: 1
 --- !u!95 &8104776867649543283
 Animator:
   serializedVersion: 5
@@ -225,7 +234,7 @@ MonoBehaviour:
   - {x: 0.07500002, y: -0.12500024, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 39448
+  m_InstanceId: -268694
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.07500002, y: 0.12500012, z: 0}
@@ -272,7 +281,7 @@ Transform:
   m_GameObject: {fileID: 2078240587407704597}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.256, y: 0, z: 0}
+  m_LocalPosition: {x: 0.29, y: 0, z: 0}
   m_LocalScale: {x: 0.08, y: 0.07, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -367,9 +376,24 @@ MonoBehaviour:
   OnAttackPerformed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2139335182777626670}
+      - m_Target: {fileID: 1583572201962863352}
         m_TargetAssemblyTypeName: LightAttackControl, Assembly-CSharp
         m_MethodName: DetectColliders
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHeavyAttackPerformed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1351531777623823900}
+        m_TargetAssemblyTypeName: HeavyAttackControl, Assembly-CSharp
+        m_MethodName: DetectHeavyColliders
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -388,8 +412,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5902858455221402370}
-  - component: {fileID: 2139335182777626670}
   - component: {fileID: 8834868165007821119}
+  - component: {fileID: 1583572201962863352}
+  - component: {fileID: 1351531777623823900}
   m_Layer: 3
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -413,23 +438,6 @@ Transform:
   - {fileID: 7302449634985049142}
   m_Father: {fileID: 9146104983501062073}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2139335182777626670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3724867093821739932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f55c01a2c66d4524e9008dc567915bf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRenderer: {fileID: 0}
-  LightCooldown: 0.5
-  damage: 10
-  circleOrigin: {fileID: 6294799982879652832}
-  radius: 1
 --- !u!61 &8834868165007821119
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -475,6 +483,44 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1583572201962863352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3724867093821739932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55c01a2c66d4524e9008dc567915bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRenderer: {fileID: 0}
+  LightCooldown: 0.5
+  damage: 10
+  knockbackForce: 0
+  stun: 0
+  boxOrigin: {fileID: 7302449634985049142}
+  boxSize: {x: 3, y: 1}
+--- !u!114 &1351531777623823900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3724867093821739932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f9c388decae3d7469e9b6d4e2f34f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRenderer: {fileID: 0}
+  HeavyCooldown: 1
+  damage: 15
+  knockbackForce: 0
+  stun: 0
+  boxOrigin: {fileID: 7302449634985049142}
+  boxSize: {x: 3, y: 2}
 --- !u!1 &6339138530952603761
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6294799982879652832}
   m_Layer: 3
-  m_Name: CircleOrigin
+  m_Name: BoxOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
