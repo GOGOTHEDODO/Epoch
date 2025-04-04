@@ -93,7 +93,13 @@ public class UpgradeUI : MonoBehaviour
                 ApplyUpgrade(upgrade);
             });  
             } 
-            buttonText.text = $"{upgrade.upgradeName} (+{upgrade.currentValue}%)";           
+            if(upgrade.type == UpgradeData.UpgradeType.DashQuantity || upgrade.type == UpgradeData.UpgradeType.Luck)
+            {
+                buttonText.text = $"{upgrade.upgradeName} {upgrade.description} (+{upgrade.currentValue})";
+            } else 
+            {
+                buttonText.text = $"{upgrade.upgradeName} (+{upgrade.currentValue}%)";           
+            }
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(buttonContainer.GetComponent<RectTransform>());
 

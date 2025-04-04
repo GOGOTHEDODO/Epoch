@@ -19,7 +19,7 @@ public class LightAttackControl : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         damage = GameManager.instance.playerDamage;
         LightCooldown = GameManager.instance.attackCooldown;
-        stun = GameManager.instance.knockback;
+        stun = GameManager.instance.currentKnockback;
 
         // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE, ITS A LITTLE JANK REGARDLESS
         knockbackForce = 2f;

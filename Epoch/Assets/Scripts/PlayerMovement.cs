@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Start() {
         animator = GetComponent<Animator>();
         moveSpeed = GameManager.instance.playerSpeed;
+        dashQuantity = GameManager.instance.currentDashQuantity;
         currentDashes = dashQuantity;
     }
     

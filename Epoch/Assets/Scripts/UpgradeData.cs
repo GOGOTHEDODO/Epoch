@@ -28,7 +28,8 @@ public class UpgradeData : ScriptableObject
         AttackDamage,
         AttackCoolDown,
         Luck,
-        Knockback
+        Knockback,
+        DashQuantity
     }
 
     public void ResetToBaseValue()
@@ -42,19 +43,19 @@ public class UpgradeData : ScriptableObject
             case Rarity.Common:
                 currentValue = baseValue * 0.75f;
                 Debug.Log("Common Upgrade");
-                if(type == UpgradeType.Luck) 
+                if(type == UpgradeType.Luck || type == UpgradeType.DashQuantity) 
                     currentValue = 1;
                 break;
             case Rarity.Epic:
                 Debug.Log("Epic Upgrade");
                 currentValue = baseValue * 1.25f;
-                if(type == UpgradeType.Luck)
+                if(type == UpgradeType.Luck || type == UpgradeType.DashQuantity)
                     currentValue = 3;
                 break;
             default:
                 Debug.Log("Rare Upgrade");
                 currentValue = baseValue;
-                if(type == UpgradeType.Luck)
+                if(type == UpgradeType.Luck || type == UpgradeType.DashQuantity)
                     currentValue = 2;
                 break;
         }
