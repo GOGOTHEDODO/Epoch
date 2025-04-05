@@ -13,12 +13,12 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     bool isFacingRight = false;
     public bool canMove = true;
-    
+
     //Dash Vars
     public bool isInvincible = false;
-    public float dashSpeed = 20f;
-    public float dashDuration = 0.2f;
-    public float dashCooldown = 2f;
+    public float dashSpeed;
+    public float dashDuration;
+    public float dashCooldown;
 
     private bool isDashing = false;
     private float dashTimeRemaining;
@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !isDashing && currentDashes > 0)
         {
+            animator.SetBool("Dashing", true);
             isDashing = true;
             dashTimeRemaining = dashDuration;
             dashCooldownTimer = dashCooldown;
@@ -89,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (dashTimeRemaining <= 0f)
             {
+                animator.SetBool("Dashing", false);
                 isDashing = false;
                 isInvincible = false;
             }
@@ -101,6 +103,16 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetBool("isFacingRight", isFacingRight);
         animator.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y));
+
+    }
+
+    public void PlayerDeathEvents()
+    {
+        rb.velocity = new Vector2(0, 0);
+        
+        canMove = false;
+
+        rb.constraints = RigidbodyConstraints2D.FreezeAll; // Lock position & rotation
 
     }
 
@@ -135,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
     public void enableMovement(bool enable)
     {
         canMove = enable;
-    Debug.Log("Called enablemovement");
+        Debug.Log("Called enablemovement");
         if(!enable)
         { 
             rb.velocity = Vector2.zero;   

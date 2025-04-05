@@ -2439,13 +2439,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadf2e41ddeadf848be0f227ef8f21be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevelCount: 0
+  maxLevelBeforeBoss: 0
+  bossSceneIndex: 5
   playerSpeed: 5
   playerDamage: 10
   attackCooldown: 0.5
   currentLuck: 0
-  knockback: 0.03
+  currentKnockback: 0.03
   maxHealth: 100
   currentHealth: 100
+  currentDashQuantity: 1
 --- !u!4 &2060294047
 Transform:
   m_ObjectHideFlags: 0

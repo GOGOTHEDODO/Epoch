@@ -83,6 +83,7 @@ public class PlayerHealth : MonoBehaviour
             animator.SetTrigger("Dies");
         }
 
+        // If player died then go fix
         StartCoroutine(DeathSequence());
 
 
@@ -92,7 +93,7 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator DeathSequence()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         Destroy(gameObject);
         Debug.Log("Player has died!");

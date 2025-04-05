@@ -48,14 +48,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        maxLevelBeforeBoss = Random.Range(6,9);
+        maxLevelBeforeBoss = Random.Range(4,5);
         ResetUpgrades();
     }
 
     public void RestartGame()
     {
         currentLevelCount = 0;
-        maxLevelBeforeBoss = Random.Range(6,9);
+        maxLevelBeforeBoss = Random.Range(4,5);
         Debug.Log("Restarting Game...");
         playerDamage = basePlayerDamage;
         playerSpeed =  basePlayerSpeed;

@@ -59,7 +59,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 570d0afe9f703064a9032dda91efac61, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,9 +136,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   canMove: 1
   isInvincible: 0
-  dashSpeed: 20
-  dashDuration: 0.2
-  dashCooldown: 5
+  dashSpeed: 15
+  dashDuration: 0.25
+  dashCooldown: 6
   dashQuantity: 1
   currentDashes: 0
   dashRechargeTime: 1
@@ -234,7 +234,7 @@ MonoBehaviour:
   - {x: 0.07500002, y: -0.12500024, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1364
+  m_InstanceId: 52528
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.07500002, y: 0.12500012, z: 0}
