@@ -21,6 +21,9 @@ public class UpgradeData : ScriptableObject
     public float currentValue;
     public float baseValue;
     public Rarity rarity;
+    public Rarity minimumRarity = Rarity.Common;
+    public bool isOneTimeUpgrade = false;
+    public bool hasBeenChosen = false;
 
     public enum UpgradeType
     {
@@ -29,7 +32,8 @@ public class UpgradeData : ScriptableObject
         AttackCoolDown,
         Luck,
         Knockback,
-        DashQuantity
+        DashQuantity,
+        FireSword
     }
 
     public void ResetToBaseValue()
@@ -43,19 +47,19 @@ public class UpgradeData : ScriptableObject
             case Rarity.Common:
                 currentValue = baseValue * 0.75f;
                 Debug.Log("Common Upgrade");
-                if(type == UpgradeType.Luck || type == UpgradeType.DashQuantity) 
+                if(type == UpgradeType.Luck) 
                     currentValue = 1;
                 break;
             case Rarity.Epic:
                 Debug.Log("Epic Upgrade");
                 currentValue = baseValue * 1.25f;
-                if(type == UpgradeType.Luck || type == UpgradeType.DashQuantity)
-                    currentValue = 3;
+                if(type == UpgradeType.DashQuantity) currentValue = 1;
+                if(type == UpgradeType.Luck) currentValue = 3;
                 break;
             default:
                 Debug.Log("Rare Upgrade");
                 currentValue = baseValue;
-                if(type == UpgradeType.Luck || type == UpgradeType.DashQuantity)
+                if(type == UpgradeType.Luck)
                     currentValue = 2;
                 break;
         }

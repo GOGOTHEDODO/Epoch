@@ -123,11 +123,17 @@ public class LightAttackControl : MonoBehaviour
         if (closestEnemy != null)
         {
             Debug.Log($"Dealing {damage} to {closestEnemy.gameObject.name}");
+            
             EnemyRecieveDamage enemy = closestEnemy.GetComponent<EnemyRecieveDamage>();
             if (enemy != null)
             {
+                if(GameManager.instance.hasFireSword)
+                {
+                 enemy.ApplyBurn(2f, 3f);
+                }
                 Vector2 knockbackDirection = (closestEnemy.transform.position - transform.position).normalized;
                 enemy.DealDamage(damage, knockbackDirection, knockbackForce, stun);
+                
             }
             else
             {

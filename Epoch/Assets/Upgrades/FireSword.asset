@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3ded7976753bea49b15cc1805f3842e, type: 3}
-  m_Name: Knockback
+  m_Name: FireSword
   m_EditorClassIdentifier: 
-  upgradeName: Knockback
-  description: Increases hitstun
-  type: 4
+  upgradeName: FireSword
+  description: Your sword ignites enemies on hit
+  type: 6
   currentValue: 0
-  baseValue: 0.03
+  baseValue: 0
   rarity: 2
+  minimumRarity: 2
+  isOneTimeUpgrade: 1
+  hasBeenChosen: 1

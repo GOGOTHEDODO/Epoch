@@ -46,43 +46,46 @@ public class UpgradeUI : MonoBehaviour
 
     private void GenerateUpgradeButtons()
     {
-        Debug.Log("Available Upgrades in Pool:");
-        foreach (var upgrade in availableUpgrades)
-        {
-            Debug.Log($"Upgrade: {upgrade.upgradeName}, Type: {upgrade.type}");
-        }
+       
         Debug.Log("Gnerating Buttons");
         foreach(Transform child in buttonContainer)
         {
             Destroy(child.gameObject);
         }
 
-        if(availableUpgrades.Count == 0)
-        {
-            Debug.Log("No Upgrades");
-        }
         float luck = GameManager.instance.currentLuck;
-        
-
         HashSet<UpgradeData> selectedUpgrades = new HashSet<UpgradeData>();
-        while(selectedUpgrades.Count < 3 && availableUpgrades.Count > 0)
+        int attempts = 0;
+        while(selectedUpgrades.Count < 3 && attempts < 50)
         {
-            int randomIndex = Random.Range(0, availableUpgrades.Count);
-            selectedUpgrades.Add(availableUpgrades[randomIndex]);
+            Rarity rolledRarity = DetermineRarity(luck);
+            
+            List<UpgradeData> validUpgrades = availableUpgrades.FindAll(u => 
+            u.minimumRarity <= rolledRarity && 
+            !selectedUpgrades.Contains(u) && 
+            (!u.isOneTimeUpgrade || (u.isOneTimeUpgrade && !u.hasBeenChosen)));
+
+            if(validUpgrades.Count == 0)
+            {
+                attempts++;
+                continue;
+            }
+            UpgradeData chosen = validUpgrades[Random.Range(0, validUpgrades.Count)];
+            chosen.rarity = rolledRarity;
+            chosen.ApplyRarityModifier();
+            selectedUpgrades.Add(chosen);
         }
 
         foreach(UpgradeData upgrade in selectedUpgrades)
         {
             GameObject buttonObj = Instantiate(upgradeButtonPrefab, buttonContainer);
             TMP_Text buttonText = buttonObj.GetComponentInChildren<TMP_Text>();
-            
-
             Button button = buttonObj.GetComponent<Button>();
+
             if(button !=null)
             {
                 //get the rarity color and attach it to the buttons.
-                upgrade.rarity = DetermineRarity(luck);
-                upgrade.ApplyRarityModifier();
+
                 Color rarityColor = GetRarityColor(upgrade.rarity);
 
                 button.GetComponent<Image>().color = rarityColor; 
@@ -92,13 +95,19 @@ public class UpgradeUI : MonoBehaviour
                 Debug.Log($"Clicked on {upgrade.upgradeName}!");
                 ApplyUpgrade(upgrade);
             });  
+
             } 
             if(upgrade.type == UpgradeData.UpgradeType.DashQuantity || upgrade.type == UpgradeData.UpgradeType.Luck)
             {
                 buttonText.text = $"{upgrade.upgradeName} {upgrade.description} (+{upgrade.currentValue})";
-            } else 
+            } 
+            else if (upgrade.type == UpgradeData.UpgradeType.FireSword)
             {
-                buttonText.text = $"{upgrade.upgradeName} (+{upgrade.currentValue}%)";           
+                buttonText.text = $"{upgrade.upgradeName} {upgrade.description}";
+            }
+            else 
+            {
+                buttonText.text = $"{upgrade.upgradeName} {upgrade.description} (+{upgrade.currentValue}%)";           
             }
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(buttonContainer.GetComponent<RectTransform>());
@@ -115,6 +124,11 @@ public class UpgradeUI : MonoBehaviour
         if (upgradeOrb != null)
         {
             upgradeOrb.UpgradeChosen();
+        }
+
+        if(upgrade.isOneTimeUpgrade)
+        {
+            upgrade.hasBeenChosen = true;
         }
 
         PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();

@@ -19,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
+            maxHealth = GameManager.instance.maxHealth;
             health = GameManager.instance.currentHealth;
             rend = GetComponent<Renderer>();
             originalColor = rend.material.color;

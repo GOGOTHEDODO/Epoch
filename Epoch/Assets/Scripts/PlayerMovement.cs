@@ -85,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         if (isDashing)
         {
             isInvincible = true;
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
             rb.velocity = lastMoveDirection * dashSpeed;
             dashTimeRemaining -= Time.fixedDeltaTime;
 
@@ -93,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("Dashing", false);
                 isDashing = false;
                 isInvincible = false;
+                Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
             }
 
             return; // Skip regular movement while dashing

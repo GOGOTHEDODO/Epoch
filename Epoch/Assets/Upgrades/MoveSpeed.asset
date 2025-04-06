@@ -15,6 +15,6 @@ MonoBehaviour:
   upgradeName: Move Speed
   description: Increases Movement of Player
   type: 0
-  currentValue: 20
-  baseValue: 20
+  currentValue: 10
+  baseValue: 10
   rarity: 1

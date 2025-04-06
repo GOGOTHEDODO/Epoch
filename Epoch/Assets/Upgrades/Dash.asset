@@ -15,6 +15,7 @@ MonoBehaviour:
   upgradeName: Extra Dash
   description: Gain more Dashes
   type: 5
-  currentValue: 0
+  currentValue: 1
   baseValue: 1
-  rarity: 0
+  rarity: 2
+  minimumRarity: 2
