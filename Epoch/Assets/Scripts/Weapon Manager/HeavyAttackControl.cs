@@ -75,6 +75,8 @@ public class HeavyAttackControl : MonoBehaviour
         // Trigger the attack animation
         animator.SetTrigger("HeavyAttack");
 
+        CooldownUI.instance.StartCooldown(HeavyCooldown);
+
         // Cooldown for attack
         yield return new WaitForSeconds((float)HeavyCooldown / 2);
 

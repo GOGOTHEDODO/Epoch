@@ -43,7 +43,7 @@ public class MetaUpgradeManager : MonoBehaviour
     {
         if (GameManager.instance.metaUpgrades.starParts > 0)
         {
-            GameManager.instance.metaUpgrades.baseAttackCoolDown -= 0.05f;
+            GameManager.instance.metaUpgrades.baseAttackCoolDown *= 0.95f;
             GameManager.instance.metaUpgrades.starParts--;
             GameManager.instance.SaveMetaData();
             UpdateUI();

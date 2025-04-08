@@ -23,9 +23,9 @@ public class HealthUI : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);  // Keep this UI across scenes
         }
-        else
+        else if (instance != this)
         {
-            Destroy(gameObject);  // Prevent duplicate instances
+            Destroy(gameObject);  // Destroy any duplicate instance
         }
     }
 
