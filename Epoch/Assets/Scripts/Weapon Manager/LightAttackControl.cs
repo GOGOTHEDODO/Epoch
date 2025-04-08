@@ -19,7 +19,7 @@ public class LightAttackControl : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         damage = GameManager.instance.playerDamage;
         LightCooldown = GameManager.instance.attackCooldown;
-        stun = GameManager.instance.knockback;
+        stun = GameManager.instance.currentKnockback;
 
         // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE, ITS A LITTLE JANK REGARDLESS
         knockbackForce = 2f;
@@ -123,11 +123,17 @@ public class LightAttackControl : MonoBehaviour
         if (closestEnemy != null)
         {
             Debug.Log($"Dealing {damage} to {closestEnemy.gameObject.name}");
+            
             EnemyRecieveDamage enemy = closestEnemy.GetComponent<EnemyRecieveDamage>();
             if (enemy != null)
             {
+                if(GameManager.instance.hasFireSword)
+                {
+                 enemy.ApplyBurn(2f, 3f);
+                }
                 Vector2 knockbackDirection = (closestEnemy.transform.position - transform.position).normalized;
                 enemy.DealDamage(damage, knockbackDirection, knockbackForce, stun);
+                
             }
             else
             {

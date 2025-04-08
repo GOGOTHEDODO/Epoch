@@ -19,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
+            maxHealth = GameManager.instance.maxHealth;
             health = GameManager.instance.currentHealth;
             rend = GetComponent<Renderer>();
             originalColor = rend.material.color;
@@ -34,6 +35,12 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage, GameObject sender)
     {
         if (sender.layer == gameObject.layer) return;
+
+        PlayerMovement player = GetComponent<PlayerMovement>();
+
+        if(player.isInvincible){
+            return;
+        }
 
         health -= damage;
         TintRed();
@@ -77,6 +84,7 @@ public class PlayerHealth : MonoBehaviour
             animator.SetTrigger("Dies");
         }
 
+        // If player died then go fix
         StartCoroutine(DeathSequence());
 
 
@@ -86,7 +94,7 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator DeathSequence()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         Destroy(gameObject);
         Debug.Log("Player has died!");

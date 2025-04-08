@@ -26,6 +26,7 @@ public class MazeRoom : MonoBehaviour
     [SerializeField] GameObject bottomLeftCorner;
     [SerializeField] GameObject bottomRightCorner;
     [SerializeField] GameObject brazier;
+    [SerializeField] GameObject brazierSprite; 
 
     Dictionary<Directions, GameObject> walls = new Dictionary<Directions, GameObject>();
 
@@ -47,6 +48,7 @@ public class MazeRoom : MonoBehaviour
     public void SetBrazierActive(bool flag)
     {
         brazier.SetActive(flag);
+        brazierSprite.SetActive(flag);
     }
 
     public void SetDirFlag(Directions dir, bool flag)

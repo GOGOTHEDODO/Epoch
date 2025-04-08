@@ -15,6 +15,6 @@ MonoBehaviour:
   upgradeName: Knockback
   description: Increases hitstun
   type: 4
-  currentValue: 0.03
+  currentValue: 0
   baseValue: 0.03
   rarity: 2

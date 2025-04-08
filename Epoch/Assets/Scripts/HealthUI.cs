@@ -86,7 +86,7 @@ public class HealthUI : MonoBehaviour
             healthText.text = "(" + Mathf.RoundToInt(healthPercentage * 100) + "%)";
 
             // Debugging to see if the health value is correct
-            Debug.Log("Health Percentage: " + healthPercentage);
+           // Debug.Log("Health Percentage: " + healthPercentage);
         }
     }
 }
