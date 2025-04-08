@@ -14,6 +14,7 @@ public class EnemyRecieveDamage : MonoBehaviour
     private Color originalColor;
     public float flashDuration = 0.1f;
     private Rigidbody2D rb;
+    public EnemyHealthUI enemyHealthUI;
 
     // We are gonna turn the ai for a bit...
     private AIPath aiPath;
@@ -36,6 +37,7 @@ public class EnemyRecieveDamage : MonoBehaviour
     {
         health -= damage;
         ApplyKnockback(knockbackDirection, knockbackForce, hitstun);
+        enemyHealthUI.GetComponent<EnemyHealthUI>().UpdateHealthBar();
 
         TintRed();
         checkDeath();
