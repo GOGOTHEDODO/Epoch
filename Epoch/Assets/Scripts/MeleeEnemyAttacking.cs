@@ -6,67 +6,68 @@ public class MeleeEnemyAttacking : MonoBehaviour
 {
     public float attackDamage = 10f;
     public float attackCooldown;
-    public float attackRange = 1f; // Distance from player
+    public float attackRange = 1f;
     private float lastAttackTime = 0f;
-
-    public Transform attackHolder;
-    public SpriteRenderer attackRenderer;
-    private Animator attackAnimator; // We'll grab this from attackHolder
-
 
     private Transform player;
     private PlayerHealth playerHealth;
-    private Animator animator;
+    private Animator attackAnimator;
+    private Transform attackManagerTransform;
+    private SpriteRenderer attackRenderer;
 
-
-
-void Start()
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<PlayerHealth>();
-        animator = GetComponent<Animator>();
 
-        if (attackHolder != null)
+        attackManagerTransform = transform.Find("AttackManager");
+
+        if (attackManagerTransform != null)
         {
-            attackAnimator = attackHolder.GetComponent<Animator>();
+            Transform attackAnimationTransform = attackManagerTransform.Find("AttackAnimation");
+            attackAnimator = attackAnimationTransform?.GetComponent<Animator>();
+            attackRenderer = attackAnimationTransform?.GetComponent<SpriteRenderer>();
         }
-}
+        else
+        {
+            Debug.LogWarning("AttackManager object not found in hierarchy.");
+        }
+    }
 
     void Update()
     {
         if (player == null) return;
 
-        // Check distance to player
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         if (distanceToPlayer <= attackRange && Time.time >= lastAttackTime + attackCooldown)
         {
+            RotateTowardPlayer();
             AttackPlayer();
             lastAttackTime = Time.time;
         }
     }
 
-    private void AttackPlayer()
+    private void RotateTowardPlayer()
     {
+        if (attackManagerTransform == null || player == null) return;
 
-        if (player == null || attackHolder == null) return;
+        Vector3 direction = (player.position - attackManagerTransform.position).normalized;
 
-        // Get direction to player
-        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        // Face the direction
+        attackManagerTransform.right = direction;
 
-        // Rotate the AttackHolder to face the player
-        attackHolder.right = directionToPlayer;
-
-        // Optional: Flip sprite if needed (e.g., if weapon or VFX looks better when flipped)
-        SpriteRenderer attackRenderer = attackHolder.GetComponent<SpriteRenderer>();
+        // Flip sprite if facing left
         if (attackRenderer != null)
         {
-            attackRenderer.flipY = directionToPlayer.x < 0;
+            attackRenderer.flipY = direction.x < 0;
         }
+    }
 
-        // We are basically faking a real attack as we don't have much time left (I, Luke Supan, will be coming back to this project after the class is over)
-        if (animator != null)
+    private void AttackPlayer()
+    {
+        if (attackAnimator != null)
         {
-            animator.SetTrigger("Attack");
+            attackAnimator.SetTrigger("Attack");
         }
 
         if (playerHealth != null)
@@ -74,7 +75,5 @@ void Start()
             playerHealth.TakeDamage(attackDamage, gameObject);
             Debug.Log("Enemy attacked the player!");
         }
-
-        lastAttackTime = Time.time; // Cooldown starts here
     }
 }
