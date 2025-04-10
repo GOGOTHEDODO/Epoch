@@ -4,10 +4,12 @@ public class UpgradeOrb : MonoBehaviour
 {
     private LevelManager levelManager;
     private Rigidbody2D rb;
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         if (rb != null)
         {
             rb.velocity = Vector2.zero;  // Stop any movement

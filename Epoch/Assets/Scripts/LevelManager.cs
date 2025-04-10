@@ -32,20 +32,46 @@ public class LevelManager : MonoBehaviour
     }
 
     void SpawnUpgradeOrb()
+{
+    if (upgradeOrbPrefab != null && player != null)
     {
-        if (upgradeOrbPrefab != null && player != null)
+        Vector3[] offsets = new Vector3[]
         {
-            Vector3 spawnPosition = player.position + new Vector3(1f, 0, 0); // Spawns near player
-            spawnedOrb = Instantiate(upgradeOrbPrefab, spawnPosition, Quaternion.identity);
+            new Vector3(3f, 0, 0),   // right
+            new Vector3(-3f, 0, 0),  // left
+            new Vector3(0, 3f, 0),   // up
+            new Vector3(0, -3f, 0),  // down
+            new Vector3(2f, 2f, 0),  // top-right
+            new Vector3(-2f, 2f, 0), // top-left
+            new Vector3(2f, -2f, 0), // bottom-right
+            new Vector3(-2f, -2f, 0) // bottom-left
+        };
 
-            // Link the Upgrade Orb to this Level Manager
-            UpgradeOrb upgradeScript = spawnedOrb.GetComponent<UpgradeOrb>();
-            if (upgradeScript != null)
+        foreach (var offset in offsets)
+        {
+            Vector3 spawnPosition = player.position + offset;
+
+            // Check if the position is free (no walls or colliders)
+            Collider2D hit = Physics2D.OverlapCircle(spawnPosition, 0.5f, LayerMask.GetMask("Obstacle", "Water"));
+
+            if (hit == null)
             {
-                upgradeScript.SetLevelManager(this);
+                // Found a safe position!
+                spawnedOrb = Instantiate(upgradeOrbPrefab, spawnPosition, Quaternion.identity);
+
+                UpgradeOrb upgradeScript = spawnedOrb.GetComponent<UpgradeOrb>();
+                if (upgradeScript != null)
+                {
+                    upgradeScript.SetLevelManager(this);
+                }
+
+                return;
             }
         }
+
+        Debug.LogWarning("No safe spawn location found for Upgrade Orb!");
     }
+}
 
     public void OnUpgradeSelected()
     {
@@ -69,15 +95,25 @@ public class LevelManager : MonoBehaviour
     }
     IEnumerator LoadNextLevel()
     {
+        GameManager.instance.currentLevelCount++;
         yield return new WaitForSeconds(0.01f);
 
         if(sceneIDs.Length > 0)
         {
-            int randomIndex = Random.Range(0, sceneIDs.Length);
-            int nextSceneID = sceneIDs[randomIndex];
+            if(GameManager.instance.currentLevelCount >= GameManager.instance.maxLevelBeforeBoss)
+            {
+                SceneManager.LoadScene(GameManager.instance.bossSceneIndex);
+                Debug.Log("LOADING THE BOSS SCENE");
+            } 
+            else 
+            {
+                int randomIndex = Random.Range(0, sceneIDs.Length);
+                int nextSceneID = sceneIDs[randomIndex];
 
-            Debug.Log($"Loading Scene ID: {nextSceneID}");
-            SceneManager.LoadScene(nextSceneID);
+                Debug.Log($"Loading Scene ID: {nextSceneID}");
+                SceneManager.LoadScene(nextSceneID);
+            }
+          
         }
         else 
         {

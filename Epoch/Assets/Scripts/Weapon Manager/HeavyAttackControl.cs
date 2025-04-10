@@ -19,7 +19,11 @@ public class HeavyAttackControl : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         damage = GameManager.instance.playerDamage * 1.5f; // Heavy attack damage should scale off of normal damage
         HeavyCooldown = GameManager.instance.attackCooldown * 1.5; // Heavy attack cooldown should scale off of the other cooldown
+<<<<<<< HEAD
         stun = 0.03f;
+=======
+        stun = GameManager.instance.currentKnockback * 1.5f;
+>>>>>>> RyansBranch
 
         // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE, ITS A LITTLE JANK REGARDLESS
         knockbackForce = 3f;

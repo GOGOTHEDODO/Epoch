@@ -7,24 +7,49 @@ public class MainMenu : MonoBehaviour
 {
     public int[] sceneIDs;
 
-   //creates a parameter for a game object in unity so it knows what panel to activate.
-   public GameObject settingsPanel;
-   //Start Game moves to the scene with the ID of 1 in the build menu under the files tab. 
-   public void StartGame() {
-    SceneManager.LoadScene(sceneIDs[Random.Range(0, sceneIDs.Length)]);
-   }
-   //opens the settings panel.
-   public void OpenSettings() {
-      settingsPanel.SetActive(true);
-   }
-   //closes the settings panel.
-   public void CloseSettings() {
-      settingsPanel.SetActive(false);
-   }
+    public GameObject settingsPanel;
 
-   //When the game is properly built the ExitGame function will quit out of the application, for now it just sends a console message.
-   public void ExitGame() {
-    Debug.Log("Quiting Game");
-    Application.Quit();
-   }
+    // ✅ Add this reference for the meta upgrades panel
+    public GameObject metaUpgradePanel;
+    public MetaUpgradeManager upgradeManager;
+
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(sceneIDs[Random.Range(0, sceneIDs.Length)]);
+    }
+
+    public void OpenSettings()
+    {
+        settingsPanel.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        settingsPanel.SetActive(false);
+    }
+
+    // ✅ New function to open the meta upgrades panel
+    public void OpenMetaUpgrades()
+    {
+        if (metaUpgradePanel != null)
+        {
+            metaUpgradePanel.SetActive(true);
+            upgradeManager.OpenPanel();
+        }
+    }
+
+    public void CloseMetaUpgrades()
+{
+    if (metaUpgradePanel != null)
+    {
+        metaUpgradePanel.SetActive(false);
+    }
+}
+
+    public void ExitGame()
+    {
+        Debug.Log("Quiting Game");
+        Application.Quit();
+    }
 }

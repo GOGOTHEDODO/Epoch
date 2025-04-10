@@ -15,6 +15,6 @@ MonoBehaviour:
   upgradeName: Attack Speed
   description: Increases Attack Speed
   type: 2
-  currentValue: 7.5
+  currentValue: 0
   baseValue: 10
   rarity: 0

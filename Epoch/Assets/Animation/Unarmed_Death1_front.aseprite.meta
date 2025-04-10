@@ -98,7 +98,11 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
+<<<<<<< HEAD
   platformSettingsDirtyTick: 638788505536266800
+=======
+  platformSettingsDirtyTick: 638793287174818119
+>>>>>>> RyansBranch
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -133,7 +137,11 @@ ScriptedImporter:
       y: 4
       width: 15
       height: 25
+<<<<<<< HEAD
     spriteID: 711b1c013f1d0394484ac8ca2beded03
+=======
+    spriteID: b27448b7f4c6d4849a5f24598d8f4aeb
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,7 +161,11 @@ ScriptedImporter:
       y: 37
       width: 15
       height: 22
+<<<<<<< HEAD
     spriteID: 5cb6c2caf91432e4fb5c6b7eae6b3d4a
+=======
+    spriteID: ff047879f8bfcb64eab28699a2972ee8
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -173,7 +185,11 @@ ScriptedImporter:
       y: 4
       width: 19
       height: 17
+<<<<<<< HEAD
     spriteID: 3759355cf7404ca4ca38b8755f3115d0
+=======
+    spriteID: 2cd69400f0df3ab47bbfcb420900af3d
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -193,7 +209,11 @@ ScriptedImporter:
       y: 95
       width: 17
       height: 11
+<<<<<<< HEAD
     spriteID: 123927766e6fe12449937bb691f47983
+=======
+    spriteID: 44913b351cae71540afcd3fb7c4f6353
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -213,7 +233,11 @@ ScriptedImporter:
       y: 29
       width: 19
       height: 14
+<<<<<<< HEAD
     spriteID: 9769561aa826af44ea38dacb5273a42e
+=======
+    spriteID: 520eb289f2b938443aeb09294c45ff03
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -233,7 +257,11 @@ ScriptedImporter:
       y: 51
       width: 19
       height: 14
+<<<<<<< HEAD
     spriteID: 6f498205f27488047a04a22ebd2b0cf0
+=======
+    spriteID: c72a9bc69015a544891f9084b39e0a25
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -253,7 +281,11 @@ ScriptedImporter:
       y: 73
       width: 19
       height: 14
+<<<<<<< HEAD
     spriteID: 16e945d2532a74948adbd47cedff142d
+=======
+    spriteID: b4970ae42acd5274890e8cfb690dd7d1
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -274,7 +306,11 @@ ScriptedImporter:
       y: 95
       width: 17
       height: 11
+<<<<<<< HEAD
     spriteID: 2f6279a3ccdebe34aaa9c94f8f3ee7fb
+=======
+    spriteID: da330930e9ebae747995c4b0134b5a90
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -291,10 +327,17 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 27
+<<<<<<< HEAD
       y: 72
       width: 19
       height: 14
     spriteID: 790c26cef52ef6345bc10fdaf4ae6878
+=======
+      y: 73
+      width: 19
+      height: 14
+    spriteID: c021d9324235d8f49a63efddd1fe09e1
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -311,10 +354,17 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
+<<<<<<< HEAD
       y: 36
       width: 15
       height: 22
     spriteID: 5c17d0a344b6f5e4fadbb2df93caaf81
+=======
+      y: 37
+      width: 15
+      height: 22
+    spriteID: e1662cf0fad0e9247bb125de0e8c7d3d
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -330,11 +380,19 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
+<<<<<<< HEAD
       x: 26
       y: 50
       width: 19
       height: 14
     spriteID: 5d5daf80b4ac4a1488178cd56e8eb474
+=======
+      x: 27
+      y: 51
+      width: 19
+      height: 14
+    spriteID: 7a74eee6f9bc7ab488d5663ce2cdb834
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -354,7 +412,11 @@ ScriptedImporter:
       y: 29
       width: 19
       height: 14
+<<<<<<< HEAD
     spriteID: 654b2fa9e57a7e043a124c40af20865c
+=======
+    spriteID: 8c9236338ff0aff48b88cec972ba10d4
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -374,7 +436,11 @@ ScriptedImporter:
       y: 4
       width: 15
       height: 25
+<<<<<<< HEAD
     spriteID: 8b1aa4b6c57d397429c7143ca89ce1e0
+=======
+    spriteID: 358c066019faa6147a959434e619b76d
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -394,7 +460,11 @@ ScriptedImporter:
       y: 4
       width: 19
       height: 17
+<<<<<<< HEAD
     spriteID: 0789f984900a10641a4d9ae9df855937
+=======
+    spriteID: a2bc2a64b7b96dc48998b9810fb11b58
+>>>>>>> RyansBranch
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -419,7 +489,11 @@ ScriptedImporter:
         y: 17
         width: 15
         height: 25
+<<<<<<< HEAD
       spriteId: 711b1c013f1d0394484ac8ca2beded03
+=======
+      spriteId: b27448b7f4c6d4849a5f24598d8f4aeb
+>>>>>>> RyansBranch
     - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
@@ -428,7 +502,11 @@ ScriptedImporter:
         y: 17
         width: 15
         height: 22
+<<<<<<< HEAD
       spriteId: 5cb6c2caf91432e4fb5c6b7eae6b3d4a
+=======
+      spriteId: ff047879f8bfcb64eab28699a2972ee8
+>>>>>>> RyansBranch
     - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
@@ -437,7 +515,11 @@ ScriptedImporter:
         y: 17
         width: 19
         height: 17
+<<<<<<< HEAD
       spriteId: 3759355cf7404ca4ca38b8755f3115d0
+=======
+      spriteId: 2cd69400f0df3ab47bbfcb420900af3d
+>>>>>>> RyansBranch
     - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
@@ -446,7 +528,11 @@ ScriptedImporter:
         y: 17
         width: 17
         height: 11
+<<<<<<< HEAD
       spriteId: 123927766e6fe12449937bb691f47983
+=======
+      spriteId: 44913b351cae71540afcd3fb7c4f6353
+>>>>>>> RyansBranch
     - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
@@ -455,7 +541,11 @@ ScriptedImporter:
         y: 17
         width: 19
         height: 14
+<<<<<<< HEAD
       spriteId: 9769561aa826af44ea38dacb5273a42e
+=======
+      spriteId: 520eb289f2b938443aeb09294c45ff03
+>>>>>>> RyansBranch
     - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
@@ -464,7 +554,11 @@ ScriptedImporter:
         y: 17
         width: 19
         height: 14
+<<<<<<< HEAD
       spriteId: 6f498205f27488047a04a22ebd2b0cf0
+=======
+      spriteId: c72a9bc69015a544891f9084b39e0a25
+>>>>>>> RyansBranch
     - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
@@ -473,7 +567,11 @@ ScriptedImporter:
         y: 17
         width: 19
         height: 14
+<<<<<<< HEAD
       spriteId: 16e945d2532a74948adbd47cedff142d
+=======
+      spriteId: b4970ae42acd5274890e8cfb690dd7d1
+>>>>>>> RyansBranch
     linkedCells: []
     parentIndex: -1
   platformSettings:

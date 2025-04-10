@@ -14,7 +14,7 @@ TagManager:
   - Water
   - UI
   - Decorations
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -54,4 +54,10 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: HealthBarForeground
+    uniqueID: 4103284381
+    locked: 0
+  - name: HealthBarBackground
+    uniqueID: 3698325343
     locked: 0

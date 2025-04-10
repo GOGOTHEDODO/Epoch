@@ -17,6 +17,11 @@ public class EnemyRecieveDamage : MonoBehaviour
 
     // We are gonna turn the ai for a bit...
     private AIPath aiPath;
+<<<<<<< HEAD
+=======
+
+    private Coroutine burnCoroutine;
+>>>>>>> RyansBranch
 
 
     // Start is called before the first frame update
@@ -101,4 +106,27 @@ public class EnemyRecieveDamage : MonoBehaviour
     {
         
     }
+
+    public void ApplyBurn(float damagerPerTick, float duration)
+    {
+        if(burnCoroutine != null)
+        {
+            StopCoroutine(burnCoroutine);
+        }
+        burnCoroutine = StartCoroutine(BurnOverTime(damagerPerTick, duration));
+    }
+
+    private IEnumerator BurnOverTime(float damagerPerTick, float duration)
+    {
+        float elapsedTime = 0f;
+        float tickRate = 1f;
+
+        while(elapsedTime < duration)
+        {
+            DealDamage(damagerPerTick, Vector2.zero, 0, 0);
+            yield return new WaitForSeconds(tickRate);
+            elapsedTime += tickRate;
+        }
+    }
+
 }

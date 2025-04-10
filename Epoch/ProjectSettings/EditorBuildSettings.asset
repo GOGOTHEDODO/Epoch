@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestMap.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/PGMazeLevel.unity
+    guid: db2bd758b30ccd94994fae849827fe9e
   m_configObjects: {}
