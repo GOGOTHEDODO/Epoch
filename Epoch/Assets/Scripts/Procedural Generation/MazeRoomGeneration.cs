@@ -287,5 +287,13 @@ public class MazeRoomGenerator : MonoBehaviour
         }
 
         CreateMaze();
+
+        for (int i = 0; i < numX; i++)
+        {
+            for (int j = 0; j < numY; j++)
+            {
+                rooms[i, j].SetLanternActiveRand(true);
+            }
+        }
     }
 }

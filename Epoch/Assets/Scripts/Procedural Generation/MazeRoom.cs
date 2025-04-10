@@ -26,7 +26,13 @@ public class MazeRoom : MonoBehaviour
     [SerializeField] GameObject bottomLeftCorner;
     [SerializeField] GameObject bottomRightCorner;
     [SerializeField] GameObject brazier;
-    [SerializeField] GameObject brazierSprite; 
+    [SerializeField] GameObject brazierSprite;
+    [SerializeField] GameObject topLantern;
+    [SerializeField] GameObject bottomLantern;
+    [SerializeField] GameObject leftLantern;
+    [SerializeField] GameObject rightLantern;
+    [SerializeField] GameObject brazierLight;
+    int lanternRatio = 15;
 
     Dictionary<Directions, GameObject> walls = new Dictionary<Directions, GameObject>();
 
@@ -49,6 +55,81 @@ public class MazeRoom : MonoBehaviour
     {
         brazier.SetActive(flag);
         brazierSprite.SetActive(flag);
+        brazierLight.SetActive(flag);
+    }
+
+    public void SetLanternActive(bool flag)
+    {
+        topLantern.SetActive(flag);
+        bottomLantern.SetActive(flag);
+        leftLantern.SetActive(flag);
+        rightLantern.SetActive(flag);
+    }
+
+    public void SetLanternActiveRand(bool flag)
+    {
+        if (walls[Directions.TOP].activeSelf)
+        {
+            if (Random.Range(0, lanternRatio) == 1)
+            {
+                topLantern.SetActive(flag);  // Set lantern active or inactive depending on the flag.
+            }
+            else
+            {
+                topLantern.SetActive(false);  // Ensure lantern is deactivated if the wall is inactive.
+            }
+        }
+        else
+        {
+            topLantern.SetActive(false);  // Ensure lantern is deactivated if the wall is inactive.
+        }
+
+        if (walls[Directions.BOTTOM].activeSelf)
+        {
+            if (Random.Range(0, lanternRatio) == 1)
+            {
+                bottomLantern.SetActive(flag);  // Set lantern active or inactive depending on the flag.
+            }
+            {
+                bottomLantern.SetActive(false);  // Ensure lantern is deactivated if the wall is inactive.
+            }
+        }
+        else
+        {
+            bottomLantern.SetActive(false);  // Ensure lantern is deactivated if the wall is inactive.
+        }
+
+        if (walls[Directions.LEFT].activeSelf)
+        {
+            if (Random.Range(0, lanternRatio) == 1)
+            {
+                leftLantern.SetActive(flag);  // Set lantern active or inactive depending on the flag.
+            }
+            else
+            {
+                leftLantern.SetActive(false);  // Ensure lantern is deactivated if the wall is inactive.
+            }
+        }
+        else
+        {
+            leftLantern.SetActive(false);  // Ensure lantern is deactivated if the wall is inactive.
+        }
+
+        if (walls[Directions.RIGHT].activeSelf)
+        {
+            if (Random.Range(0, lanternRatio) == 1)
+            {
+                rightLantern.SetActive(flag);  // Set lantern active or inactive depending on the flag.
+            }
+            else
+            {
+                rightLantern.SetActive(false);  // Ensure lantern is deactivated if the wall is inactive.
+            }
+        }
+        else
+        {
+            rightLantern.SetActive(false);  // Ensure lantern is deactivated if the wall is inactive.
+        }
     }
 
     public void SetDirFlag(Directions dir, bool flag)
