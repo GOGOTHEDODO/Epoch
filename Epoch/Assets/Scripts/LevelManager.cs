@@ -123,5 +123,6 @@ public class LevelManager : MonoBehaviour
             Debug.LogError("No scenes available for randomization");
         }
         CooldownUI.instance.UpdateInitialCooldown();
+        StatsPopup.instance.CloseStats();
     }
 }
