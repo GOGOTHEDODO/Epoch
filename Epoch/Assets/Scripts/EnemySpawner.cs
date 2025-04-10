@@ -16,9 +16,11 @@ public class EnemySpawner : MonoBehaviour
         SpawnEnemies();
     }
 
-    void SpawnEnemies()
+    public void SpawnEnemies()
     {
         Bounds bounds = spawnArea.bounds;
+
+        Debug.Log("SpawnEnemies()");
 
         int spawned = 0;
         int maxAttempts = numberOfEnemies * 100; // prevent infinite loop

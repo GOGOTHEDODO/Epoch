@@ -256,6 +256,21 @@ public class MazeRoomGenerator : MonoBehaviour
             for (int j = 0; j < numY; ++j)
             {
                 GameObject room = Instantiate(roomPrefab, new Vector3((i * roomWidth) + (offsetX * roomWidth * numX), (j * roomHeight) + (offsetY * roomHeight * numY), 0.0f), Quaternion.identity);
+               
+                GameObject polygonObject = new GameObject("PolygonColliderGenerator_" + i + "_" + j);
+                PolygonColliderGenerator polygon = polygonObject.AddComponent<PolygonColliderGenerator>();
+
+                if (polygon != null)
+                {
+                    polygon.SetPoints(j * roomHeight + (offsetY * roomHeight * numY) + roomHeight * 0.4f,
+                  (j * roomHeight) - roomHeight + (offsetY * roomHeight * numY) + roomHeight * 0.4f,
+                  i * roomWidth + (offsetX * roomWidth * numX),
+                  (i * roomWidth) - roomWidth + (offsetX * roomWidth * numX));
+                }
+                else
+                {
+                    Debug.LogError("PolygonColliderGenerator component could not be instantiated!");
+                } 
 
                 room.name = "Room_" + i.ToString() + "_" + j.ToString();
                 rooms[i, j] = room.GetComponent<MazeRoom>();
