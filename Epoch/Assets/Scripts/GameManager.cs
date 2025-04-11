@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using System.IO;
 public class GameManager : MonoBehaviour
 {
+    public bool inWorldTwo = false;
+    public List<UpgradeData> allUpgrades;
 
     public int currentLevelCount = 0;
     public int maxLevelBeforeBoss = 0;
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour
     public MetaUpgradeData metaUpgrades = new MetaUpgradeData();
 
 
-    private List<UpgradeData> allUpgrades = new List<UpgradeData>();
+    //private List<UpgradeData> allUpgrades = new List<UpgradeData>();
 
     private void Awake()
     {
@@ -130,9 +132,9 @@ public class GameManager : MonoBehaviour
 
     public void ResetUpgrades()
     {
-        UpgradeData[] upgrades = Resources.LoadAll<UpgradeData>("");
+        //UpgradeData[] upgrades = Resources.LoadAll<UpgradeData>("");
 
-        foreach (UpgradeData upgrade in upgrades)
+        foreach (UpgradeData upgrade in allUpgrades)
         {
             upgrade.currentValue = 0;
             upgrade.hasBeenChosen = false;

@@ -74,6 +74,8 @@ public class LightAttackControl : MonoBehaviour
         // Trigger the attack animation
         animator.SetTrigger("Attack");
 
+        CooldownUI.instance.StartCooldown(LightCooldown);
+
         // Cooldown for attack
         yield return new WaitForSeconds((float)LightCooldown / 2);
 

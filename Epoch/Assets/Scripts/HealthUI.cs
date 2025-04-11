@@ -23,9 +23,9 @@ public class HealthUI : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);  // Keep this UI across scenes
         }
-        else
+        else if (instance != this)
         {
-            Destroy(gameObject);  // Prevent duplicate instances
+            Destroy(gameObject);  // Destroy any duplicate instance
         }
     }
 
@@ -86,7 +86,7 @@ public class HealthUI : MonoBehaviour
             healthText.text = "(" + Mathf.RoundToInt(healthPercentage * 100) + "%)";
 
             // Debugging to see if the health value is correct
-            Debug.Log("Health Percentage: " + healthPercentage);
+           // Debug.Log("Health Percentage: " + healthPercentage);
         }
     }
 }

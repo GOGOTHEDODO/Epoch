@@ -29,4 +29,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PGMazeLevel.unity
     guid: db2bd758b30ccd94994fae849827fe9e
+  - enabled: 1
+    path: Assets/Scenes/Russia/RussiaMap1.unity
+    guid: 85d416a61db8c214193ee97e256ef72a
+  - enabled: 1
+    path: Assets/Scenes/Russia/RussiaMap2 Dark.unity
+    guid: 9c519f491bb124c4b934393dbd4f633a
+  - enabled: 1
+    path: Assets/Scenes/Russia/RussiaMap2 Light.unity
+    guid: c592f0ff6a3f8be43ae8df30b6a5a564
+  - enabled: 1
+    path: Assets/Scenes/Russia/RussiaMap3 dark.unity
+    guid: 483c069ca38e47448ba504154f18cdcc
+  - enabled: 1
+    path: Assets/Scenes/Russia/RussiaMap3 light.unity
+    guid: 1f09d1ea47e0725469f199c3fd0c2343
   m_configObjects: {}

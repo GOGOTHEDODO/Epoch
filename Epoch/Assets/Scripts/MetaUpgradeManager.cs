@@ -31,7 +31,7 @@ public class MetaUpgradeManager : MonoBehaviour
     {
         if (GameManager.instance.metaUpgrades.starParts > 0)
         {
-            GameManager.instance.metaUpgrades.basePlayerDamage += 2f;
+            GameManager.instance.metaUpgrades.basePlayerDamage += 1f;
             GameManager.instance.metaUpgrades.starParts--;
             GameManager.instance.SaveMetaData();
             UpdateUI();
@@ -43,7 +43,7 @@ public class MetaUpgradeManager : MonoBehaviour
     {
         if (GameManager.instance.metaUpgrades.starParts > 0)
         {
-            GameManager.instance.metaUpgrades.baseAttackCoolDown -= 0.05f;
+            GameManager.instance.metaUpgrades.baseAttackCoolDown *= 0.95f;
             GameManager.instance.metaUpgrades.starParts--;
             GameManager.instance.SaveMetaData();
             UpdateUI();
@@ -55,7 +55,7 @@ public class MetaUpgradeManager : MonoBehaviour
     {
         if (GameManager.instance.metaUpgrades.starParts > 0)
         {
-            GameManager.instance.metaUpgrades.baseMaxHealth += 50f;
+            GameManager.instance.metaUpgrades.baseMaxHealth += 10f;
             GameManager.instance.metaUpgrades.starParts--;
             GameManager.instance.SaveMetaData();
             UpdateUI();
@@ -91,7 +91,7 @@ public class MetaUpgradeManager : MonoBehaviour
     {
         if (GameManager.instance.metaUpgrades.starParts > 0)
         {
-            GameManager.instance.metaUpgrades.baseLuck += 2;
+            GameManager.instance.metaUpgrades.baseLuck += 1;
             GameManager.instance.metaUpgrades.starParts--;
             GameManager.instance.SaveMetaData();
             UpdateUI();
