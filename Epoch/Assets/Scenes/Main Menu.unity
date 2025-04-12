@@ -6129,6 +6129,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: be4a72d07b5491846a594298ccb3c0cd, type: 2}
   - {fileID: 11400000, guid: d0bc6bb2a51e4a948b41d4fae9f6bb34, type: 2}
   - {fileID: 11400000, guid: 6931efdc30ff0f1448ff8c2ea1b75d3f, type: 2}
+  - {fileID: 11400000, guid: d8b87fff81fbf974582ab738843aa263, type: 2}
+  - {fileID: 11400000, guid: 15ee98abe5dcdde45a07786b8abc72ff, type: 2}
+  - {fileID: 11400000, guid: 97327819412d4934f90ef83a9203bc7e, type: 2}
   currentLevelCount: 0
   maxLevelBeforeBoss: 0
   bossSceneIndex: 5
@@ -6141,6 +6144,7 @@ MonoBehaviour:
   currentHealth: 100
   currentDashQuantity: 1
   hasFireSword: 0
+  hasDoubleAttack: 0
   metaUpgrades:
     starParts: 0
     basePlayerSpeed: 5

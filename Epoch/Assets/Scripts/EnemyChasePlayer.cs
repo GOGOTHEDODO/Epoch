@@ -12,18 +12,40 @@ public class EnemyChasePlayer : MonoBehaviour
     private float wanderTimer;
     private bool isWandering = false;
     private GameObject currentWanderTarget;
-
     private Transform player;
     private AIPath aiPath;
     private AIDestinationSetter destinationSetter;
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
+        yield return null;
+
         player = GameObject.FindGameObjectWithTag("Player").transform;
         aiPath = GetComponent<AIPath>();
         destinationSetter = GetComponent<AIDestinationSetter>();
 
         aiPath.canMove = false;
+
+        tryDetectPlayer();
+    }
+
+    void tryDetectPlayer()
+    {
+        if (player == null) return;
+
+        float distance = Vector2.Distance(transform.position, player.position);
+
+        if(distance <= detectionRadius)
+        {
+            destinationSetter.target = player;
+            aiPath.canMove = true;
+            isWandering = false;
+
+            if(currentWanderTarget != null)
+            {
+                Destroy(currentWanderTarget);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -39,6 +61,7 @@ public class EnemyChasePlayer : MonoBehaviour
             {
                 destinationSetter.target = player;
                 aiPath.canMove = true;
+                
                 if(currentWanderTarget != null)
                 {
                     Destroy(currentWanderTarget);

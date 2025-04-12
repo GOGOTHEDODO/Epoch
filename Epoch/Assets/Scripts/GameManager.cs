@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public float currentHealth = 100f;
     public int currentDashQuantity = 1;
     public bool hasFireSword = false;
+    public bool hasDoubleAttack = false;
 
     //base stats when player is killed
 
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
         ApplyMetaUpgrades();
         CooldownManager.isOtherAttacking = false;
         hasFireSword = false;
+        hasDoubleAttack = false;
         ResetUpgrades();
         metaUpgrades.starParts = 30;
         SceneManager.LoadScene(0);
@@ -99,6 +101,7 @@ public class GameManager : MonoBehaviour
      // Method to apply upgrades globally
     public void ApplyUpgrade(UpgradeData upgrade)
     {
+        PlayerHealth ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         //Apply the Chosen upgrade which is known through UpgradeData and update the corresponding stat.
         //At the start of each level the stats here are put onto the player 
         switch (upgrade.type)
@@ -123,6 +126,27 @@ public class GameManager : MonoBehaviour
                 break;
             case UpgradeData.UpgradeType.FireSword:
                 hasFireSword = true;
+                break;
+            case UpgradeData.UpgradeType.HealPlayer:
+                currentHealth += upgrade.currentValue;
+                if(currentHealth > maxHealth)
+                   currentHealth = maxHealth;
+                ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+                if (ph != null) ph.SetHealth(currentHealth);
+                
+                break;
+            case UpgradeData.UpgradeType.MaxHealthBoost:
+                maxHealth += upgrade.currentValue;
+
+                ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+                if (ph != null)
+                {
+                    ph.SetMaxHealth(maxHealth);
+                    ph.SetHealth(currentHealth); // Optional: also update bar visually
+                }
+                break;
+            case UpgradeData.UpgradeType.DoubleAttack:
+                hasDoubleAttack = true;
                 break;
         }
 

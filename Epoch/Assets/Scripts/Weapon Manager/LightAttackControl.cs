@@ -68,18 +68,33 @@ public class LightAttackControl : MonoBehaviour
         CooldownManager.isOtherAttacking = true;
         // Lock the facing direction before starting the animation
         isAttacking = true;
+        damage = GameManager.instance.playerDamage;
 
         GetComponent<Collider2D>().enabled = true;
 
         // Trigger the attack animation
         animator.SetTrigger("Attack");
-
+        DetectColliders();
         CooldownUI.instance.StartCooldown(LightCooldown);
 
         // Cooldown for attack
         yield return new WaitForSeconds((float)LightCooldown / 2);
 
         GetComponent<Collider2D>().enabled = false;
+
+        if (GameManager.instance.hasDoubleAttack)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            damage = GameManager.instance.playerDamage *0.25f;
+            Debug.Log($"DAMAGE IS {damage}");
+            GetComponent<Collider2D>().enabled = true;
+            animator.SetTrigger("Attack");
+            DetectColliders();
+
+            yield return new WaitForSeconds((float)LightCooldown / 4);
+            GetComponent<Collider2D>().enabled = false;
+        }
 
         yield return new WaitForSeconds((float)LightCooldown / 2);
 
@@ -124,6 +139,12 @@ public class LightAttackControl : MonoBehaviour
         // Deal damage to closest enemy
         if (closestEnemy != null)
         {
+            bool isSecondAttack = damage < GameManager.instance.playerDamage;
+
+            Debug.Log(isSecondAttack
+                ? $"🔥 Second attack hit for {damage} (25% of base)"
+                : $"🗡️ Primary attack hit for {damage}");
+            
             Debug.Log($"Dealing {damage} to {closestEnemy.gameObject.name}");
             
             EnemyRecieveDamage enemy = closestEnemy.GetComponent<EnemyRecieveDamage>();
@@ -135,6 +156,15 @@ public class LightAttackControl : MonoBehaviour
                 }
                 Vector2 knockbackDirection = (closestEnemy.transform.position - transform.position).normalized;
                 enemy.DealDamage(damage, knockbackDirection, knockbackForce, stun);
+
+                 if (damage < GameManager.instance.playerDamage)
+                {
+                    Debug.Log($"🔥 Second attack hit for {damage} (25% of base)");
+                }
+                else
+                {
+                    Debug.Log($"🗡️ Primary attack hit for {damage}");
+                }
                 
             }
             else

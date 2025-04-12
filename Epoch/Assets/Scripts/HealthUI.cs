@@ -82,8 +82,10 @@ public class HealthUI : MonoBehaviour
 
             // Update the fill amount based on health
             healthBarFill.fillAmount = healthPercentage;
+            int current = Mathf.RoundToInt(playerHealth.health);
+            int max = Mathf.RoundToInt(playerHealth.maxHealth);
 
-            healthText.text = "(" + Mathf.RoundToInt(healthPercentage * 100) + "%)";
+            healthText.text = $"{current}/{max}";
 
             // Debugging to see if the health value is correct
            // Debug.Log("Health Percentage: " + healthPercentage);

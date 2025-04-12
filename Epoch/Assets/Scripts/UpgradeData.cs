@@ -33,7 +33,10 @@ public class UpgradeData : ScriptableObject
         Luck,
         Knockback,
         DashQuantity,
-        FireSword
+        FireSword,
+        HealPlayer,
+        MaxHealthBoost,
+        DoubleAttack
     }
 
     public void ResetToBaseValue()
