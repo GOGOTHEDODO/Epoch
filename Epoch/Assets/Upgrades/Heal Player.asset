@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ded7976753bea49b15cc1805f3842e, type: 3}
   m_Name: Heal Player
   m_EditorClassIdentifier: 
-  upgradeName: Heal Player
-  description: Restore HP
+  upgradeName: 'Modern Medicine: '
+  description: 'Restore health by: '
   type: 7
   currentValue: 0
   baseValue: 30

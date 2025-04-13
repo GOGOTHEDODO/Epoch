@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ded7976753bea49b15cc1805f3842e, type: 3}
   m_Name: DoubleAttack
   m_EditorClassIdentifier: 
-  upgradeName: Double Attack
+  upgradeName: 'Double Attack: '
   description: Attack twice per click, second hit does 25% of your current attack
     stat
   type: 9

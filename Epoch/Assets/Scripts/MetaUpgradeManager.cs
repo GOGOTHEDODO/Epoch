@@ -99,4 +99,28 @@ public class MetaUpgradeManager : MonoBehaviour
         }
     }
 
+    public void UpgradeCritDamage()
+    {
+        if (GameManager.instance.metaUpgrades.starParts > 0)
+        {
+            GameManager.instance.metaUpgrades.baseCritDamage += 0.1f;
+            GameManager.instance.metaUpgrades.starParts--;
+            GameManager.instance.SaveMetaData();
+            UpdateUI();
+            GameManager.instance.ApplyMetaUpgrades();
+        }
+    }
+
+    public void UpgradeCritRate()
+    {
+        if (GameManager.instance.metaUpgrades.starParts > 0)
+        {
+            GameManager.instance.metaUpgrades.baseCritRate += 0.02f;
+            GameManager.instance.metaUpgrades.starParts--;
+            GameManager.instance.SaveMetaData();
+            UpdateUI();
+            GameManager.instance.ApplyMetaUpgrades();
+        }
+    }
+
 }

@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ded7976753bea49b15cc1805f3842e, type: 3}
   m_Name: Damage
   m_EditorClassIdentifier: 
-  upgradeName: Damage
-  description: Increases Damage of Player
+  upgradeName: 'Sharp Blade: '
+  description: 'Increases Damage of Player by: '
   type: 1
   currentValue: 0
   baseValue: 20
   rarity: 1
+  minimumRarity: 0
+  isOneTimeUpgrade: 0
+  hasBeenChosen: 0

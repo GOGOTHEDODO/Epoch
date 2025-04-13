@@ -22,8 +22,12 @@ public class GameManager : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth = 100f;
     public int currentDashQuantity = 1;
+
+    public float currentCritDamage = 2f;
+    public float currentCritRate = 0.10f;
     public bool hasFireSword = false;
     public bool hasDoubleAttack = false;
+    
 
     //base stats when player is killed
 
@@ -39,6 +43,9 @@ public class GameManager : MonoBehaviour
         public float baseLuck = 0f;
         public float baseKnockback = 0.03f;
         public int baseDashQuantity = 1;
+
+        public float baseCritDamage = 2f;
+        public float baseCritRate = 0.10f;
     }
     public MetaUpgradeData metaUpgrades = new MetaUpgradeData();
 
@@ -117,6 +124,10 @@ public class GameManager : MonoBehaviour
                 break;
             case UpgradeData.UpgradeType.Luck:
                 currentLuck +=upgrade.currentValue;
+                if(Random.value < 0.5f)
+                {
+                    currentCritRate += 0.02f;
+                }
                 break;
             case UpgradeData.UpgradeType.Knockback:
                 currentKnockback += upgrade.currentValue;
@@ -133,11 +144,9 @@ public class GameManager : MonoBehaviour
                    currentHealth = maxHealth;
                 ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
                 if (ph != null) ph.SetHealth(currentHealth);
-                
                 break;
             case UpgradeData.UpgradeType.MaxHealthBoost:
                 maxHealth += upgrade.currentValue;
-
                 ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
                 if (ph != null)
                 {
@@ -147,6 +156,9 @@ public class GameManager : MonoBehaviour
                 break;
             case UpgradeData.UpgradeType.DoubleAttack:
                 hasDoubleAttack = true;
+                break;
+            case UpgradeData.UpgradeType.CritDamage:
+                currentCritDamage += upgrade.currentValue;
                 break;
         }
 

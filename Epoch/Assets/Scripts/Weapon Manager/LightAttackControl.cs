@@ -12,6 +12,7 @@ public class LightAttackControl : MonoBehaviour
     public float damage = 10f;
     public float knockbackForce;
     public float stun;
+    private Color originalBladeColor;
 
     void Start()
     {
@@ -20,6 +21,8 @@ public class LightAttackControl : MonoBehaviour
         damage = GameManager.instance.playerDamage;
         LightCooldown = GameManager.instance.attackCooldown;
         stun = GameManager.instance.currentKnockback;
+
+        originalBladeColor = attackRenderer.color;
 
         // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE, ITS A LITTLE JANK REGARDLESS
         knockbackForce = 2f;
@@ -136,6 +139,17 @@ public class LightAttackControl : MonoBehaviour
             }
         }
 
+        bool isCritHit = Random.value < GameManager.instance.currentCritRate;
+        float finalDamage;
+        if(isCritHit)
+        {
+            StartCoroutine(FlashBladeRed());
+            finalDamage = damage * GameManager.instance.currentCritDamage;
+        } else 
+        {
+            finalDamage = damage;
+        }
+
         // Deal damage to closest enemy
         if (closestEnemy != null)
         {
@@ -155,7 +169,7 @@ public class LightAttackControl : MonoBehaviour
                  enemy.ApplyBurn(2f, 3f);
                 }
                 Vector2 knockbackDirection = (closestEnemy.transform.position - transform.position).normalized;
-                enemy.DealDamage(damage, knockbackDirection, knockbackForce, stun);
+                enemy.DealDamage(finalDamage, knockbackDirection, knockbackForce, stun);
 
                  if (damage < GameManager.instance.playerDamage)
                 {
@@ -172,5 +186,12 @@ public class LightAttackControl : MonoBehaviour
                 Debug.LogError("EnemyRecieveDamage script is missing on the enemy");
             }
         }
+    }
+
+    private IEnumerator FlashBladeRed()
+    {
+        attackRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        attackRenderer.color = originalBladeColor;
     }
 }

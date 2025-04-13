@@ -36,7 +36,8 @@ public class UpgradeData : ScriptableObject
         FireSword,
         HealPlayer,
         MaxHealthBoost,
-        DoubleAttack
+        DoubleAttack,
+        CritDamage,
     }
 
     public void ResetToBaseValue()
