@@ -1,18 +1,102 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class MetaUpgradeManager : MonoBehaviour
 {
     public TextMeshProUGUI starPartsText;
 
+    public Button moveSpeedButton;
+    public Button attackDamageButton;
+    public Button attackSpeedButton;
+    public Button maxHealthButton;
+    public Button knockbackButton;
+    public Button dashQuantityButton;
+    public Button luckButton;
+    public Button critDamageButton;
+    public Button critRateButton;
+
+    public GameObject panelRoot;
+
+    private void Start()
+    {
+        AssignButtonListeners();
+        UpdateUI();
+    }
+
     public void OpenPanel()
     {
-        UpdateUI();
+        if (panelRoot != null)
+        {
+            panelRoot.SetActive(true);
+        }
+
+        UpdateUI(); // Always refresh UI when panel is opened
     }
 
     public void UpdateUI()
     {
-        starPartsText.text = "Star Parts: " + GameManager.instance.metaUpgrades.starParts;
+        if (starPartsText != null)
+        {
+            starPartsText.text = "Star Parts: " + GameManager.instance.metaUpgrades.starParts;
+        }
+    }
+
+    private void AssignButtonListeners()
+    {
+        if (moveSpeedButton != null)
+        {
+            moveSpeedButton.onClick.RemoveAllListeners();
+            moveSpeedButton.onClick.AddListener(UpgradeMoveSpeed);
+        }
+
+        if (attackDamageButton != null)
+        {
+            attackDamageButton.onClick.RemoveAllListeners();
+            attackDamageButton.onClick.AddListener(UpgradeAttackDamage);
+        }
+
+        if (attackSpeedButton != null)
+        {
+            attackSpeedButton.onClick.RemoveAllListeners();
+            attackSpeedButton.onClick.AddListener(UpgradeAttackSpeed);
+        }
+
+        if (maxHealthButton != null)
+        {
+            maxHealthButton.onClick.RemoveAllListeners();
+            maxHealthButton.onClick.AddListener(UpgradeMaxHealth);
+        }
+
+        if (knockbackButton != null)
+        {
+            knockbackButton.onClick.RemoveAllListeners();
+            knockbackButton.onClick.AddListener(UpgradeKnockback);
+        }
+
+        if (dashQuantityButton != null)
+        {
+            dashQuantityButton.onClick.RemoveAllListeners();
+            dashQuantityButton.onClick.AddListener(UpgradeDashQuantity);
+        }
+
+        if (luckButton != null)
+        {
+            luckButton.onClick.RemoveAllListeners();
+            luckButton.onClick.AddListener(UpgradeLuck);
+        }
+
+        if (critDamageButton != null)
+        {
+            critDamageButton.onClick.RemoveAllListeners();
+            critDamageButton.onClick.AddListener(UpgradeCritDamage);
+        }
+
+        if (critRateButton != null)
+        {
+            critRateButton.onClick.RemoveAllListeners();
+            critRateButton.onClick.AddListener(UpgradeCritRate);
+        }
     }
 
     public void UpgradeMoveSpeed()
@@ -122,5 +206,4 @@ public class MetaUpgradeManager : MonoBehaviour
             GameManager.instance.ApplyMetaUpgrades();
         }
     }
-
 }

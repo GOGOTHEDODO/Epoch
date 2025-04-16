@@ -115,6 +115,10 @@ public class LevelManager : MonoBehaviour
     IEnumerator LoadNextLevel()
     {
         GameManager.instance.currentLevelCount++;
+        if((GameManager.instance.currentLevelCount % 5) == 0 && GameManager.instance.currentLevelCount != 0)
+        {
+            GameManager.instance.metaUpgrades.starParts += 1;
+        }
         yield return new WaitForSeconds(0.01f);
 
         if(sceneIDs.Length > 0)
@@ -122,6 +126,7 @@ public class LevelManager : MonoBehaviour
            if (!GameManager.instance.inWorldTwo && SceneManager.GetActiveScene().buildIndex != GameManager.instance.bossSceneIndex && GameManager.instance.currentLevelCount == GameManager.instance.maxLevelBeforeBoss)
             {
                 // Load the boss scene
+                GameManager.instance.metaUpgrades.starParts += 1;
                 SceneManager.LoadScene(GameManager.instance.bossSceneIndex);
                 Debug.Log("LOADING THE BOSS SCENE");
             }

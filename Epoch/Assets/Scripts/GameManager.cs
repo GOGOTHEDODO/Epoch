@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         maxLevelBeforeBoss = Random.Range(6,9);
-        metaUpgrades.starParts = 30;
+        //metaUpgrades.starParts = 30;
         ApplyMetaUpgrades();
         ResetUpgrades();
     }
@@ -84,10 +84,14 @@ public class GameManager : MonoBehaviour
         currentLuck = metaUpgrades.baseLuck;
         currentKnockback = metaUpgrades.baseKnockback;
         currentDashQuantity = metaUpgrades.baseDashQuantity;
+        currentCritDamage = metaUpgrades.baseCritDamage;
+        currentCritRate = metaUpgrades.baseCritRate;
     }
 
     public void RestartGame()
     {
+        ResetUpgrades();
+        
         currentLevelCount = 0;
         maxLevelBeforeBoss = Random.Range(6,9);
         Debug.Log("Restarting Game...");
@@ -95,8 +99,6 @@ public class GameManager : MonoBehaviour
         CooldownManager.isOtherAttacking = false;
         hasFireSword = false;
         hasDoubleAttack = false;
-        ResetUpgrades();
-        metaUpgrades.starParts = 30;
         SceneManager.LoadScene(0);
     }
 

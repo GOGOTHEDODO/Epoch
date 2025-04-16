@@ -120,10 +120,16 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator DeathSequence()
     {
         yield return new WaitForSeconds(2f);
-
         Destroy(gameObject);
+
+        if (GameOverUI.instance != null)
+        {
+            GameOverUI.instance.ShowGameOver();
+        }
+
+       
         Debug.Log("Player has died!");
-        GameManager.instance.RestartGame();
+        //GameManager.instance.RestartGame();
     }
 
 }

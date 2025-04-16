@@ -835,10 +835,10 @@ RectTransform:
   - {fileID: 478809950}
   m_Father: {fileID: 1439194266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 2250, y: -125}
+  m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164550851
 MonoBehaviour:
@@ -883,19 +883,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 164550852}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 966500199}
-        m_TargetAssemblyTypeName: MetaUpgradeManager, Assembly-CSharp
-        m_MethodName: UpgradeAttackSpeed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &164550852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1644,10 +1632,10 @@ RectTransform:
   - {fileID: 558908027}
   m_Father: {fileID: 1439194266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 2250, y: -405}
+  m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357364812
 MonoBehaviour:
@@ -1692,19 +1680,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 357364813}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 966500199}
-        m_TargetAssemblyTypeName: MetaUpgradeManager, Assembly-CSharp
-        m_MethodName: UpgradeDashQuantity
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &357364813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1898,10 +1874,10 @@ RectTransform:
   - {fileID: 971955952}
   m_Father: {fileID: 1439194266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -405}
+  m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &421053820
 MonoBehaviour:
@@ -1946,19 +1922,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 421053821}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 966500199}
-        m_TargetAssemblyTypeName: MetaUpgradeManager, Assembly-CSharp
-        m_MethodName: UpgradeMaxHealth
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &421053821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2031,10 +1995,10 @@ RectTransform:
   - {fileID: 1176008370}
   m_Father: {fileID: 1439194266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -125}
+  m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &435443743
 MonoBehaviour:
@@ -2079,19 +2043,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 435443744}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 966500199}
-        m_TargetAssemblyTypeName: MetaUpgradeManager, Assembly-CSharp
-        m_MethodName: UpgradeMoveSpeed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &435443744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3273,10 +3225,10 @@ RectTransform:
   - {fileID: 975145290}
   m_Father: {fileID: 1439194266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1250, y: -125}
+  m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771869428
 MonoBehaviour:
@@ -3321,19 +3273,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 771869429}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 966500199}
-        m_TargetAssemblyTypeName: MetaUpgradeManager, Assembly-CSharp
-        m_MethodName: UpgradeAttackDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &771869429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3645,7 +3585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &917687866
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3869,6 +3809,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starPartsText: {fileID: 24315747}
+  moveSpeedButton: {fileID: 435443743}
+  attackDamageButton: {fileID: 771869428}
+  attackSpeedButton: {fileID: 164550851}
+  maxHealthButton: {fileID: 421053820}
+  knockbackButton: {fileID: 2147308954}
+  dashQuantityButton: {fileID: 357364812}
+  luckButton: {fileID: 1283067344}
+  critDamageButton: {fileID: 1360850248}
+  critRateButton: {fileID: 1414334197}
+  panelRoot: {fileID: 917687865}
 --- !u!4 &966500200
 Transform:
   m_ObjectHideFlags: 0
@@ -3877,7 +3827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966500198}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 531.6698, y: 342.80276, z: -2.8988125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4690,10 +4640,10 @@ RectTransform:
   - {fileID: 1761780470}
   m_Father: {fileID: 1439194266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -685}
+  m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1283067344
 MonoBehaviour:
@@ -4738,19 +4688,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1283067345}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 966500199}
-        m_TargetAssemblyTypeName: MetaUpgradeManager, Assembly-CSharp
-        m_MethodName: UpgradeLuck
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1283067345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4823,10 +4761,10 @@ RectTransform:
   - {fileID: 71655471}
   m_Father: {fileID: 1439194266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1250, y: -685}
+  m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1360850248
 MonoBehaviour:
@@ -4871,19 +4809,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1360850249}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 966500199}
-        m_TargetAssemblyTypeName: MetaUpgradeManager, Assembly-CSharp
-        m_MethodName: UpgradeCritDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1360850249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5035,10 +4961,10 @@ RectTransform:
   - {fileID: 1255986320}
   m_Father: {fileID: 1439194266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 2250, y: -685}
+  m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414334197
 MonoBehaviour:
@@ -5083,19 +5009,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1414334198}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 966500199}
-        m_TargetAssemblyTypeName: MetaUpgradeManager, Assembly-CSharp
-        m_MethodName: UpgradeCritRate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1414334198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6693,7 +6607,7 @@ MonoBehaviour:
     baseKnockback: 0.03
     baseDashQuantity: 1
     baseCritDamage: 2
-    baseCritRate: 0.25
+    baseCritRate: 0.1
 --- !u!4 &2060294047
 Transform:
   m_ObjectHideFlags: 0
@@ -6738,6 +6652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b3b3554ea4a6724b828b135d8752882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverUIPrefab: {fileID: 4781710275776027295, guid: 2b93dcf6f2548ed459786899490a30a2, type: 3}
 --- !u!4 &2105009257
 Transform:
   m_ObjectHideFlags: 0
@@ -6789,10 +6704,10 @@ RectTransform:
   - {fileID: 224464603}
   m_Father: {fileID: 1439194266}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1250, y: -405}
+  m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2147308954
 MonoBehaviour:
@@ -6837,19 +6752,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2147308955}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 966500199}
-        m_TargetAssemblyTypeName: MetaUpgradeManager, Assembly-CSharp
-        m_MethodName: UpgradeKnockback
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2147308955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6894,9 +6797,9 @@ SceneRoots:
   m_Roots:
   - {fileID: 820209668}
   - {fileID: 910003629}
+  - {fileID: 966500200}
   - {fileID: 69516702}
   - {fileID: 2060294047}
-  - {fileID: 966500200}
   - {fileID: 2105009257}
   - {fileID: 414572157}
   - {fileID: 1673383533}
