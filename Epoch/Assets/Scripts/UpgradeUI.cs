@@ -97,7 +97,10 @@ public class UpgradeUI : MonoBehaviour
             });  
 
             } 
-            if(upgrade.type == UpgradeData.UpgradeType.DashQuantity || upgrade.type == UpgradeData.UpgradeType.Luck)
+            if(upgrade.type == UpgradeData.UpgradeType.DashQuantity 
+            || upgrade.type == UpgradeData.UpgradeType.Luck 
+            || upgrade.type == UpgradeData.UpgradeType.HealPlayer
+            || upgrade.type == UpgradeData.UpgradeType.MaxHealthBoost)
             {
                 buttonText.text = $"{upgrade.upgradeName} {upgrade.description} (+{upgrade.currentValue})";
             } 

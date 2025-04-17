@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     private static UIManager instance;
+    public GameObject gameOverUIPrefab;
+    private static GameObject gameOverUIInstance;
 
     void Awake()
     {
@@ -11,10 +13,21 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject); // Keep this object across scenes
+
+            SpawnGameOverUI();
         }
         else
         {
             Destroy(gameObject); // Destroy duplicate instances
+        }
+    }
+
+    private void SpawnGameOverUI()
+    {
+        if (gameOverUIPrefab != null && gameOverUIInstance == null)
+        {
+            gameOverUIInstance = Instantiate(gameOverUIPrefab);
+            DontDestroyOnLoad(gameOverUIInstance);
         }
     }
 }

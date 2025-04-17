@@ -12,8 +12,8 @@ public class MazeRoomGenerator : MonoBehaviour
     [SerializeField] float roomWidth = 5;
     [SerializeField] float roomHeight = 5;
 
-    [SerializeField] int numX = 10;
-    [SerializeField] int numY = 10;
+    [SerializeField] int numX = 2;
+    [SerializeField] int numY = 2;
 
     [SerializeField] int offsetX = 0;
     [SerializeField] int offsetY = 0;

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 using System.IO;
 public class GameManager : MonoBehaviour
 {
+    public bool inWorldTwo = false;
+    public List<UpgradeData> allUpgrades;
 
     public int currentLevelCount = 0;
     public int maxLevelBeforeBoss = 0;
@@ -20,7 +22,12 @@ public class GameManager : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth = 100f;
     public int currentDashQuantity = 1;
+
+    public float currentCritDamage = 2f;
+    public float currentCritRate = 0.10f;
     public bool hasFireSword = false;
+    public bool hasDoubleAttack = false;
+    
 
     //base stats when player is killed
 
@@ -36,11 +43,14 @@ public class GameManager : MonoBehaviour
         public float baseLuck = 0f;
         public float baseKnockback = 0.03f;
         public int baseDashQuantity = 1;
+
+        public float baseCritDamage = 2f;
+        public float baseCritRate = 0.10f;
     }
     public MetaUpgradeData metaUpgrades = new MetaUpgradeData();
 
 
-    private List<UpgradeData> allUpgrades = new List<UpgradeData>();
+    //private List<UpgradeData> allUpgrades = new List<UpgradeData>();
 
     private void Awake()
     {
@@ -59,7 +69,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         maxLevelBeforeBoss = Random.Range(6,9);
-        metaUpgrades.starParts = 30;
+        //metaUpgrades.starParts = 30;
         ApplyMetaUpgrades();
         ResetUpgrades();
     }
@@ -74,18 +84,21 @@ public class GameManager : MonoBehaviour
         currentLuck = metaUpgrades.baseLuck;
         currentKnockback = metaUpgrades.baseKnockback;
         currentDashQuantity = metaUpgrades.baseDashQuantity;
+        currentCritDamage = metaUpgrades.baseCritDamage;
+        currentCritRate = metaUpgrades.baseCritRate;
     }
 
     public void RestartGame()
     {
+        ResetUpgrades();
+        
         currentLevelCount = 0;
-        maxLevelBeforeBoss = Random.Range(6,9);
+        maxLevelBeforeBoss = Random.Range(6,7);
         Debug.Log("Restarting Game...");
         ApplyMetaUpgrades();
         CooldownManager.isOtherAttacking = false;
         hasFireSword = false;
-        ResetUpgrades();
-        metaUpgrades.starParts = 30;
+        hasDoubleAttack = false;
         SceneManager.LoadScene(0);
     }
 
@@ -97,6 +110,7 @@ public class GameManager : MonoBehaviour
      // Method to apply upgrades globally
     public void ApplyUpgrade(UpgradeData upgrade)
     {
+        PlayerHealth ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         //Apply the Chosen upgrade which is known through UpgradeData and update the corresponding stat.
         //At the start of each level the stats here are put onto the player 
         switch (upgrade.type)
@@ -112,6 +126,10 @@ public class GameManager : MonoBehaviour
                 break;
             case UpgradeData.UpgradeType.Luck:
                 currentLuck +=upgrade.currentValue;
+                if(Random.value < 0.5f)
+                {
+                    currentCritRate += 0.02f;
+                }
                 break;
             case UpgradeData.UpgradeType.Knockback:
                 currentKnockback += upgrade.currentValue;
@@ -122,6 +140,28 @@ public class GameManager : MonoBehaviour
             case UpgradeData.UpgradeType.FireSword:
                 hasFireSword = true;
                 break;
+            case UpgradeData.UpgradeType.HealPlayer:
+                currentHealth += upgrade.currentValue;
+                if(currentHealth > maxHealth)
+                   currentHealth = maxHealth;
+                ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+                if (ph != null) ph.SetHealth(currentHealth);
+                break;
+            case UpgradeData.UpgradeType.MaxHealthBoost:
+                maxHealth += upgrade.currentValue;
+                ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+                if (ph != null)
+                {
+                    ph.SetMaxHealth(maxHealth);
+                    ph.SetHealth(currentHealth); // Optional: also update bar visually
+                }
+                break;
+            case UpgradeData.UpgradeType.DoubleAttack:
+                hasDoubleAttack = true;
+                break;
+            case UpgradeData.UpgradeType.CritDamage:
+                currentCritDamage += upgrade.currentValue;
+                break;
         }
 
         Debug.Log($"Applied {upgrade.upgradeName} - New Stats -> Speed: {playerSpeed}, Damage: {playerDamage}, Cooldown: {attackCooldown}, CurrentHealth: {currentHealth}, CurrentLuck: {currentLuck}");
@@ -130,9 +170,9 @@ public class GameManager : MonoBehaviour
 
     public void ResetUpgrades()
     {
-        UpgradeData[] upgrades = Resources.LoadAll<UpgradeData>("");
+        //UpgradeData[] upgrades = Resources.LoadAll<UpgradeData>("");
 
-        foreach (UpgradeData upgrade in upgrades)
+        foreach (UpgradeData upgrade in allUpgrades)
         {
             upgrade.currentValue = 0;
             upgrade.hasBeenChosen = false;

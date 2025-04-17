@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3ded7976753bea49b15cc1805f3842e, type: 3}
+  m_Name: Heal Player
+  m_EditorClassIdentifier: 
+  upgradeName: 'Modern Medicine: '
+  description: 'Restore health by: '
+  type: 7
+  currentValue: 0
+  baseValue: 30
+  rarity: 1
+  minimumRarity: 0
+  isOneTimeUpgrade: 0
+  hasBeenChosen: 0

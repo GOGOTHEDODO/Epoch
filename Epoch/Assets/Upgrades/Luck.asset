@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ded7976753bea49b15cc1805f3842e, type: 3}
   m_Name: Luck
   m_EditorClassIdentifier: 
-  upgradeName: Luck
-  description: Increases Luck
+  upgradeName: Feeling Lucky?
+  description: 'Has a 50% chance to increase crit rate by 2% and Increases Luck by '
   type: 3
   currentValue: 0
   baseValue: 2
   rarity: 0
+  minimumRarity: 0
+  isOneTimeUpgrade: 0
+  hasBeenChosen: 0

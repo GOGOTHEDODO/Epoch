@@ -8,6 +8,9 @@ public class EnemyRecieveDamage : MonoBehaviour
     public float health;
     public float maxHealth;
 
+    private bool recentlyHit = false;
+    public float hitLockoutDuration = 0.05f;
+
     // This will be changed based on attack
 
     private Renderer rend;
@@ -35,12 +38,21 @@ public class EnemyRecieveDamage : MonoBehaviour
 
     public void DealDamage(float damage, Vector2 knockbackDirection, float knockbackForce, float hitstun)
     {
+        if (recentlyHit) return;
+        recentlyHit = true;
+        Invoke(nameof(ResetHitLockout), hitLockoutDuration);
+
         health -= damage;
         ApplyKnockback(knockbackDirection, knockbackForce, hitstun);
         enemyHealthUI.GetComponent<EnemyHealthUI>().UpdateHealthBar();
 
         TintRed();
         checkDeath();
+    }
+
+    private void ResetHitLockout()
+    {
+        recentlyHit = false;
     }
 
     void ApplyKnockback(Vector2 direction, float force, float hitstun)
@@ -120,12 +132,22 @@ public class EnemyRecieveDamage : MonoBehaviour
         float elapsedTime = 0f;
         float tickRate = 1f;
 
+        yield return new WaitForSeconds(tickRate);
+
         while(elapsedTime < duration)
         {
-            DealDamage(damagerPerTick, Vector2.zero, 0, 0);
+            ApplyBurnTick(damagerPerTick);
             yield return new WaitForSeconds(tickRate);
             elapsedTime += tickRate;
         }
+    }
+
+    public void ApplyBurnTick(float damage)
+    {
+        health -= damage;
+        enemyHealthUI.GetComponent<EnemyHealthUI>().UpdateHealthBar();
+        TintRed();
+        checkDeath();
     }
 
 }

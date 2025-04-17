@@ -12,6 +12,7 @@ public class LightAttackControl : MonoBehaviour
     public float damage = 10f;
     public float knockbackForce;
     public float stun;
+    private Color originalBladeColor;
 
     void Start()
     {
@@ -20,6 +21,8 @@ public class LightAttackControl : MonoBehaviour
         damage = GameManager.instance.playerDamage;
         LightCooldown = GameManager.instance.attackCooldown;
         stun = GameManager.instance.currentKnockback;
+
+        originalBladeColor = attackRenderer.color;
 
         // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE, ITS A LITTLE JANK REGARDLESS
         knockbackForce = 2f;
@@ -68,18 +71,33 @@ public class LightAttackControl : MonoBehaviour
         CooldownManager.isOtherAttacking = true;
         // Lock the facing direction before starting the animation
         isAttacking = true;
+        damage = GameManager.instance.playerDamage;
 
         GetComponent<Collider2D>().enabled = true;
 
         // Trigger the attack animation
         animator.SetTrigger("Attack");
-
+        DetectColliders();
         CooldownUI.instance.StartCooldown(LightCooldown);
 
         // Cooldown for attack
         yield return new WaitForSeconds((float)LightCooldown / 2);
 
         GetComponent<Collider2D>().enabled = false;
+
+        if (GameManager.instance.hasDoubleAttack)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            damage = GameManager.instance.playerDamage *0.25f;
+            Debug.Log($"DAMAGE IS {damage}");
+            GetComponent<Collider2D>().enabled = true;
+            animator.SetTrigger("Attack");
+            DetectColliders();
+
+            yield return new WaitForSeconds((float)LightCooldown / 4);
+            GetComponent<Collider2D>().enabled = false;
+        }
 
         yield return new WaitForSeconds((float)LightCooldown / 2);
 
@@ -121,9 +139,26 @@ public class LightAttackControl : MonoBehaviour
             }
         }
 
+        bool isCritHit = Random.value < GameManager.instance.currentCritRate;
+        float finalDamage;
+        if(isCritHit)
+        {
+            StartCoroutine(FlashBladeRed());
+            finalDamage = damage * GameManager.instance.currentCritDamage;
+        } else 
+        {
+            finalDamage = damage;
+        }
+
         // Deal damage to closest enemy
         if (closestEnemy != null)
         {
+            bool isSecondAttack = damage < GameManager.instance.playerDamage;
+
+            Debug.Log(isSecondAttack
+                ? $"🔥 Second attack hit for {damage} (25% of base)"
+                : $"🗡️ Primary attack hit for {damage}");
+            
             Debug.Log($"Dealing {damage} to {closestEnemy.gameObject.name}");
             
             EnemyRecieveDamage enemy = closestEnemy.GetComponent<EnemyRecieveDamage>();
@@ -134,7 +169,16 @@ public class LightAttackControl : MonoBehaviour
                  enemy.ApplyBurn(2f, 3f);
                 }
                 Vector2 knockbackDirection = (closestEnemy.transform.position - transform.position).normalized;
-                enemy.DealDamage(damage, knockbackDirection, knockbackForce, stun);
+                enemy.DealDamage(finalDamage, knockbackDirection, knockbackForce, stun);
+
+                 if (damage < GameManager.instance.playerDamage)
+                {
+                    Debug.Log($"🔥 Second attack hit for {damage} (25% of base)");
+                }
+                else
+                {
+                    Debug.Log($"🗡️ Primary attack hit for {damage}");
+                }
                 
             }
             else
@@ -142,5 +186,12 @@ public class LightAttackControl : MonoBehaviour
                 Debug.LogError("EnemyRecieveDamage script is missing on the enemy");
             }
         }
+    }
+
+    private IEnumerator FlashBladeRed()
+    {
+        attackRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        attackRenderer.color = originalBladeColor;
     }
 }

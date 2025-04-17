@@ -43,6 +43,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         health -= damage;
+        GameManager.instance.currentHealth -= damage;
         TintRed();
 
         if (HealthUI.instance != null)
@@ -52,8 +53,14 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log($"Player took {damage} damage! Current HP: {health}");
 
+        if(health < 0)
+        {
+            health = 0;
+        }
+
         if (health <= 0)
         {
+            
             CheckDeath();
         }
     }
@@ -77,6 +84,24 @@ public class PlayerHealth : MonoBehaviour
         rend.material.color = originalColor;
     }
 
+    public void SetHealth(float newHealth)
+    {
+        health = newHealth;
+
+        if (HealthUI.instance != null)
+        {
+            HealthUI.instance.UpdateHealthBar();
+        }
+
+    }
+
+    public void SetMaxHealth(float newMax)
+    {
+        maxHealth = newMax;
+        if (HealthUI.instance != null)
+            HealthUI.instance.UpdateHealthBar();
+    }
+
     private void CheckDeath()
     {
         if (animator != null)
@@ -95,10 +120,16 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator DeathSequence()
     {
         yield return new WaitForSeconds(2f);
-
         Destroy(gameObject);
+
+        if (GameOverUI.instance != null)
+        {
+            GameOverUI.instance.ShowGameOver();
+        }
+
+       
         Debug.Log("Player has died!");
-        GameManager.instance.RestartGame();
+        //GameManager.instance.RestartGame();
     }
 
 }

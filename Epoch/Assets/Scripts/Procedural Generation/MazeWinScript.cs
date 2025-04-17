@@ -6,6 +6,7 @@ public class MazeWinScript : MonoBehaviour
 {
     private bool isCaptured = false;
     private static int number = 0;
+    [SerializeField] GameObject brazierLight;
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(isCaptured);
@@ -14,6 +15,7 @@ public class MazeWinScript : MonoBehaviour
             number++;
             Debug.Log("Braziers collected: " + number);
             isCaptured = true;
+            brazierLight.SetActive(false);
 
             if (number == 4)
             {
@@ -23,6 +25,7 @@ public class MazeWinScript : MonoBehaviour
                 {
                    levelManager.SpawnUpgradeOrb();
                 }
+                number = 0;
             }
         }  
     }
