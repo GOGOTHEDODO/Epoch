@@ -53,7 +53,7 @@ Material:
     - _Tolerance8: 0.005
     - _Tolerance9: 0.005
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.6792453, g: 0.6568174, b: 0.6568174, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _OriginalColor1: {r: 0.96470594, g: 0.79215693, b: 0.454902, a: 1}
     - _OriginalColor2: {r: 0.882353, g: 0.69803923, b: 0.43137258, a: 1}
@@ -65,13 +65,13 @@ Material:
     - _OriginalColor8: {r: 0.06666667, g: 0.043137256, b: 0, a: 1}
     - _OriginalColor9: {r: 0.21176472, g: 0.28627452, b: 0.56078434, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TargetColor1: {r: 0, g: 0, b: 0, a: 1}
-    - _TargetColor2: {r: 0.18867922, g: 0.16464932, b: 0.16464932, a: 0.9607843}
-    - _TargetColor3: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
-    - _TargetColor4: {r: 0.3301887, g: 0.32551622, b: 0.32551622, a: 1}
-    - _TargetColor5: {r: 1, g: 0.019000817, b: 0, a: 1}
+    - _TargetColor1: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+    - _TargetColor2: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 0.9607843}
+    - _TargetColor3: {r: 0.23584908, g: 0.14573693, b: 0.14573693, a: 1}
+    - _TargetColor4: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+    - _TargetColor5: {r: 1, g: 0.00000019073488, b: 0, a: 1}
     - _TargetColor6: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
     - _TargetColor7: {r: 0, g: 0, b: 0, a: 1}
     - _TargetColor8: {r: 0.2830189, g: 0.27100393, b: 0.27100393, a: 1}
-    - _TargetColor9: {r: 0.4056604, g: 0, b: 0.014407154, a: 1}
+    - _TargetColor9: {r: 0.4716981, g: 0, b: 0.06104325, a: 1}
   m_BuildTextureStacks: []
