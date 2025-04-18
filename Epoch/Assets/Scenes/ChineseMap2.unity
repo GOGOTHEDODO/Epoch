@@ -71518,7 +71518,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b236b5acff5f494ba3e16fc013a5284, type: 3}
---- !u!43 &2098670203
+--- !u!43 &2076687387
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71740,16 +71740,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7675392001448067835, guid: 5e08b9270d3d9044aa9dc3a854da5424, type: 3}
     - target: {fileID: 7948495108205034174, guid: d21e017ad43169248965e9b27454fac2, type: 3}
+      propertyPath: rogueEnemyPrefab
+      value: 
+      objectReference: {fileID: 7675392001448067835, guid: 9daa8bb45b000c6499e8a0057fe0a01c, type: 3}
+    - target: {fileID: 7948495108205034174, guid: d21e017ad43169248965e9b27454fac2, type: 3}
       propertyPath: rangedEnemyPrefab
       value: 
       objectReference: {fileID: 7675392001448067835, guid: 8b44489fbe3380f4ca085dd6de47ec89, type: 3}
     - target: {fileID: 7948495108205034174, guid: d21e017ad43169248965e9b27454fac2, type: 3}
       propertyPath: numberOfMeleeEnemies
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7948495108205034174, guid: d21e017ad43169248965e9b27454fac2, type: 3}
       propertyPath: numberOfRangedEnemies
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7954392864038901299, guid: d21e017ad43169248965e9b27454fac2, type: 3}
       propertyPath: m_Name

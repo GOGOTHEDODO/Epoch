@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8656539845506159123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4671531605607571796}
+  - component: {fileID: 8997433283770376228}
+  - component: {fileID: 6174899470651545849}
+  m_Layer: 0
+  m_Name: SpawnFieldRussian
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4671531605607571796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656539845506159123}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.1669545, y: 0.026804842, z: -0.024972422}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &8997433283770376228
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656539845506159123}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 13.892149, y: 19.156265}
+      - {x: 0.25114965, y: 18.802168}
+      - {x: -5.716123, y: 18.744757}
+      - {x: -5.994895, y: 17.44627}
+      - {x: -3.0384135, y: 17.379784}
+      - {x: -3.0362792, y: -16.425982}
+      - {x: -6.1072803, y: -16.384846}
+      - {x: -6.446782, y: 12.422689}
+      - {x: -6.5312924, y: 18.608929}
+      - {x: -13.2185, y: 18.633236}
+      - {x: -35.827877, y: 19.301632}
+      - {x: -35.51225, y: -19.876945}
+      - {x: -21.230234, y: -20.38509}
+      - {x: -21.274824, y: -17.756824}
+      - {x: -18.021526, y: -17.809063}
+      - {x: -17.810968, y: -16.126003}
+      - {x: -21.358767, y: -16.105572}
+      - {x: -21.480555, y: 17.540485}
+      - {x: -18.18773, y: 17.421349}
+      - {x: -17.665682, y: -20.596474}
+      - {x: -6.6654515, y: -20.38867}
+      - {x: -6.310824, y: -17.738537}
+      - {x: -2.5575697, y: -17.73476}
+      - {x: -2.4999928, y: -21.47438}
+      - {x: 14.233242, y: -20.364506}
+      - {x: 13.376099, y: -9.609337}
+      - {x: 13.34345, y: 10.560073}
+  m_UseDelaunayMesh: 0
+--- !u!114 &6174899470651545849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656539845506159123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891e069930a441842a255e2cefc48e5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeEnemyPrefab: {fileID: 7675392001448067835, guid: 5e08b9270d3d9044aa9dc3a854da5424, type: 3}
+  rangedEnemyPrefab: {fileID: 7675392001448067835, guid: 8b44489fbe3380f4ca085dd6de47ec89, type: 3}
+  rogueEnemyPrefab: {fileID: 7675392001448067835, guid: 9daa8bb45b000c6499e8a0057fe0a01c, type: 3}
+  numberOfMeleeEnemies: 2
+  numberOfRangedEnemies: 2
+  numberOfRogueEnemies: 2
+  player: {fileID: 0}
+  spawnArea: {fileID: 8997433283770376228}

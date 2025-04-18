@@ -7,8 +7,10 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject meleeEnemyPrefab;
     public GameObject rangedEnemyPrefab;
+    public GameObject rogueEnemyPrefab;
     public int numberOfMeleeEnemies = 1;
     public int numberOfRangedEnemies = 1;
+    public int numberOfRogueEnemies = 1;
     public GameObject player;
 
     public PolygonCollider2D spawnArea;
@@ -17,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
     {
         SpawnMeleeEnemies();
         SpawnRangedEnemies();
+        SpawnRogueEnemies();
     }
 
     public void SpawnMeleeEnemies()
@@ -66,6 +69,35 @@ public class EnemySpawner : MonoBehaviour
             if (spawnArea.OverlapPoint(randomPoint))
             {
                 GameObject enemyInstance = Instantiate(rangedEnemyPrefab, randomPoint, Quaternion.identity);
+                AIDestinationSetter destSetter = enemyInstance.GetComponent<AIDestinationSetter>();
+                if (destSetter != null)
+                {
+                    destSetter.target = player.transform;
+                }
+                spawned++;
+            }
+        }
+    }
+
+    public void SpawnRogueEnemies()
+    {
+        Bounds bounds = spawnArea.bounds;
+
+        int spawned = 0;
+        int maxAttempts = numberOfRogueEnemies * 100; // prevent infinite loop
+        int attempts = 0;
+
+        while (spawned < numberOfRogueEnemies && attempts < maxAttempts)
+        {
+            attempts++;
+            Vector2 randomPoint = new Vector2(
+                Random.Range(bounds.min.x, bounds.max.x),
+                Random.Range(bounds.min.y, bounds.max.y)
+            );
+
+            if (spawnArea.OverlapPoint(randomPoint))
+            {
+                GameObject enemyInstance = Instantiate(rogueEnemyPrefab, randomPoint, Quaternion.identity);
                 AIDestinationSetter destSetter = enemyInstance.GetComponent<AIDestinationSetter>();
                 if (destSetter != null)
                 {
