@@ -24,7 +24,15 @@ public class LightAttackControl : MonoBehaviour
 
         originalBladeColor = attackRenderer.color;
 
-        // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE, ITS A LITTLE JANK REGARDLESS
+        if (GameManager.instance.inWorldTwo)
+        {
+            attackRenderer.color = Color.blue;
+            originalBladeColor = attackRenderer.color;
+        }
+
+
+
+        // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE,
         knockbackForce = 2f;
     }
 
