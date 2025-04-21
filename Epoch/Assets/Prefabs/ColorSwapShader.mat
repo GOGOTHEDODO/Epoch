@@ -47,11 +47,11 @@ Material:
     - _Tolerance2: 0.005
     - _Tolerance3: 0.005
     - _Tolerance4: 0.005
-    - _Tolerance5: 0.005
+    - _Tolerance5: 0
     - _Tolerance6: 0.005
     - _Tolerance7: 0.005
     - _Tolerance8: 0.005
-    - _Tolerance9: 0.005
+    - _Tolerance9: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
