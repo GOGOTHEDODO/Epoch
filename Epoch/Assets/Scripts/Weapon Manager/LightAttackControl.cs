@@ -147,20 +147,24 @@ public class LightAttackControl : MonoBehaviour
             }
         }
 
-        bool isCritHit = Random.value < GameManager.instance.currentCritRate;
-        float finalDamage;
-        if(isCritHit)
-        {
-            StartCoroutine(FlashBladeRed());
-            finalDamage = damage * GameManager.instance.currentCritDamage;
-        } else 
-        {
-            finalDamage = damage;
-        }
 
         // Deal damage to closest enemy
         if (closestEnemy != null)
         {
+
+            bool isCritHit = Random.value < GameManager.instance.currentCritRate;
+            float finalDamage;
+            if (isCritHit)
+            {
+                StartCoroutine(FlashBladeRed());
+                finalDamage = damage * GameManager.instance.currentCritDamage;
+            }
+            else
+            {
+                finalDamage = damage;
+            }
+
+
             bool isSecondAttack = damage < GameManager.instance.playerDamage;
 
             Debug.Log(isSecondAttack
