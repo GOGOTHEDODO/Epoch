@@ -6581,6 +6581,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 15ee98abe5dcdde45a07786b8abc72ff, type: 2}
   - {fileID: 11400000, guid: 97327819412d4934f90ef83a9203bc7e, type: 2}
   - {fileID: 11400000, guid: 4244cd74ab79fc348a2eb62a60a09006, type: 2}
+  - {fileID: 11400000, guid: 9a9875a5be27dbb49a277c35e579359a, type: 2}
+  - {fileID: 11400000, guid: 1d92755c9303ec04cbf106620a1a4093, type: 2}
   currentLevelCount: 0
   maxLevelBeforeBoss: 0
   bossSceneIndex: 5
@@ -6599,7 +6601,7 @@ MonoBehaviour:
   metaUpgrades:
     starParts: 0
     basePlayerSpeed: 5
-    basePlayerDamage: 10
+    basePlayerDamage: 15
     baseAttackCoolDown: 0.5
     baseMaxHealth: 100
     baseCurrentHealth: 100

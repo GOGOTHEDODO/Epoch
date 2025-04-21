@@ -32,7 +32,7 @@ public class MazeRoom : MonoBehaviour
     [SerializeField] GameObject leftLantern;
     [SerializeField] GameObject rightLantern;
     [SerializeField] GameObject brazierLight;
-    int lanternRatio = 15;
+    int lanternRatio = 10;
 
     Dictionary<Directions, GameObject> walls = new Dictionary<Directions, GameObject>();
 

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     // Persistent player stats (upgradeable)
     public float playerSpeed = 5f;
-    public float playerDamage = 10f;
+    public float playerDamage = 15f;
     public float attackCooldown = 0.5f;
     public float currentLuck = 0f;
     public float currentKnockback = 0.03f;
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         public int starParts = 0;
         public float basePlayerSpeed = 5f;
-        public float basePlayerDamage = 10f;
+        public float basePlayerDamage = 15f;
         public float baseAttackCoolDown = 0.5f;
         public float baseMaxHealth = 100f;
         public float baseCurrentHealth = 100f;
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         ResetUpgrades();
         
         currentLevelCount = 0;
-        maxLevelBeforeBoss = Random.Range(6,9);
+        maxLevelBeforeBoss = Random.Range(6,7);
         Debug.Log("Restarting Game...");
         ApplyMetaUpgrades();
         CooldownManager.isOtherAttacking = false;

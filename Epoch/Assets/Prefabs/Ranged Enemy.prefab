@@ -470,12 +470,12 @@ GameObject:
   - component: {fileID: 1709305953864050655}
   - component: {fileID: 1250946704267179254}
   - component: {fileID: 2615344745218047842}
-  - component: {fileID: 3579991413945181198}
   - component: {fileID: 1231990232037208376}
   - component: {fileID: 8095033784506080941}
   - component: {fileID: 1436062116142960961}
   - component: {fileID: 2213458137155853631}
   - component: {fileID: 3151816494030309304}
+  - component: {fileID: 4293363008051413792}
   m_Layer: 7
   m_Name: Ranged Enemy
   m_TagString: Enemy
@@ -565,9 +565,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 5
-  m_AngularDrag: 5
+  m_Mass: 0.8
+  m_LinearDrag: 4
+  m_AngularDrag: 4
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -672,7 +672,7 @@ MonoBehaviour:
   - {x: 0.07500002, y: -0.12500024, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 48232
+  m_InstanceId: 76364
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.07500002, y: 0.12500012, z: 0}
@@ -689,24 +689,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 100
+  maxHealth: 75
+  hitLockoutDuration: 0.07
   flashDuration: 0.1
   enemyHealthUI: {fileID: 5075323522450705112}
---- !u!114 &3579991413945181198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7675392001448067835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e66508b75b261b0409acd3d3be1d854f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 10
-  attackCooldown: 1
-  attackRange: 2
 --- !u!114 &1231990232037208376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,7 +752,7 @@ MonoBehaviour:
   radius: 3
   height: 2
   canMove: 1
-  maxSpeed: 4.9
+  maxSpeed: 2
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -790,7 +776,7 @@ MonoBehaviour:
   endReachedDistance: 0.2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 1
+  whenCloseToDestination: 0
   constrainInsideGraph: 0
 --- !u!114 &2213458137155853631
 MonoBehaviour:
@@ -821,3 +807,19 @@ MonoBehaviour:
   rb: {fileID: 0}
   aiPath: {fileID: 0}
   animator: {fileID: 0}
+--- !u!114 &4293363008051413792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675392001448067835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b475ab3e28eaa478811c4b39c407d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 4221570587067109104, guid: 61e5555668c92ec4aa319ef7d9599013, type: 3}
+  projectileSpeed: 9
+  attackCooldown: 2.5
+  attackRange: 12.5

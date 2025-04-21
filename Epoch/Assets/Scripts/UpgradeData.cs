@@ -9,7 +9,8 @@ public enum Rarity
         //added variety for the differnt types of upgrades
         Common, 
         Rare,
-        Epic
+        Epic,
+        Legendary
     }
 
 [CreateAssetMenu(fileName = "NewUpgrade", menuName = "Upgrades/Upgrade")]
@@ -38,6 +39,7 @@ public class UpgradeData : ScriptableObject
         MaxHealthBoost,
         DoubleAttack,
         CritDamage,
+        Legendary
     }
 
     public void ResetToBaseValue()

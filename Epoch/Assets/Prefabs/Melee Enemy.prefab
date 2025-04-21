@@ -812,7 +812,7 @@ MonoBehaviour:
   - {x: 0.07500002, y: -0.12500024, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: -810898
+  m_InstanceId: 59664
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.07500002, y: 0.12500012, z: 0}
@@ -830,6 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 100
+  hitLockoutDuration: 0.05
   flashDuration: 0.1
   enemyHealthUI: {fileID: 5075323522450705112}
 --- !u!114 &3579991413945181198
@@ -973,4 +974,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ec591b4abbf0145835421cb9291ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 8
+  detectionRadius: 10
+  wanderRadius: 5
+  wanderInterval: 4

@@ -40,11 +40,17 @@ public class PolygonColliderGenerator : MonoBehaviour
 
         spawnerScript.player = GameObject.Find("Player");
 
-        spawnerScript.numberOfEnemies = (int) Mathf.Floor((float) Random.Range(0, 1000)/800);
+        spawnerScript.numberOfMeleeEnemies = (int) Mathf.Floor((float) Random.Range(0, 1000) / 950); //Adjust spawn rates in maze
+        spawnerScript.meleeEnemyPrefab = GameObject.Find("Melee Enemy");
+        spawnerScript.SpawnMeleeEnemies();
 
-        spawnerScript.enemyPrefab = GameObject.Find("Melee Enemy");
+        spawnerScript.numberOfRangedEnemies = (int)Mathf.Floor((float)Random.Range(0, 1000) / 950); //Adjust spawn rates in maze
+        spawnerScript.rangedEnemyPrefab = GameObject.Find("Ranged Enemy");
+        spawnerScript.SpawnRangedEnemies();
 
-        spawnerScript.SpawnEnemies();
+        spawnerScript.numberOfRogueEnemies = (int)Mathf.Floor((float)Random.Range(0, 1000) / 950); //Adjust spawn rates in maze
+        spawnerScript.rogueEnemyPrefab = GameObject.Find("Rogue Enemy");
+        spawnerScript.SpawnRogueEnemies();
 
         polygonCollider.enabled = false;
     }

@@ -112,10 +112,36 @@ public class LevelManager : MonoBehaviour
         CooldownManager.isOtherAttacking = false;
         StartCoroutine(LoadNextLevel()); // Now we can proceed
     }
+
+    public void ShowLegendaryUpgradeChoices()
+    {
+        List<UpgradeData> legendaryOptions = new List<UpgradeData>();
+
+        foreach(UpgradeData upgrade in GameManager.instance.allUpgrades)
+        {
+            if(upgrade.rarity == Rarity.Legendary && !upgrade.hasBeenChosen)
+            {
+                legendaryOptions.Add(upgrade);
+            }
+        }
+        if (legendaryOptions.Count < 2)
+        {
+            Debug.Log("Not Enough Legendary Upgrades Defined");
+            return;
+        }
+
+        UpgradeData upgrade1 = legendaryOptions[0];
+        legendaryOptions.Remove(upgrade1);
+        UpgradeData upgrade2 = legendaryOptions[1];
+
+        LegendaryUpgradeUI.instance.ShowLegendaryChoices(upgrade1, upgrade2);
+    }
+
+
     IEnumerator LoadNextLevel()
     {
         GameManager.instance.currentLevelCount++;
-        if((GameManager.instance.currentLevelCount % 5) == 0 && GameManager.instance.currentLevelCount != 0)
+        if((GameManager.instance.currentLevelCount % 3) == 0 && GameManager.instance.currentLevelCount != 0)
         {
             GameManager.instance.metaUpgrades.starParts += 1;
         }
@@ -126,7 +152,7 @@ public class LevelManager : MonoBehaviour
            if (!GameManager.instance.inWorldTwo && SceneManager.GetActiveScene().buildIndex != GameManager.instance.bossSceneIndex && GameManager.instance.currentLevelCount == GameManager.instance.maxLevelBeforeBoss)
             {
                 // Load the boss scene
-                GameManager.instance.metaUpgrades.starParts += 1;
+                GameManager.instance.metaUpgrades.starParts += 2;
                 SceneManager.LoadScene(GameManager.instance.bossSceneIndex);
                 Debug.Log("LOADING THE BOSS SCENE");
             }
@@ -134,11 +160,14 @@ public class LevelManager : MonoBehaviour
             {
                 // We're in the boss scene, upgrade selected, now move on to world two
                 AstarPath.active.Scan();
-                int additionalLevels = Random.Range(6, 9);
+                int additionalLevels = Random.Range(5, 6);
                 GameManager.instance.maxLevelBeforeBoss = GameManager.instance.currentLevelCount + additionalLevels;
                 Debug.Log("Entered World 2 — Next boss at level " + GameManager.instance.maxLevelBeforeBoss);
 
+                ShowLegendaryUpgradeChoices();
+
                 // Load first world two level
+                GameManager.instance.inWorldTwo = true;
                 int randomIndex = Random.Range(0, worldTwoSceneIDs.Length);
                 int nextSceneID = worldTwoSceneIDs[randomIndex];
                 SceneManager.LoadScene(nextSceneID);
@@ -146,7 +175,15 @@ public class LevelManager : MonoBehaviour
             else
             {
                 // Standard level progression
-                int[] currentScenePool = GameManager.instance.inWorldTwo ? worldTwoSceneIDs : sceneIDs;
+                int[] currentScenePool;
+                if(GameManager.instance.inWorldTwo)
+                {
+                    currentScenePool = worldTwoSceneIDs;
+                }
+                else 
+                {
+                    currentScenePool = sceneIDs;
+                }
                 int randomIndex = Random.Range(0, currentScenePool.Length);
                 int nextSceneID = currentScenePool[randomIndex];
                 SceneManager.LoadScene(nextSceneID);

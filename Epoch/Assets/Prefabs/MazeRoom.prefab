@@ -22413,6 +22413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80a81ce4916e9a40a13e35ebd8ae9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brazierLight: {fileID: 1878186180356947175}
 --- !u!1 &9217131254316887235
 GameObject:
   m_ObjectHideFlags: 0

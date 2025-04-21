@@ -95,7 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891e069930a441842a255e2cefc48e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7675392001448067835, guid: 5e08b9270d3d9044aa9dc3a854da5424, type: 3}
-  numberOfEnemies: 3
+  meleeEnemyPrefab: {fileID: 7675392001448067835, guid: 5e08b9270d3d9044aa9dc3a854da5424, type: 3}
+  rangedEnemyPrefab: {fileID: 7675392001448067835, guid: 8b44489fbe3380f4ca085dd6de47ec89, type: 3}
+  rogueEnemyPrefab: {fileID: 7675392001448067835, guid: 9daa8bb45b000c6499e8a0057fe0a01c, type: 3}
+  numberOfMeleeEnemies: 1
+  numberOfRangedEnemies: 1
+  numberOfRogueEnemies: 1
   player: {fileID: 0}
   spawnArea: {fileID: 7688319161455228610}
