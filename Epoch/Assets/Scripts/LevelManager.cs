@@ -110,30 +110,31 @@ public class LevelManager : MonoBehaviour
 
         // This prevents the cooldown being frozen
         CooldownManager.isOtherAttacking = false;
-        StartCoroutine(LoadNextLevel()); // Now we can proceed
+        StartCoroutine(LoadNextLevel()); 
     }
 
     public void ShowLegendaryUpgradeChoices()
     {
         List<UpgradeData> legendaryOptions = new List<UpgradeData>();
 
-        foreach(UpgradeData upgrade in GameManager.instance.allUpgrades)
+        foreach (UpgradeData upgrade in GameManager.instance.allUpgrades)
         {
-            if(upgrade.rarity == Rarity.Legendary && !upgrade.hasBeenChosen)
+            if (upgrade.rarity == Rarity.Legendary && !upgrade.hasBeenChosen)
             {
                 legendaryOptions.Add(upgrade);
             }
         }
-        if (legendaryOptions.Count < 2)
+
+        if (legendaryOptions.Count != 2)
         {
-            Debug.Log("Not Enough Legendary Upgrades Defined");
+            Debug.LogError($"Exactly 2 Legendary upgrades expected, but found: {legendaryOptions.Count}");
             return;
         }
 
         UpgradeData upgrade1 = legendaryOptions[0];
-        legendaryOptions.Remove(upgrade1);
         UpgradeData upgrade2 = legendaryOptions[1];
 
+        Debug.Log($"🟡 Showing Legendary Panel: {upgrade1.upgradeName} & {upgrade2.upgradeName}");
         LegendaryUpgradeUI.instance.ShowLegendaryChoices(upgrade1, upgrade2);
     }
 
@@ -164,13 +165,11 @@ public class LevelManager : MonoBehaviour
                 GameManager.instance.maxLevelBeforeBoss = GameManager.instance.currentLevelCount + additionalLevels;
                 Debug.Log("Entered World 2 — Next boss at level " + GameManager.instance.maxLevelBeforeBoss);
 
-                ShowLegendaryUpgradeChoices();
 
                 // Load first world two level
                 GameManager.instance.inWorldTwo = true;
-                int randomIndex = Random.Range(0, worldTwoSceneIDs.Length);
-                int nextSceneID = worldTwoSceneIDs[randomIndex];
-                SceneManager.LoadScene(nextSceneID);
+                ShowLegendaryUpgradeChoices();
+                yield break;
             }
             else
             {
@@ -197,5 +196,14 @@ public class LevelManager : MonoBehaviour
         }
         CooldownUI.instance.UpdateInitialCooldown();
         StatsPopup.instance.CloseStats();
+    }
+    public void LoadNextLevelAfterLegendary()
+    {
+        GameManager.instance.inWorldTwo = true;
+        int additionalLevels = Random.Range(5, 8);
+        GameManager.instance.maxLevelBeforeBoss = GameManager.instance.currentLevelCount + additionalLevels;
+        int randomIndex = Random.Range(0, worldTwoSceneIDs.Length);
+        int nextSceneID = worldTwoSceneIDs[randomIndex];
+        SceneManager.LoadScene(nextSceneID);
     }
 }

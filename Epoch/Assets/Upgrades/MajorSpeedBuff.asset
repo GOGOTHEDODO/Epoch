@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeName: Rapier
   description: Decrease your Attack by 50% but Double your Attack Speed and Double
     Secondary effects of Attacks
-  type: 11
+  type: 12
   currentValue: 0
   baseValue: 0
   rarity: 3

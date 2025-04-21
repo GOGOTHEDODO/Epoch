@@ -23,7 +23,9 @@ public class MazeWinScript : MonoBehaviour
 
                 if (levelManager != null)
                 {
-                   levelManager.SpawnUpgradeOrb();
+                    
+                   levelManager.ShowLegendaryUpgradeChoices();
+                   //levelManager.SpawnUpgradeOrb();
                 }
                 number = 0;
             }

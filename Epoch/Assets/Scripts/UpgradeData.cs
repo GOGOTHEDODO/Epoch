@@ -39,7 +39,8 @@ public class UpgradeData : ScriptableObject
         MaxHealthBoost,
         DoubleAttack,
         CritDamage,
-        Legendary
+        LegendaryAttackBuff,
+        LegendaySpeedBuff
     }
 
     public void ResetToBaseValue()

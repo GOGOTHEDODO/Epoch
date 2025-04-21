@@ -41,8 +41,8 @@ public class LegendaryUpgradeUI : MonoBehaviour
         chosenUpgrade1 = option1;
         chosenUpgrade2 = option2;
 
-        button1Text.text = option1.upgradeName;
-        button2Text.text = option2.upgradeName;
+        button1Text.text = option1.upgradeName + ":\n" + option1.description;
+        button2Text.text = option2.upgradeName + ":\n" + option1.description;
 
         upgradeButton1.onClick.RemoveAllListeners();
         upgradeButton2.onClick.RemoveAllListeners();
@@ -56,7 +56,25 @@ public class LegendaryUpgradeUI : MonoBehaviour
     void ChooseUpgrade(UpgradeData upgrade)
     {
         GameManager.instance.ApplyUpgrade(upgrade);
+        ConfirmChoice();
+    }
+
+    public void ConfirmChoice()
+    {
         Time.timeScale = 1f;
-        panelRoot.SetActive(false);
+
+        if (panelRoot != null)
+            panelRoot.SetActive(false);
+
+        // Continue to next level after legendary choice
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        if (levelManager != null)
+        {
+            levelManager.LoadNextLevelAfterLegendary();
+        }
+        else
+        {
+            Debug.LogError("Could not find LevelManager to continue the game after legendary upgrade.");
+        }
     }
 }

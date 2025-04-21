@@ -162,6 +162,15 @@ public class GameManager : MonoBehaviour
             case UpgradeData.UpgradeType.CritDamage:
                 currentCritDamage += upgrade.currentValue;
                 break;
+            case UpgradeData.UpgradeType.LegendaryAttackBuff:
+                playerDamage *= 2f;
+                attackCooldown = attackCooldown * 1.5f;
+                break;
+            case UpgradeData.UpgradeType.LegendaySpeedBuff:
+                attackCooldown = attackCooldown * 0.5f;
+                playerDamage = playerDamage * 0.5f;
+                //add logic for increasing elemental damages
+                break;
         }
 
         Debug.Log($"Applied {upgrade.upgradeName} - New Stats -> Speed: {playerSpeed}, Damage: {playerDamage}, Cooldown: {attackCooldown}, CurrentHealth: {currentHealth}, CurrentLuck: {currentLuck}");

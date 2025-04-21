@@ -16,11 +16,31 @@ public class LightAttackControl : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(DelayedInit());
+    }
+
+    IEnumerator DelayedInit()
+    {
+        // Wait until GameManager.instance is assigned (max 0.5 sec)
+        float timeout = 0.5f;
+        while (GameManager.instance == null && timeout > 0)
+        {
+            timeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        if (GameManager.instance == null)
+        {
+            Debug.LogError("GameManager.instance still null after delay!");
+            yield break;
+        }
+
         attackRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
         damage = GameManager.instance.playerDamage;
         LightCooldown = GameManager.instance.attackCooldown;
         stun = GameManager.instance.currentKnockback;
+        CooldownManager.isOtherAttacking = false;
 
         originalBladeColor = attackRenderer.color;
 
@@ -29,9 +49,6 @@ public class LightAttackControl : MonoBehaviour
             attackRenderer.color = Color.blue;
             originalBladeColor = attackRenderer.color;
         }
-
-
-
         // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE,
         knockbackForce = 2f;
     }
