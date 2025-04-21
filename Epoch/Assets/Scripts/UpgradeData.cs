@@ -40,7 +40,8 @@ public class UpgradeData : ScriptableObject
         DoubleAttack,
         CritDamage,
         LegendaryAttackBuff,
-        LegendaySpeedBuff
+        LegendaySpeedBuff,
+        ElectricSword
     }
 
     public void ResetToBaseValue()

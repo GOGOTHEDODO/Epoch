@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public float currentCritDamage = 2f;
     public float currentCritRate = 0.10f;
     public bool hasFireSword = false;
+    public bool hasElectricSword = false;
     public bool hasDoubleAttack = false;
     
 
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
         CooldownManager.isOtherAttacking = false;
         hasFireSword = false;
         hasDoubleAttack = false;
+        hasElectricSword = false;
         SceneManager.LoadScene(0);
     }
 
@@ -170,6 +172,9 @@ public class GameManager : MonoBehaviour
                 attackCooldown = attackCooldown * 0.5f;
                 playerDamage = playerDamage * 0.5f;
                 //add logic for increasing elemental damages
+                break;
+            case UpgradeData.UpgradeType.ElectricSword:
+                hasElectricSword = true;
                 break;
         }
 

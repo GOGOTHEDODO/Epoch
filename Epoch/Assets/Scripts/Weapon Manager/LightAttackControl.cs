@@ -14,6 +14,8 @@ public class LightAttackControl : MonoBehaviour
     public float stun;
     private Color originalBladeColor;
     private bool hasHitEnemyThisAttack = false;
+    public GameObject lightningEffectPrefab;
+    
 
     void Start()
     {
@@ -205,14 +207,18 @@ public class LightAttackControl : MonoBehaviour
                 }
                 Vector2 knockbackDirection = (closestEnemy.transform.position - transform.position).normalized;
                 enemy.DealDamage(finalDamage, knockbackDirection, knockbackForce, stun);
-
-                 if (damage < GameManager.instance.playerDamage)
+                if(GameManager.instance.hasElectricSword && lightningEffectPrefab != null)
                 {
-                    Debug.Log($"🔥 Second attack hit for {damage} (25% of base)");
+                    GameObject lightning = Instantiate(lightningEffectPrefab, closestEnemy.transform.position, Quaternion.identity);
+                    
+                }
+                if (damage < GameManager.instance.playerDamage)
+                {
+                    Debug.Log($"Second attack hit for {damage} (25% of base)");
                 }
                 else
                 {
-                    Debug.Log($"🗡️ Primary attack hit for {damage}");
+                    Debug.Log($"Primary attack hit for {damage}");
                 }
                 
             }

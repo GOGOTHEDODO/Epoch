@@ -45,6 +45,11 @@ public class LevelManager : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if(enemies.Length == 0 && spawnedOrb == null && defeatAllEnemies)
         {
+            if( SceneManager.GetActiveScene().buildIndex == 11)
+            {
+                Debug.Log("YOU WIN");
+                SceneManager.LoadScene(0);
+            }
             Debug.Log("All enemies have been defeated! Moving to next level...");
             SpawnUpgradeOrb();
         }
@@ -161,14 +166,17 @@ public class LevelManager : MonoBehaviour
             {
                 // We're in the boss scene, upgrade selected, now move on to world two
                 AstarPath.active.Scan();
-                int additionalLevels = Random.Range(5, 6);
-                GameManager.instance.maxLevelBeforeBoss = GameManager.instance.currentLevelCount + additionalLevels;
                 Debug.Log("Entered World 2 — Next boss at level " + GameManager.instance.maxLevelBeforeBoss);
 
 
                 // Load first world two level
-                GameManager.instance.inWorldTwo = true;
                 ShowLegendaryUpgradeChoices();
+                yield break;
+            }
+            else if(GameManager.instance.inWorldTwo && SceneManager.GetActiveScene().buildIndex != 11 && GameManager.instance.currentLevelCount == GameManager.instance.maxLevelBeforeBoss)
+            {
+                Debug.Log("FINAL BOSS TIME");
+                SceneManager.LoadScene(11);
                 yield break;
             }
             else
@@ -188,7 +196,6 @@ public class LevelManager : MonoBehaviour
                 SceneManager.LoadScene(nextSceneID);
             }
             
-          
         }
         else 
         {
@@ -200,7 +207,7 @@ public class LevelManager : MonoBehaviour
     public void LoadNextLevelAfterLegendary()
     {
         GameManager.instance.inWorldTwo = true;
-        int additionalLevels = Random.Range(5, 8);
+        int additionalLevels = Random.Range(1, 2);
         GameManager.instance.maxLevelBeforeBoss = GameManager.instance.currentLevelCount + additionalLevels;
         int randomIndex = Random.Range(0, worldTwoSceneIDs.Length);
         int nextSceneID = worldTwoSceneIDs[randomIndex];
