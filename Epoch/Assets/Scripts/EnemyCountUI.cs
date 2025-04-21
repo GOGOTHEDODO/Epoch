@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class EnemyCountUI : MonoBehaviour
 {
@@ -15,7 +16,16 @@ public class EnemyCountUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        enemyCountText.text = "Enemies Left: " + enemyCount;
+        if(SceneManager.GetActiveScene().buildIndex == GameManager.instance.bossSceneIndex)
+        {
+            int BraziersLit = MazeWinScript.BraziersLit;
+            enemyCountText.text = "Braziers Deactivated: " + BraziersLit + "/4";
+        }
+        else 
+        {
+            int enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            enemyCountText.text = "Enemies Left: " + enemyCount;
+
+        }
     }
 }
