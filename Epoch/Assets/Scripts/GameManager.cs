@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     // Persistent player stats (upgradeable)
     public float playerSpeed = 5f;
-    public float playerDamage = 10f;
+    public float playerDamage = 15f;
     public float attackCooldown = 0.5f;
     public float currentLuck = 0f;
     public float currentKnockback = 0.03f;
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public float currentCritDamage = 2f;
     public float currentCritRate = 0.10f;
     public bool hasFireSword = false;
+    public bool hasElectricSword = false;
     public bool hasDoubleAttack = false;
     
 
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         public int starParts = 0;
         public float basePlayerSpeed = 5f;
-        public float basePlayerDamage = 10f;
+        public float basePlayerDamage = 15f;
         public float baseAttackCoolDown = 0.5f;
         public float baseMaxHealth = 100f;
         public float baseCurrentHealth = 100f;
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
         CooldownManager.isOtherAttacking = false;
         hasFireSword = false;
         hasDoubleAttack = false;
+        hasElectricSword = false;
         SceneManager.LoadScene(0);
     }
 
@@ -161,6 +163,18 @@ public class GameManager : MonoBehaviour
                 break;
             case UpgradeData.UpgradeType.CritDamage:
                 currentCritDamage += upgrade.currentValue;
+                break;
+            case UpgradeData.UpgradeType.LegendaryAttackBuff:
+                playerDamage *= 2f;
+                attackCooldown = attackCooldown * 1.5f;
+                break;
+            case UpgradeData.UpgradeType.LegendaySpeedBuff:
+                attackCooldown = attackCooldown * 0.5f;
+                playerDamage = playerDamage * 0.5f;
+                //add logic for increasing elemental damages
+                break;
+            case UpgradeData.UpgradeType.ElectricSword:
+                hasElectricSword = true;
                 break;
         }
 

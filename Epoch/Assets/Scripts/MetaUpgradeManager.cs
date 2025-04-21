@@ -16,6 +16,16 @@ public class MetaUpgradeManager : MonoBehaviour
     public Button critDamageButton;
     public Button critRateButton;
 
+    public TextMeshProUGUI moveSpeedButtonText;
+    public TextMeshProUGUI attackDamageButtonText;
+    public TextMeshProUGUI attackSpeedButtonText;
+    public TextMeshProUGUI maxHealthButtonText;
+    public TextMeshProUGUI knockbackButtonText;
+    public TextMeshProUGUI dashQuantityButtonText;
+    public TextMeshProUGUI luckButtonText;
+    public TextMeshProUGUI critDamageButtonText;
+    public TextMeshProUGUI critRateButtonText;
+
     public GameObject panelRoot;
 
     private void Start()
@@ -40,6 +50,17 @@ public class MetaUpgradeManager : MonoBehaviour
         {
             starPartsText.text = "Star Parts: " + GameManager.instance.metaUpgrades.starParts;
         }
+        var meta = GameManager.instance.metaUpgrades;
+
+        moveSpeedButtonText.text = $"Move Speed: {meta.basePlayerSpeed:F2} \n (+0.25)";
+        attackDamageButtonText.text = $"Attack Damage: {meta.basePlayerDamage:F1} \n (+1)";
+        attackSpeedButtonText.text = $"Attack Speed: {meta.baseAttackCoolDown:F2}s \n (-0.01)";
+        maxHealthButtonText.text = $"Max Health: {meta.baseMaxHealth:F0} \n (+10)";
+        knockbackButtonText.text = $"Knockback: {meta.baseKnockback:F3} \n (+0.15)";
+        dashQuantityButtonText.text = $"Dash Charges: {meta.baseDashQuantity} \n (+1)";
+        luckButtonText.text = $"Luck: {meta.baseLuck} \n (+1)";
+        critDamageButtonText.text = $"Crit Damage: {meta.baseCritDamage}x \n (+0.1x)";
+        critRateButtonText.text = $"Crit Rate: {meta.baseCritRate * 100:F1}% \n (+2%)";
     }
 
     private void AssignButtonListeners()

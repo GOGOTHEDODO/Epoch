@@ -13,14 +13,37 @@ public class LightAttackControl : MonoBehaviour
     public float knockbackForce;
     public float stun;
     private Color originalBladeColor;
+    private bool hasHitEnemyThisAttack = false;
+    public GameObject lightningEffectPrefab;
+    
 
     void Start()
     {
+        StartCoroutine(DelayedInit());
+    }
+
+    IEnumerator DelayedInit()
+    {
+        // Wait until GameManager.instance is assigned (max 0.5 sec)
+        float timeout = 0.5f;
+        while (GameManager.instance == null && timeout > 0)
+        {
+            timeout -= Time.deltaTime;
+            yield return null;
+        }
+
+        if (GameManager.instance == null)
+        {
+            Debug.LogError("GameManager.instance still null after delay!");
+            yield break;
+        }
+
         attackRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
         damage = GameManager.instance.playerDamage;
         LightCooldown = GameManager.instance.attackCooldown;
         stun = GameManager.instance.currentKnockback;
+        CooldownManager.isOtherAttacking = false;
 
         originalBladeColor = attackRenderer.color;
 
@@ -29,9 +52,6 @@ public class LightAttackControl : MonoBehaviour
             attackRenderer.color = Color.blue;
             originalBladeColor = attackRenderer.color;
         }
-
-
-
         // KNOCKBACK FORCE SHOULD NOT BE CHANGED BY UPGRADES, UPGRADE STUN INSTEAD, IT WORKS BETTER I PROMISE,
         knockbackForce = 2f;
     }
@@ -81,6 +101,7 @@ public class LightAttackControl : MonoBehaviour
         isAttacking = true;
         damage = GameManager.instance.playerDamage;
 
+        hasHitEnemyThisAttack = false;
         GetComponent<Collider2D>().enabled = true;
 
         // Trigger the attack animation
@@ -95,9 +116,10 @@ public class LightAttackControl : MonoBehaviour
 
         if (GameManager.instance.hasDoubleAttack)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
 
             damage = GameManager.instance.playerDamage *0.25f;
+            hasHitEnemyThisAttack = false;
             Debug.Log($"DAMAGE IS {damage}");
             GetComponent<Collider2D>().enabled = true;
             animator.SetTrigger("Attack");
@@ -125,6 +147,9 @@ public class LightAttackControl : MonoBehaviour
 
     public void DetectColliders()
     {
+        // Prevents hitting two enemies at once when you kill the first enemy, weird bug
+        if (hasHitEnemyThisAttack) return;
+
         Collider2D closestEnemy = null;
         float closestDistance = Mathf.Infinity;
 
@@ -147,20 +172,24 @@ public class LightAttackControl : MonoBehaviour
             }
         }
 
-        bool isCritHit = Random.value < GameManager.instance.currentCritRate;
-        float finalDamage;
-        if(isCritHit)
-        {
-            StartCoroutine(FlashBladeRed());
-            finalDamage = damage * GameManager.instance.currentCritDamage;
-        } else 
-        {
-            finalDamage = damage;
-        }
-
         // Deal damage to closest enemy
         if (closestEnemy != null)
         {
+            hasHitEnemyThisAttack = true;
+
+
+            bool isCritHit = Random.value < GameManager.instance.currentCritRate;
+            float finalDamage = damage * GameManager.instance.currentCritDamage;
+            if (isCritHit)
+            {
+                StartCoroutine(FlashBladeRed());
+            }
+            else
+            {
+                finalDamage = damage;
+            }
+
+
             bool isSecondAttack = damage < GameManager.instance.playerDamage;
 
             Debug.Log(isSecondAttack
@@ -178,14 +207,18 @@ public class LightAttackControl : MonoBehaviour
                 }
                 Vector2 knockbackDirection = (closestEnemy.transform.position - transform.position).normalized;
                 enemy.DealDamage(finalDamage, knockbackDirection, knockbackForce, stun);
-
-                 if (damage < GameManager.instance.playerDamage)
+                if(GameManager.instance.hasElectricSword && lightningEffectPrefab != null)
                 {
-                    Debug.Log($"🔥 Second attack hit for {damage} (25% of base)");
+                    GameObject lightning = Instantiate(lightningEffectPrefab, closestEnemy.transform.position, Quaternion.identity);
+                    
+                }
+                if (damage < GameManager.instance.playerDamage)
+                {
+                    Debug.Log($"Second attack hit for {damage} (25% of base)");
                 }
                 else
                 {
-                    Debug.Log($"🗡️ Primary attack hit for {damage}");
+                    Debug.Log($"Primary attack hit for {damage}");
                 }
                 
             }

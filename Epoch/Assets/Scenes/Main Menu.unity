@@ -837,7 +837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2250, y: -125}
+  m_AnchoredPosition: {x: 1250, y: -405}
   m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164550851
@@ -1634,7 +1634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2250, y: -405}
+  m_AnchoredPosition: {x: 250, y: -685}
   m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357364812
@@ -3818,6 +3818,15 @@ MonoBehaviour:
   luckButton: {fileID: 1283067344}
   critDamageButton: {fileID: 1360850248}
   critRateButton: {fileID: 1414334197}
+  moveSpeedButtonText: {fileID: 1176008371}
+  attackDamageButtonText: {fileID: 975145291}
+  attackSpeedButtonText: {fileID: 478809951}
+  maxHealthButtonText: {fileID: 971955953}
+  knockbackButtonText: {fileID: 224464604}
+  dashQuantityButtonText: {fileID: 558908028}
+  luckButtonText: {fileID: 1761780471}
+  critDamageButtonText: {fileID: 71655472}
+  critRateButtonText: {fileID: 1255986321}
   panelRoot: {fileID: 917687865}
 --- !u!4 &966500200
 Transform:
@@ -4642,7 +4651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -685}
+  m_AnchoredPosition: {x: 2250, y: -125}
   m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1283067344
@@ -4763,7 +4772,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1250, y: -685}
+  m_AnchoredPosition: {x: 2250, y: -405}
   m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1360850248
@@ -5214,12 +5223,12 @@ RectTransform:
   m_Children:
   - {fileID: 435443742}
   - {fileID: 771869427}
-  - {fileID: 164550850}
-  - {fileID: 421053819}
-  - {fileID: 2147308953}
-  - {fileID: 357364811}
   - {fileID: 1283067343}
+  - {fileID: 421053819}
+  - {fileID: 164550850}
   - {fileID: 1360850247}
+  - {fileID: 357364811}
+  - {fileID: 2147308953}
   - {fileID: 1414334196}
   m_Father: {fileID: 917687866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5549,7 +5558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1673383530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6581,6 +6590,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 15ee98abe5dcdde45a07786b8abc72ff, type: 2}
   - {fileID: 11400000, guid: 97327819412d4934f90ef83a9203bc7e, type: 2}
   - {fileID: 11400000, guid: 4244cd74ab79fc348a2eb62a60a09006, type: 2}
+  - {fileID: 11400000, guid: 9a9875a5be27dbb49a277c35e579359a, type: 2}
+  - {fileID: 11400000, guid: 1d92755c9303ec04cbf106620a1a4093, type: 2}
   currentLevelCount: 0
   maxLevelBeforeBoss: 0
   bossSceneIndex: 5
@@ -6595,11 +6606,12 @@ MonoBehaviour:
   currentCritDamage: 2
   currentCritRate: 0.1
   hasFireSword: 0
+  hasElectricSword: 0
   hasDoubleAttack: 0
   metaUpgrades:
     starParts: 0
     basePlayerSpeed: 5
-    basePlayerDamage: 10
+    basePlayerDamage: 15
     baseAttackCoolDown: 0.5
     baseMaxHealth: 100
     baseCurrentHealth: 100
@@ -6706,7 +6718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1250, y: -405}
+  m_AnchoredPosition: {x: 1250, y: -685}
   m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2147308954
