@@ -210,7 +210,7 @@ public class LevelManager : MonoBehaviour
     public void LoadNextLevelAfterLegendary()
     {
         GameManager.instance.inWorldTwo = true;
-        int additionalLevels = Random.Range(1, 2);
+        int additionalLevels = Random.Range(5, 9);
         GameManager.instance.maxLevelBeforeBoss = GameManager.instance.currentLevelCount + additionalLevels;
         int randomIndex = Random.Range(0, worldTwoSceneIDs.Length);
         int nextSceneID = worldTwoSceneIDs[randomIndex];

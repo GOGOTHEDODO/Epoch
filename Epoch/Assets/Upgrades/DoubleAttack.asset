@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DoubleAttack
   m_EditorClassIdentifier: 
   upgradeName: 'Double Attack: '
-  description: Attack twice per click, second hit does 25% of your current attack
+  description: Attack twice per click, second hit does 50% of your current attack
     stat
   type: 9
   currentValue: 0

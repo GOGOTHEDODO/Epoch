@@ -92,9 +92,9 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         ResetUpgrades();
-        
+        inWorldTwo = false;
         currentLevelCount = 0;
-        maxLevelBeforeBoss = Random.Range(6,7);
+        maxLevelBeforeBoss = Random.Range(6,9);
         Debug.Log("Restarting Game...");
         ApplyMetaUpgrades();
         CooldownManager.isOtherAttacking = false;

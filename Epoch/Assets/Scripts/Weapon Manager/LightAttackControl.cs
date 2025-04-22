@@ -118,7 +118,7 @@ public class LightAttackControl : MonoBehaviour
         {
             yield return new WaitForSeconds(0.05f);
 
-            damage = GameManager.instance.playerDamage *0.25f;
+            damage = GameManager.instance.playerDamage *0.5f;
             hasHitEnemyThisAttack = false;
             Debug.Log($"DAMAGE IS {damage}");
             GetComponent<Collider2D>().enabled = true;
@@ -193,7 +193,7 @@ public class LightAttackControl : MonoBehaviour
             bool isSecondAttack = damage < GameManager.instance.playerDamage;
 
             Debug.Log(isSecondAttack
-                ? $"🔥 Second attack hit for {damage} (25% of base)"
+                ? $"🔥 Second attack hit for {damage} (50% of base)"
                 : $"🗡️ Primary attack hit for {damage}");
             
             Debug.Log($"Dealing {damage} to {closestEnemy.gameObject.name}");
@@ -203,7 +203,7 @@ public class LightAttackControl : MonoBehaviour
             {
                 if(GameManager.instance.hasFireSword)
                 {
-                 enemy.ApplyBurn(2f, 3f);
+                 enemy.ApplyBurn(GameManager.instance.playerDamage * 0.1f, 3f);
                 }
                 Vector2 knockbackDirection = (closestEnemy.transform.position - transform.position).normalized;
                 enemy.DealDamage(finalDamage, knockbackDirection, knockbackForce, stun);

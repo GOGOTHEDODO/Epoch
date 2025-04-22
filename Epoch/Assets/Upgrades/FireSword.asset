@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: FireSword
   m_EditorClassIdentifier: 
   upgradeName: 'Fire Sword: '
-  description: Your sword ignites enemies on hit dealing 2dmg per second for 3 seconds
+  description: Your sword ignites enemies on hit dealing 10% of your damage per second
+    for 3 seconds
   type: 6
   currentValue: 0
   baseValue: 0
