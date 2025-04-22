@@ -10,6 +10,10 @@ public class ProjectileDamage : MonoBehaviour
 
     void Start()
     {
+        if(GameManager.instance.inWorldTwo)
+        {
+            damage *= 1.5f;
+        }
         // Auto-destroy after a while to prevent projectiles lingering forever
         Destroy(gameObject, lifetime);
     }

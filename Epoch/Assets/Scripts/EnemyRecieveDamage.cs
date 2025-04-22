@@ -29,6 +29,12 @@ public class EnemyRecieveDamage : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        if (GameManager.instance != null && GameManager.instance.inWorldTwo)
+        {
+            float healthMultiplier = 1.5f;
+            maxHealth *= healthMultiplier;
+            health = maxHealth;
+        }
         rend = GetComponent<Renderer>();
         originalColor = rend.material.color;
 

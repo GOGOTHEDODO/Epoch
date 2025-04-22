@@ -17,6 +17,10 @@ public class MeleeEnemyAttacking : MonoBehaviour
 
     void Start()
     {
+        if(GameManager.instance.inWorldTwo)
+        {
+            attackDamage *= 1.5f;
+        }
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<PlayerHealth>();
 

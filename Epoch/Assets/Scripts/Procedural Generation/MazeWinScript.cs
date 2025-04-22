@@ -6,6 +6,7 @@ public class MazeWinScript : MonoBehaviour
 {
     private bool isCaptured = false;
     private static int number = 0;
+    public static int BraziersLit => number;
     [SerializeField] GameObject brazierLight;
     private void OnTriggerEnter2D(Collider2D other)
     {

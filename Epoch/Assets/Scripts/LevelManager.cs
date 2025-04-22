@@ -48,7 +48,10 @@ public class LevelManager : MonoBehaviour
             if( SceneManager.GetActiveScene().buildIndex == 11)
             {
                 Debug.Log("YOU WIN");
-                SceneManager.LoadScene(0);
+                if (WinScreenUI.instance != null)
+                    WinScreenUI.instance.ShowWinScreen();
+                
+                return;
             }
             Debug.Log("All enemies have been defeated! Moving to next level...");
             SpawnUpgradeOrb();
