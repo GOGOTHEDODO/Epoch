@@ -42,7 +42,7 @@ public class LegendaryUpgradeUI : MonoBehaviour
         chosenUpgrade2 = option2;
 
         button1Text.text = option1.upgradeName + ":\n" + option1.description;
-        button2Text.text = option2.upgradeName + ":\n" + option1.description;
+        button2Text.text = option2.upgradeName + ":\n" + option2.description;
 
         upgradeButton1.onClick.RemoveAllListeners();
         upgradeButton2.onClick.RemoveAllListeners();
