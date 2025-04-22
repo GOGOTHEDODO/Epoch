@@ -28,6 +28,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneIDs[Random.Range(0, sceneIDs.Length)]);
         CooldownUI.instance.StartCooldown(0.05f);
     }

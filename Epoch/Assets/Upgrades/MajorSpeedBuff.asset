@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: MajorSpeedBuff
   m_EditorClassIdentifier: 
   upgradeName: Rapier
-  description: Decrease your Attack by 50% but Double your Attack Speed and Double
-    Secondary effects of Attacks
+  description: Decrease your Attack by 50% but Double your Attack Speed
   type: 12
   currentValue: 0
   baseValue: 0
