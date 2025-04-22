@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        maxLevelBeforeBoss = Random.Range(6,9);
+        maxLevelBeforeBoss = Random.Range(6,8);
         //metaUpgrades.starParts = 30;
         ApplyMetaUpgrades();
         ResetUpgrades();
