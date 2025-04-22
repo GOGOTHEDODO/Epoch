@@ -64,14 +64,14 @@ public class LevelManager : MonoBehaviour
     {
         Vector3[] offsets = new Vector3[]
         {
-            new Vector3(2f, 0, 0),   // right
-            new Vector3(-2f, 0, 0),  // left
-            new Vector3(0, 2f, 0),   // up
-            new Vector3(0, -2f, 0),  // down
-            new Vector3(2f, 2f, 0),  // top-right
-            new Vector3(-2f, 2f, 0), // top-left
-            new Vector3(2f, -2f, 0), // bottom-right
-            new Vector3(-2f, -2f, 0) // bottom-left
+            new Vector3(1f, 0, 0),   // right
+            new Vector3(-1f, 0, 0),  // left
+            new Vector3(0, 1f, 0),   // up
+            new Vector3(0, -1f, 0),  // down
+            new Vector3(1f, 1f, 0),  // top-right
+            new Vector3(-1f, 1f, 0), // top-left
+            new Vector3(1f, -1f, 0), // bottom-right
+            new Vector3(-1f, -1f, 0) // bottom-left
         };
 
         foreach (var offset in offsets)
